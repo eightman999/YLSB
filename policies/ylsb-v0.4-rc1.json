@@ -1,0 +1,14 @@
+{
+  "policy_version": "YLSB-v0.4-rc1",
+  "status": "release-candidate-calibration",
+  "gates": {
+    "smallest_meaningful": {"essential_min": 0.60, "format_min": 0.80, "non_empty_min": 1.0, "quality_non_empty_min": 1.0, "protocol_max": 0, "fixture_expectations": {"core": 28, "sentinel": 4, "api_smoke": 10}, "infra_max": 0, "sentinel_min": 0, "practical_task_min": 0},
+    "fastest_useful": {"essential_min": 0.60, "format_min": 0.80, "non_empty_min": 1.0, "quality_non_empty_min": 1.0, "protocol_max": 0, "fixture_expectations": {"core": 28, "sentinel": 4, "api_smoke": 10}, "infra_max": 0, "sentinel_min": 0, "practical_task_min": 0},
+    "ume_full_clear": {"sentinel_min": 4, "invalid_max": 0, "infra_max": 0, "non_empty_min": 1.0}
+  },
+  "threshold_sensitivity": {"essential_min": [0.60, 0.70, 0.80]},
+  "tier_order": ["essential", "practical", "discriminator"],
+  "sentinel": {"role": "discriminator", "badge_policy": "raw_count_only", "counts_are_not_permanent_labels": true},
+  "comparison": {"fastest_metric": "TG", "point_tokens": 128, "depth_tokens": 0, "lane": "R0", "require_observed": true},
+  "provenance": {"threshold_status": "calibration-only; do not freeze from first wave", "source": "YLSB v0.4 request"}
+}

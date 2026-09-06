@@ -1,0 +1,2 @@
+# Required by ylsb_v04.schema.validate; v0.3 has no dependency on this file.
+jsonschema>=4.20,<5

@@ -1,0 +1,7 @@
+{
+  "registry_version": "ylsb-hardware-0.1",
+  "entries": [
+    {"canonical_id": "gpu.nvidia.rtx3060", "vendor": "NVIDIA", "canonical_name": "NVIDIA GeForce RTX 3060", "aliases": ["RTX 3060", "NVIDIA GeForce RTX 3060"], "architecture": "Ampere", "vram_gib": 12.0, "memory_type": "GDDR6", "memory_bandwidth_gbps": 360, "compute_capability": null, "pcie": {"generation": 4, "width": 16}, "source": "results/v0.3/normalized/hardware.jsonl", "provenance": {"kind": "registry", "source": "results/v0.3/normalized/hardware.jsonl"}},
+    {"canonical_id": "gpu.nvidia.tesla-p100-pcie-16gb", "vendor": "NVIDIA", "canonical_name": "Tesla P100-PCIE-16GB", "aliases": ["Tesla P100", "Tesla P100-PCIE-16GB"], "architecture": "Pascal", "vram_gib": 16.0, "memory_type": "HBM2", "memory_bandwidth_gbps": 732, "compute_capability": null, "pcie": {"generation": 3, "width": 16}, "source": "results/v0.3/normalized/hardware.jsonl", "provenance": {"kind": "registry", "source": "results/v0.3/normalized/hardware.jsonl"}}
+  ]
+}

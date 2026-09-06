@@ -1,0 +1,11 @@
+{
+  "policy_version": "YLSB-v0.3",
+  "status": "historical-compatibility",
+  "gates": {
+    "smallest_meaningful": {"core_min": 0.60, "format_min": 0.80, "non_empty_min": 1.0, "infra_max": 0, "sentinel_min": 0, "practical_task_min": 0},
+    "fastest_useful": {"core_min": 0.80, "format_min": 0.90, "non_empty_min": 1.0, "infra_max": 0, "sentinel_min": 0, "practical_task_min": 0},
+    "ume_full_clear": {"sentinel_min": 4, "invalid_max": 0, "infra_max": 0, "non_empty_min": 1.0}
+  },
+  "historical_first_wave": {"format_denominator": "core", "non_empty_denominator": "core", "fastest_requires_all_core": true, "sentinel_invalid_excluded": false},
+  "sentinel": {"role": "discriminator", "badge_policy": "raw_count_only"}
+}

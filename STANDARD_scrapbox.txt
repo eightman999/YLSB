@@ -349,3 +349,7 @@
 	[* 固定anchor]
 		公開・共有済みなのでfresh未知問題性能の単独根拠にはしない。
 		canonical solution / hidden inputは公開パック外。
+
+[* v0.4-rc1追補]
+		v0.3 frozen observationはimmutable。versioned policy、tier付きUME、grader v2、異種GPU schema、registry、Candidate Planner、normalized-corpus-v0.2を導入する。
+		thresholdはcalibration用でfinalではない。Hard Sentinelはdiscriminatorとしてusefulness gateから分離する。

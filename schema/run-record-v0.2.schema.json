@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/eightman999/YLSB/blob/master/schema/run-record-v0.2.schema.json",
+  "title": "YLSB heterogeneous run record v2",
+  "description": "Run schema v2 adds heterogeneous GPU groups and provenance while retaining the v0.3 measurement and reproducibility contract when those fields are supplied.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["schema_version", "run_id", "course_id", "lane", "recorded_at", "runtime", "hardware", "environment", "model", "fixture", "grader", "chat_template", "runtime_config", "performance_samples", "performance_summary"],
+  "properties": {
+    "schema_version": {"const": 2},
+    "run_id": {"type": "string", "minLength": 1},
+    "course_id": {"enum": ["YLSB-UME", "YLSB-TAKE", "YLSB-MATSU"]},
+    "lane": {"enum": ["R0", "R1", "R2", "R3"]},
+    "recorded_at": {"type": "string", "minLength": 1},
+    "hardware": {"$ref": "#/$defs/hardware"},
+    "runtime": {"$ref": "#/$defs/runtime"},
+    "model": {"$ref": "#/$defs/model"},
+    "environment": {"$ref": "#/$defs/environment"},
+    "fixture": {"$ref": "#/$defs/hashed_artifact"},
+    "grader": {"$ref": "#/$defs/hashed_artifact"},
+    "chat_template": {"$ref": "#/$defs/chat_template"},
+    "runtime_config": {"$ref": "#/$defs/runtime_config"},
+    "performance_samples": {"type": "array", "items": {"$ref": "#/$defs/performance_sample"}},
+    "performance_summary": {"type": "array", "items": {"$ref": "#/$defs/performance_summary"}},
+    "measurement": {"type": "object", "additionalProperties": true},
+    "reproducibility": {"type": "object", "additionalProperties": true}
+  },
+  "$defs": {
+    "provenance": {
+      "type": "object", "additionalProperties": true, "required": ["kind"],
+      "properties": {"kind": {"enum": ["reported", "registry", "derived", "inferred", "unknown"]}, "source": {"type": "string", "minLength": 1}, "reason": {"type": "string", "minLength": 1}},
+      "allOf": [
+        {"if": {"properties": {"kind": {"const": "unknown"}}, "required": ["kind"]}, "then": {"required": ["reason"]}},
+        {"if": {"properties": {"kind": {"enum": ["reported", "registry", "derived", "inferred"]}}, "required": ["kind"]}, "then": {"required": ["source"]}}
+      ]
+    },
+    "cpu": {
+      "type": "object", "additionalProperties": true,
+      "required": ["reported_name", "canonical_id", "cores", "threads", "memory_channels", "pcie_generation", "pcie_lanes", "provenance"],
+      "properties": {
+        "reported_name": {"type": ["string", "null"]}, "canonical_id": {"type": ["string", "null"]},
+        "sockets": {"type": ["integer", "null"], "minimum": 1}, "cores": {"type": ["integer", "null"], "minimum": 1}, "threads": {"type": ["integer", "null"], "minimum": 1},
+        "memory_channels": {"type": ["integer", "null"], "minimum": 1}, "pcie_generation": {"type": ["number", "string", "null"]}, "pcie_lanes": {"type": ["integer", "null"], "minimum": 1},
+        "provenance": {"$ref": "#/$defs/provenance"}
+      }
+    },
+    "ram": {"type": "object", "additionalProperties": true, "required": ["total_gib", "provenance"], "properties": {"total_gib": {"type": ["number", "null"], "exclusiveMinimum": 0}, "provenance": {"$ref": "#/$defs/provenance"}}},
+    "gpu_group": {
+      "type": "object", "additionalProperties": true, "required": ["canonical_id", "reported_name", "count", "vram_gib_each", "provenance"],
+      "properties": {
+        "canonical_id": {"type": ["string", "null"]}, "reported_name": {"type": ["string", "null"]}, "count": {"type": ["integer", "null"], "minimum": 1}, "vram_gib_each": {"type": ["number", "null"], "exclusiveMinimum": 0},
+        "bus": {}, "numa_node": {}, "interconnect": {}, "topology": {}, "provenance": {"$ref": "#/$defs/provenance"}
+      }
+    },
+    "hardware": {"type": "object", "additionalProperties": true, "required": ["cpu", "ram", "gpu_groups"], "properties": {"cpu": {"$ref": "#/$defs/cpu"}, "ram": {"$ref": "#/$defs/ram"}, "gpu_groups": {"type": "array", "items": {"$ref": "#/$defs/gpu_group"}}, "topology": {"type": "object", "additionalProperties": true}, "interconnect": {"type": ["object", "array", "string", "null"]}, "numa": {"type": "object", "additionalProperties": true}}},
+    "runtime": {"type": "object", "additionalProperties": true, "required": ["name", "version", "commit_hash"], "properties": {"name": {"type": "string", "minLength": 1}, "version": {"type": "string", "minLength": 1}, "commit_hash": {"type": "string", "minLength": 1}}},
+    "model": {"type": "object", "additionalProperties": true, "required": ["canonical_id", "reported_name"], "properties": {"canonical_id": {"type": ["string", "null"]}, "reported_name": {"type": ["string", "null"]}}},
+    "environment": {"type": "object", "additionalProperties": true, "required": ["os_name", "os_version", "kernel_version", "cuda_version", "driver_version"], "properties": {"os_name": {"type": "string", "minLength": 1}, "os_version": {"type": "string", "minLength": 1}, "kernel_version": {"type": "string", "minLength": 1}, "cuda_version": {"type": ["string", "null"]}, "driver_version": {"type": ["string", "null"]}, "not_applicable_reason": {"type": "string", "minLength": 1}}, "allOf": [{"if": {"anyOf": [{"properties": {"cuda_version": {"type": "null"}}, "required": ["cuda_version"]}, {"properties": {"driver_version": {"type": "null"}}, "required": ["driver_version"]}]}, "then": {"required": ["not_applicable_reason"]}}]},
+    "chat_template": {"type": "object", "additionalProperties": true, "required": ["id", "source", "sha256", "thinking_disabled", "thinking_disabled_method"], "properties": {"id": {"type": "string", "minLength": 1}, "source": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"}, "thinking_disabled": {"type": "boolean"}, "thinking_disabled_method": {"type": "string", "minLength": 1}}},
+    "hashed_artifact": {"type": "object", "required": ["path", "sha256"], "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"}}},
+    "runtime_config": {"type": "object", "additionalProperties": true, "required": ["ctx_size", "kv_cache", "seed", "max_tokens", "batch_size", "ubatch_size", "flash_attention", "split_mode", "tensor_split", "mtp_enabled", "raw_cli_args", "timings"], "properties": {"ctx_size": {"type": "integer", "minimum": 1}, "kv_cache": {"type": "object"}, "seed": {"type": ["integer", "null"]}, "max_tokens": {"type": "integer", "minimum": 1}, "batch_size": {"type": "integer", "minimum": 1}, "ubatch_size": {"type": "integer", "minimum": 1}, "flash_attention": {}, "split_mode": {"type": "string"}, "tensor_split": {"type": ["array", "null"]}, "mtp_enabled": {"type": "boolean"}, "raw_cli_args": {"type": "array"}, "timings": {"type": "object"}}},
+    "performance_sample": {"type": "object", "additionalProperties": true, "required": ["metric", "point_tokens", "depth_tokens", "repeat_index", "run_state", "tokens_per_second", "vram_used_mib", "timings_cache_n", "raw_output_path"], "properties": {"metric": {"type": "string"}, "point_tokens": {"type": "integer", "minimum": 0}, "depth_tokens": {"type": "integer", "minimum": 0}, "repeat_index": {"type": "integer", "minimum": 1}, "run_state": {"type": "string"}, "tokens_per_second": {"type": ["number", "null"]}, "vram_used_mib": {"type": ["number", "null"]}, "timings_cache_n": {"type": ["integer", "null"]}, "raw_output_path": {"type": "string"}}},
+    "performance_summary": {"type": "object", "additionalProperties": true, "required": ["metric", "point_tokens", "depth_tokens", "repeats_expected", "repeats_recorded", "mean_tokens_per_second", "standard_deviation_tokens_per_second", "standard_deviation_kind", "vram_peak_mib"], "properties": {"metric": {"type": "string"}, "point_tokens": {"type": "integer", "minimum": 0}, "depth_tokens": {"type": "integer", "minimum": 0}, "repeats_expected": {"type": "integer", "minimum": 1}, "repeats_recorded": {"type": "integer", "minimum": 0}, "mean_tokens_per_second": {"type": ["number", "null"]}, "standard_deviation_tokens_per_second": {"type": ["number", "null"]}, "standard_deviation_kind": {"enum": ["sample", "population", null]}, "vram_peak_mib": {"type": ["number", "null"]}}}
+  }
+}

@@ -190,3 +190,9 @@ manifest.json
 
 ### 固定anchorの注意
 公開・共有済み固定問題であるため、将来のcontaminationを否定できない。過去モデルとの縦比較・回帰には使えるが、fresh未知問題性能の単独根拠にはしない。canonical solution / hidden inputsは公開ZIPに含めない。
+
+## v0.4-rc1追補
+
+v0.3 observationとverdictはimmutableな履歴であり、v0.4 policyによるregradeを同じファイルへ上書きしない。policyは`policies/`でversion管理し、出力へpolicy versionを保存する。UME Coreはfixture metadataとして`essential`、`practical`、`discriminator`のtierと`gate_roles`を持つ。Fastest UsefulはEssential floor、serving/protocol health、比較可能な観測性能の順に決める。Hard Sentinelはusefulness gateから分離したdiscriminator/badgeである。
+
+grader v2では`answer_correct`、`format_correct`、`non_empty`、`protocol_valid`、`serving_valid`を分離する。空回答は自動的にCAPABILITYへせずPROTOCOL/`requires_rerun`へ保留できる。run record v2は`gpu_groups`とCPU/RAM、PCIe/NUMA/interconnectの拡張点、値ごとのprovenanceを持つ。normalized corpus v0.2ではpredictionとobservation、metadataとpolicy verdictを分離する。

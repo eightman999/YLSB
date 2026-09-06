@@ -1,0 +1,1851 @@
+{
+  "planner_version": "candidate-planner-v0.1",
+  "prediction_status": "predicted",
+  "hardware": {
+    "gpu_groups": [
+      {
+        "canonical_id": "gpu.nvidia.rtx3060",
+        "reported_name": "NVIDIA GeForce RTX 3060",
+        "count": 1,
+        "vram_gib_each": 12,
+        "architecture": "Ampere"
+      },
+      {
+        "canonical_id": "gpu.nvidia.tesla-p100-pcie-16gb",
+        "reported_name": "Tesla P100-PCIE-16GB",
+        "count": 1,
+        "vram_gib_each": 16,
+        "architecture": "Pascal"
+      }
+    ],
+    "ram": {
+      "total_gib": 64
+    }
+  },
+  "hardware_vram_gib": 28.0,
+  "candidates": [
+    {
+      "model": "model.gemma4.e4b",
+      "reported_name": "Gemma 4 E4B",
+      "model_metadata": {
+        "canonical_id": "model.gemma4.e4b",
+        "reported_name": "Gemma 4 E4B",
+        "aliases": [
+          "gemma-4-e4b-it",
+          "Gemma 4 E4B"
+        ],
+        "family": "gemma4",
+        "architecture": {
+          "type": "dense",
+          "total_params_b": 7.5,
+          "active_params_b": 4.0,
+          "expert_count": null,
+          "active_experts": null
+        },
+        "quant": "Q4_K_M",
+        "bpw": 4.5,
+        "format": "GGUF",
+        "context_length": null,
+        "source": "results/v0.3/normalized/models.jsonl"
+      },
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 4.243,
+        "kv_cache_gib": 0.65,
+        "runtime_workspace_gib": 0.5,
+        "safety_margin_gib": 1.0,
+        "required_gib": 6.393,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "low",
+        "compute_pressure": "dense_weight_decode_prior",
+        "model_architecture": "dense",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      },
+      "runtime": [
+        {
+          "runtime": "runtime.llama-cpp",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.vllm",
+          "reason": "declared format or architecture incompatibility",
+          "compatibility": "reject",
+          "expected_gain": null,
+          "confidence": "high",
+          "benchmark_cost": "skip",
+          "priority": "none"
+        },
+        {
+          "runtime": "runtime.ollama",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.fork",
+          "reason": "compatibility is unknown; fork declaration and execution are required",
+          "compatibility": "experimental",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "experimental"
+        }
+      ],
+      "objective": "envelope",
+      "prediction_status": "predicted",
+      "reason": "hardware facts + model metadata + deterministic heuristic; no verdict labels used",
+      "confidence": "low",
+      "size_class_b": 7.5,
+      "architecture_type": "dense"
+    },
+    {
+      "model": "model.glm4.7-flash",
+      "reported_name": "Glm-4.7-Flash",
+      "model_metadata": {
+        "canonical_id": "model.glm4.7-flash",
+        "reported_name": "Glm-4.7-Flash",
+        "aliases": [
+          "glm-4.7-flash",
+          "Glm-4.7-Flash"
+        ],
+        "family": "deepseek2",
+        "architecture": {
+          "type": "moe",
+          "total_params_b": 30.0,
+          "active_params_b": 3.0,
+          "expert_count": 64,
+          "active_experts": 4
+        },
+        "quant": "Q4_K_M",
+        "bpw": 4.5,
+        "format": "GGUF",
+        "context_length": null,
+        "source": "results/v0.3/normalized/models.jsonl"
+      },
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 16.973,
+        "kv_cache_gib": 0.45,
+        "runtime_workspace_gib": 1.358,
+        "safety_margin_gib": 2.817,
+        "required_gib": 21.598,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "moderate",
+        "compute_pressure": "lower_active_params_prior",
+        "model_architecture": "moe",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      },
+      "runtime": [
+        {
+          "runtime": "runtime.llama-cpp",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.vllm",
+          "reason": "declared format or architecture incompatibility",
+          "compatibility": "reject",
+          "expected_gain": null,
+          "confidence": "high",
+          "benchmark_cost": "skip",
+          "priority": "none"
+        },
+        {
+          "runtime": "runtime.ollama",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.fork",
+          "reason": "compatibility is unknown; fork declaration and execution are required",
+          "compatibility": "experimental",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "experimental"
+        }
+      ],
+      "objective": "envelope",
+      "prediction_status": "predicted",
+      "reason": "hardware facts + model metadata + deterministic heuristic; no verdict labels used",
+      "confidence": "low",
+      "size_class_b": 30.0,
+      "architecture_type": "moe"
+    },
+    {
+      "model": "model.gpt-oss.20b",
+      "reported_name": "gpt-oss-20b",
+      "model_metadata": {
+        "canonical_id": "model.gpt-oss.20b",
+        "reported_name": "gpt-oss-20b",
+        "aliases": [
+          "gpt-oss-20b"
+        ],
+        "family": "gpt-oss",
+        "architecture": {
+          "type": "moe",
+          "total_params_b": 21.0,
+          "active_params_b": 3.6,
+          "expert_count": 32,
+          "active_experts": 4
+        },
+        "quant": "MXFP4",
+        "bpw": 4.0,
+        "format": "GGUF",
+        "context_length": null,
+        "source": "results/v0.3/normalized/models.jsonl"
+      },
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 10.561,
+        "kv_cache_gib": 0.45,
+        "runtime_workspace_gib": 0.845,
+        "safety_margin_gib": 1.778,
+        "required_gib": 13.635,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "low",
+        "compute_pressure": "lower_active_params_prior",
+        "model_architecture": "moe",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      },
+      "runtime": [
+        {
+          "runtime": "runtime.llama-cpp",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.vllm",
+          "reason": "declared format or architecture incompatibility",
+          "compatibility": "reject",
+          "expected_gain": null,
+          "confidence": "high",
+          "benchmark_cost": "skip",
+          "priority": "none"
+        },
+        {
+          "runtime": "runtime.ollama",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.fork",
+          "reason": "compatibility is unknown; fork declaration and execution are required",
+          "compatibility": "experimental",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "experimental"
+        }
+      ],
+      "objective": "envelope",
+      "prediction_status": "predicted",
+      "reason": "hardware facts + model metadata + deterministic heuristic; no verdict labels used",
+      "confidence": "low",
+      "size_class_b": 21.0,
+      "architecture_type": "moe"
+    },
+    {
+      "model": "model.nemotron3.5-lightning-30b-a3b",
+      "reported_name": "NVIDIA-Nemotron-3.5-Lightning-30B-A3B",
+      "model_metadata": {
+        "canonical_id": "model.nemotron3.5-lightning-30b-a3b",
+        "reported_name": "NVIDIA-Nemotron-3.5-Lightning-30B-A3B",
+        "aliases": [
+          "nemotron-3.5-lightning-30b-a3b"
+        ],
+        "family": "nemotron_h_moe",
+        "architecture": {
+          "type": "moe",
+          "total_params_b": 30.0,
+          "active_params_b": 3.0,
+          "expert_count": 128,
+          "active_experts": 6
+        },
+        "quant": "Q4_0",
+        "bpw": 4.0,
+        "format": "GGUF",
+        "context_length": null,
+        "source": "results/v0.3/normalized/models.jsonl"
+      },
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 15.087,
+        "kv_cache_gib": 0.45,
+        "runtime_workspace_gib": 1.207,
+        "safety_margin_gib": 2.512,
+        "required_gib": 19.256,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "low",
+        "compute_pressure": "lower_active_params_prior",
+        "model_architecture": "moe",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      },
+      "runtime": [
+        {
+          "runtime": "runtime.llama-cpp",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.vllm",
+          "reason": "declared format or architecture incompatibility",
+          "compatibility": "reject",
+          "expected_gain": null,
+          "confidence": "high",
+          "benchmark_cost": "skip",
+          "priority": "none"
+        },
+        {
+          "runtime": "runtime.ollama",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.fork",
+          "reason": "compatibility is unknown; fork declaration and execution are required",
+          "compatibility": "experimental",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "experimental"
+        }
+      ],
+      "objective": "envelope",
+      "prediction_status": "predicted",
+      "reason": "hardware facts + model metadata + deterministic heuristic; no verdict labels used",
+      "confidence": "low",
+      "size_class_b": 30.0,
+      "architecture_type": "moe"
+    },
+    {
+      "model": "model.qwen3.0.6b",
+      "reported_name": "Qwen3 0.6B Instruct",
+      "model_metadata": {
+        "canonical_id": "model.qwen3.0.6b",
+        "reported_name": "Qwen3 0.6B Instruct",
+        "aliases": [
+          "qwen3-0.6b",
+          "Qwen3 0.6B Instruct"
+        ],
+        "family": "qwen3",
+        "architecture": {
+          "type": "dense",
+          "total_params_b": 0.6,
+          "active_params_b": 0.6,
+          "expert_count": null,
+          "active_experts": null
+        },
+        "quant": "Q8_0",
+        "bpw": 8.0,
+        "format": "GGUF",
+        "context_length": null,
+        "source": "results/v0.3/normalized/models.jsonl"
+      },
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 0.603,
+        "kv_cache_gib": 0.65,
+        "runtime_workspace_gib": 0.5,
+        "safety_margin_gib": 1.0,
+        "required_gib": 2.753,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "low",
+        "compute_pressure": "dense_weight_decode_prior",
+        "model_architecture": "dense",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      },
+      "runtime": [
+        {
+          "runtime": "runtime.llama-cpp",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.vllm",
+          "reason": "declared format or architecture incompatibility",
+          "compatibility": "reject",
+          "expected_gain": null,
+          "confidence": "high",
+          "benchmark_cost": "skip",
+          "priority": "none"
+        },
+        {
+          "runtime": "runtime.ollama",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.fork",
+          "reason": "compatibility is unknown; fork declaration and execution are required",
+          "compatibility": "experimental",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "experimental"
+        }
+      ],
+      "objective": "envelope",
+      "prediction_status": "predicted",
+      "reason": "hardware facts + model metadata + deterministic heuristic; no verdict labels used",
+      "confidence": "low",
+      "size_class_b": 0.6,
+      "architecture_type": "dense"
+    },
+    {
+      "model": "model.qwen3.4b",
+      "reported_name": "Qwen3-4B-Instruct-2507",
+      "model_metadata": {
+        "canonical_id": "model.qwen3.4b",
+        "reported_name": "Qwen3-4B-Instruct-2507",
+        "aliases": [
+          "qwen3-4b",
+          "Qwen3-4B-Instruct-2507"
+        ],
+        "family": "qwen3",
+        "architecture": {
+          "type": "dense",
+          "total_params_b": 4.0,
+          "active_params_b": 4.0,
+          "expert_count": null,
+          "active_experts": null
+        },
+        "quant": "Q4_K_M",
+        "bpw": 4.5,
+        "format": "GGUF",
+        "context_length": null,
+        "source": "results/v0.3/normalized/models.jsonl"
+      },
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 2.263,
+        "kv_cache_gib": 0.65,
+        "runtime_workspace_gib": 0.5,
+        "safety_margin_gib": 1.0,
+        "required_gib": 4.413,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "low",
+        "compute_pressure": "dense_weight_decode_prior",
+        "model_architecture": "dense",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      },
+      "runtime": [
+        {
+          "runtime": "runtime.llama-cpp",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.vllm",
+          "reason": "declared format or architecture incompatibility",
+          "compatibility": "reject",
+          "expected_gain": null,
+          "confidence": "high",
+          "benchmark_cost": "skip",
+          "priority": "none"
+        },
+        {
+          "runtime": "runtime.ollama",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.fork",
+          "reason": "compatibility is unknown; fork declaration and execution are required",
+          "compatibility": "experimental",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "experimental"
+        }
+      ],
+      "objective": "envelope",
+      "prediction_status": "predicted",
+      "reason": "hardware facts + model metadata + deterministic heuristic; no verdict labels used",
+      "confidence": "low",
+      "size_class_b": 4.0,
+      "architecture_type": "dense"
+    }
+  ],
+  "anchor": {
+    "model": "model.glm4.7-flash",
+    "reported_name": "Glm-4.7-Flash",
+    "model_metadata": {
+      "canonical_id": "model.glm4.7-flash",
+      "reported_name": "Glm-4.7-Flash",
+      "aliases": [
+        "glm-4.7-flash",
+        "Glm-4.7-Flash"
+      ],
+      "family": "deepseek2",
+      "architecture": {
+        "type": "moe",
+        "total_params_b": 30.0,
+        "active_params_b": 3.0,
+        "expert_count": 64,
+        "active_experts": 4
+      },
+      "quant": "Q4_K_M",
+      "bpw": 4.5,
+      "format": "GGUF",
+      "context_length": null,
+      "source": "results/v0.3/normalized/models.jsonl"
+    },
+    "fit": {
+      "fits": true,
+      "status": "estimated",
+      "weight_gib": 16.973,
+      "kv_cache_gib": 0.45,
+      "runtime_workspace_gib": 1.358,
+      "safety_margin_gib": 2.817,
+      "required_gib": 21.598,
+      "available_vram_gib": 28.0,
+      "cpu_offload": false,
+      "cpu_offload_capacity_gib": 48.0,
+      "deficit_gib": 0.0,
+      "memory_pressure": "moderate",
+      "compute_pressure": "lower_active_params_prior",
+      "model_architecture": "moe",
+      "hardware_architectures": [
+        "Ampere",
+        "Pascal"
+      ],
+      "confidence": "low",
+      "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+    },
+    "runtime": [
+      {
+        "runtime": "runtime.llama-cpp",
+        "reason": "declared compatible; execution still required",
+        "compatibility": "candidate",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "baseline"
+      },
+      {
+        "runtime": "runtime.vllm",
+        "reason": "declared format or architecture incompatibility",
+        "compatibility": "reject",
+        "expected_gain": null,
+        "confidence": "high",
+        "benchmark_cost": "skip",
+        "priority": "none"
+      },
+      {
+        "runtime": "runtime.ollama",
+        "reason": "declared compatible; execution still required",
+        "compatibility": "candidate",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "baseline"
+      },
+      {
+        "runtime": "runtime.fork",
+        "reason": "compatibility is unknown; fork declaration and execution are required",
+        "compatibility": "experimental",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "experimental"
+      }
+    ],
+    "objective": "anchor",
+    "prediction_status": "predicted",
+    "reason": "hardware facts + model metadata + deterministic heuristic; no verdict labels used",
+    "confidence": "low",
+    "size_class_b": 30.0,
+    "architecture_type": "moe"
+  },
+  "envelope": [
+    {
+      "model": "model.qwen3.0.6b",
+      "reported_name": "Qwen3 0.6B Instruct",
+      "model_metadata": {
+        "canonical_id": "model.qwen3.0.6b",
+        "reported_name": "Qwen3 0.6B Instruct",
+        "aliases": [
+          "qwen3-0.6b",
+          "Qwen3 0.6B Instruct"
+        ],
+        "family": "qwen3",
+        "architecture": {
+          "type": "dense",
+          "total_params_b": 0.6,
+          "active_params_b": 0.6,
+          "expert_count": null,
+          "active_experts": null
+        },
+        "quant": "Q8_0",
+        "bpw": 8.0,
+        "format": "GGUF",
+        "context_length": null,
+        "source": "results/v0.3/normalized/models.jsonl"
+      },
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 0.603,
+        "kv_cache_gib": 0.65,
+        "runtime_workspace_gib": 0.5,
+        "safety_margin_gib": 1.0,
+        "required_gib": 2.753,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "low",
+        "compute_pressure": "dense_weight_decode_prior",
+        "model_architecture": "dense",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      },
+      "runtime": [
+        {
+          "runtime": "runtime.llama-cpp",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.vllm",
+          "reason": "declared format or architecture incompatibility",
+          "compatibility": "reject",
+          "expected_gain": null,
+          "confidence": "high",
+          "benchmark_cost": "skip",
+          "priority": "none"
+        },
+        {
+          "runtime": "runtime.ollama",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.fork",
+          "reason": "compatibility is unknown; fork declaration and execution are required",
+          "compatibility": "experimental",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "experimental"
+        }
+      ],
+      "objective": "envelope",
+      "prediction_status": "predicted",
+      "reason": "hardware facts + model metadata + deterministic heuristic; no verdict labels used",
+      "confidence": "low",
+      "size_class_b": 0.6,
+      "architecture_type": "dense"
+    },
+    {
+      "model": "model.qwen3.4b",
+      "reported_name": "Qwen3-4B-Instruct-2507",
+      "model_metadata": {
+        "canonical_id": "model.qwen3.4b",
+        "reported_name": "Qwen3-4B-Instruct-2507",
+        "aliases": [
+          "qwen3-4b",
+          "Qwen3-4B-Instruct-2507"
+        ],
+        "family": "qwen3",
+        "architecture": {
+          "type": "dense",
+          "total_params_b": 4.0,
+          "active_params_b": 4.0,
+          "expert_count": null,
+          "active_experts": null
+        },
+        "quant": "Q4_K_M",
+        "bpw": 4.5,
+        "format": "GGUF",
+        "context_length": null,
+        "source": "results/v0.3/normalized/models.jsonl"
+      },
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 2.263,
+        "kv_cache_gib": 0.65,
+        "runtime_workspace_gib": 0.5,
+        "safety_margin_gib": 1.0,
+        "required_gib": 4.413,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "low",
+        "compute_pressure": "dense_weight_decode_prior",
+        "model_architecture": "dense",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      },
+      "runtime": [
+        {
+          "runtime": "runtime.llama-cpp",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.vllm",
+          "reason": "declared format or architecture incompatibility",
+          "compatibility": "reject",
+          "expected_gain": null,
+          "confidence": "high",
+          "benchmark_cost": "skip",
+          "priority": "none"
+        },
+        {
+          "runtime": "runtime.ollama",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.fork",
+          "reason": "compatibility is unknown; fork declaration and execution are required",
+          "compatibility": "experimental",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "experimental"
+        }
+      ],
+      "objective": "envelope",
+      "prediction_status": "predicted",
+      "reason": "hardware facts + model metadata + deterministic heuristic; no verdict labels used",
+      "confidence": "low",
+      "size_class_b": 4.0,
+      "architecture_type": "dense"
+    },
+    {
+      "model": "model.gemma4.e4b",
+      "reported_name": "Gemma 4 E4B",
+      "model_metadata": {
+        "canonical_id": "model.gemma4.e4b",
+        "reported_name": "Gemma 4 E4B",
+        "aliases": [
+          "gemma-4-e4b-it",
+          "Gemma 4 E4B"
+        ],
+        "family": "gemma4",
+        "architecture": {
+          "type": "dense",
+          "total_params_b": 7.5,
+          "active_params_b": 4.0,
+          "expert_count": null,
+          "active_experts": null
+        },
+        "quant": "Q4_K_M",
+        "bpw": 4.5,
+        "format": "GGUF",
+        "context_length": null,
+        "source": "results/v0.3/normalized/models.jsonl"
+      },
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 4.243,
+        "kv_cache_gib": 0.65,
+        "runtime_workspace_gib": 0.5,
+        "safety_margin_gib": 1.0,
+        "required_gib": 6.393,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "low",
+        "compute_pressure": "dense_weight_decode_prior",
+        "model_architecture": "dense",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      },
+      "runtime": [
+        {
+          "runtime": "runtime.llama-cpp",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.vllm",
+          "reason": "declared format or architecture incompatibility",
+          "compatibility": "reject",
+          "expected_gain": null,
+          "confidence": "high",
+          "benchmark_cost": "skip",
+          "priority": "none"
+        },
+        {
+          "runtime": "runtime.ollama",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.fork",
+          "reason": "compatibility is unknown; fork declaration and execution are required",
+          "compatibility": "experimental",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "experimental"
+        }
+      ],
+      "objective": "envelope",
+      "prediction_status": "predicted",
+      "reason": "hardware facts + model metadata + deterministic heuristic; no verdict labels used",
+      "confidence": "low",
+      "size_class_b": 7.5,
+      "architecture_type": "dense"
+    },
+    {
+      "model": "model.gpt-oss.20b",
+      "reported_name": "gpt-oss-20b",
+      "model_metadata": {
+        "canonical_id": "model.gpt-oss.20b",
+        "reported_name": "gpt-oss-20b",
+        "aliases": [
+          "gpt-oss-20b"
+        ],
+        "family": "gpt-oss",
+        "architecture": {
+          "type": "moe",
+          "total_params_b": 21.0,
+          "active_params_b": 3.6,
+          "expert_count": 32,
+          "active_experts": 4
+        },
+        "quant": "MXFP4",
+        "bpw": 4.0,
+        "format": "GGUF",
+        "context_length": null,
+        "source": "results/v0.3/normalized/models.jsonl"
+      },
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 10.561,
+        "kv_cache_gib": 0.45,
+        "runtime_workspace_gib": 0.845,
+        "safety_margin_gib": 1.778,
+        "required_gib": 13.635,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "low",
+        "compute_pressure": "lower_active_params_prior",
+        "model_architecture": "moe",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      },
+      "runtime": [
+        {
+          "runtime": "runtime.llama-cpp",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.vllm",
+          "reason": "declared format or architecture incompatibility",
+          "compatibility": "reject",
+          "expected_gain": null,
+          "confidence": "high",
+          "benchmark_cost": "skip",
+          "priority": "none"
+        },
+        {
+          "runtime": "runtime.ollama",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.fork",
+          "reason": "compatibility is unknown; fork declaration and execution are required",
+          "compatibility": "experimental",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "experimental"
+        }
+      ],
+      "objective": "envelope",
+      "prediction_status": "predicted",
+      "reason": "hardware facts + model metadata + deterministic heuristic; no verdict labels used",
+      "confidence": "low",
+      "size_class_b": 21.0,
+      "architecture_type": "moe"
+    },
+    {
+      "model": "model.glm4.7-flash",
+      "reported_name": "Glm-4.7-Flash",
+      "model_metadata": {
+        "canonical_id": "model.glm4.7-flash",
+        "reported_name": "Glm-4.7-Flash",
+        "aliases": [
+          "glm-4.7-flash",
+          "Glm-4.7-Flash"
+        ],
+        "family": "deepseek2",
+        "architecture": {
+          "type": "moe",
+          "total_params_b": 30.0,
+          "active_params_b": 3.0,
+          "expert_count": 64,
+          "active_experts": 4
+        },
+        "quant": "Q4_K_M",
+        "bpw": 4.5,
+        "format": "GGUF",
+        "context_length": null,
+        "source": "results/v0.3/normalized/models.jsonl"
+      },
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 16.973,
+        "kv_cache_gib": 0.45,
+        "runtime_workspace_gib": 1.358,
+        "safety_margin_gib": 2.817,
+        "required_gib": 21.598,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "moderate",
+        "compute_pressure": "lower_active_params_prior",
+        "model_architecture": "moe",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      },
+      "runtime": [
+        {
+          "runtime": "runtime.llama-cpp",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.vllm",
+          "reason": "declared format or architecture incompatibility",
+          "compatibility": "reject",
+          "expected_gain": null,
+          "confidence": "high",
+          "benchmark_cost": "skip",
+          "priority": "none"
+        },
+        {
+          "runtime": "runtime.ollama",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.fork",
+          "reason": "compatibility is unknown; fork declaration and execution are required",
+          "compatibility": "experimental",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "experimental"
+        }
+      ],
+      "objective": "envelope",
+      "prediction_status": "predicted",
+      "reason": "hardware facts + model metadata + deterministic heuristic; no verdict labels used",
+      "confidence": "low",
+      "size_class_b": 30.0,
+      "architecture_type": "moe"
+    },
+    {
+      "model": "model.nemotron3.5-lightning-30b-a3b",
+      "reported_name": "NVIDIA-Nemotron-3.5-Lightning-30B-A3B",
+      "model_metadata": {
+        "canonical_id": "model.nemotron3.5-lightning-30b-a3b",
+        "reported_name": "NVIDIA-Nemotron-3.5-Lightning-30B-A3B",
+        "aliases": [
+          "nemotron-3.5-lightning-30b-a3b"
+        ],
+        "family": "nemotron_h_moe",
+        "architecture": {
+          "type": "moe",
+          "total_params_b": 30.0,
+          "active_params_b": 3.0,
+          "expert_count": 128,
+          "active_experts": 6
+        },
+        "quant": "Q4_0",
+        "bpw": 4.0,
+        "format": "GGUF",
+        "context_length": null,
+        "source": "results/v0.3/normalized/models.jsonl"
+      },
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 15.087,
+        "kv_cache_gib": 0.45,
+        "runtime_workspace_gib": 1.207,
+        "safety_margin_gib": 2.512,
+        "required_gib": 19.256,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "low",
+        "compute_pressure": "lower_active_params_prior",
+        "model_architecture": "moe",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      },
+      "runtime": [
+        {
+          "runtime": "runtime.llama-cpp",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.vllm",
+          "reason": "declared format or architecture incompatibility",
+          "compatibility": "reject",
+          "expected_gain": null,
+          "confidence": "high",
+          "benchmark_cost": "skip",
+          "priority": "none"
+        },
+        {
+          "runtime": "runtime.ollama",
+          "reason": "declared compatible; execution still required",
+          "compatibility": "candidate",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "baseline"
+        },
+        {
+          "runtime": "runtime.fork",
+          "reason": "compatibility is unknown; fork declaration and execution are required",
+          "compatibility": "experimental",
+          "expected_gain": "unknown",
+          "confidence": "low",
+          "benchmark_cost": "measure",
+          "priority": "experimental"
+        }
+      ],
+      "objective": "envelope",
+      "prediction_status": "predicted",
+      "reason": "hardware facts + model metadata + deterministic heuristic; no verdict labels used",
+      "confidence": "low",
+      "size_class_b": 30.0,
+      "architecture_type": "moe"
+    }
+  ],
+  "slots": {
+    "S": {
+      "model": "model.qwen3.0.6b",
+      "reported_name": "Qwen3 0.6B Instruct",
+      "prediction_status": "predicted",
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 0.603,
+        "kv_cache_gib": 0.65,
+        "runtime_workspace_gib": 0.5,
+        "safety_margin_gib": 1.0,
+        "required_gib": 2.753,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "low",
+        "compute_pressure": "dense_weight_decode_prior",
+        "model_architecture": "dense",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      }
+    },
+    "F": {
+      "model": "model.qwen3.0.6b",
+      "reported_name": "Qwen3 0.6B Instruct",
+      "prediction_status": "predicted",
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 0.603,
+        "kv_cache_gib": 0.65,
+        "runtime_workspace_gib": 0.5,
+        "safety_margin_gib": 1.0,
+        "required_gib": 2.753,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "low",
+        "compute_pressure": "dense_weight_decode_prior",
+        "model_architecture": "dense",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      },
+      "requires_observation": true,
+      "reason": "fastest useful is selected from observed comparable R0 TG128@d0"
+    },
+    "L": {
+      "model": "model.glm4.7-flash",
+      "reported_name": "Glm-4.7-Flash",
+      "prediction_status": "predicted",
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 16.973,
+        "kv_cache_gib": 0.45,
+        "runtime_workspace_gib": 1.358,
+        "safety_margin_gib": 2.817,
+        "required_gib": 21.598,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "moderate",
+        "compute_pressure": "lower_active_params_prior",
+        "model_architecture": "moe",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      }
+    },
+    "D": {
+      "model": "model.gemma4.e4b",
+      "reported_name": "Gemma 4 E4B",
+      "prediction_status": "predicted",
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 4.243,
+        "kv_cache_gib": 0.65,
+        "runtime_workspace_gib": 0.5,
+        "safety_margin_gib": 1.0,
+        "required_gib": 6.393,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "low",
+        "compute_pressure": "dense_weight_decode_prior",
+        "model_architecture": "dense",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      }
+    },
+    "X": {
+      "model": "model.glm4.7-flash",
+      "reported_name": "Glm-4.7-Flash",
+      "prediction_status": "predicted",
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 16.973,
+        "kv_cache_gib": 0.45,
+        "runtime_workspace_gib": 1.358,
+        "safety_margin_gib": 2.817,
+        "required_gib": 21.598,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "moderate",
+        "compute_pressure": "lower_active_params_prior",
+        "model_architecture": "moe",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      },
+      "reason": "experimental frontier; predicted fit may be false and requires explicit observation"
+    }
+  },
+  "experimental_frontier": {
+    "model": "model.glm4.7-flash",
+    "reported_name": "Glm-4.7-Flash",
+    "prediction_status": "predicted",
+    "fit": {
+      "fits": true,
+      "status": "estimated",
+      "weight_gib": 16.973,
+      "kv_cache_gib": 0.45,
+      "runtime_workspace_gib": 1.358,
+      "safety_margin_gib": 2.817,
+      "required_gib": 21.598,
+      "available_vram_gib": 28.0,
+      "cpu_offload": false,
+      "cpu_offload_capacity_gib": 48.0,
+      "deficit_gib": 0.0,
+      "memory_pressure": "moderate",
+      "compute_pressure": "lower_active_params_prior",
+      "model_architecture": "moe",
+      "hardware_architectures": [
+        "Ampere",
+        "Pascal"
+      ],
+      "confidence": "low",
+      "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+    }
+  },
+  "meaningful_window": {
+    "lower_bound": {
+      "model": "model.qwen3.0.6b",
+      "reported_name": "Qwen3 0.6B Instruct",
+      "prediction_status": "predicted",
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 0.603,
+        "kv_cache_gib": 0.65,
+        "runtime_workspace_gib": 0.5,
+        "safety_margin_gib": 1.0,
+        "required_gib": 2.753,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "low",
+        "compute_pressure": "dense_weight_decode_prior",
+        "model_architecture": "dense",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      }
+    },
+    "practical_lower_bound": {
+      "model": "model.qwen3.0.6b",
+      "reported_name": "Qwen3 0.6B Instruct",
+      "prediction_status": "predicted",
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 0.603,
+        "kv_cache_gib": 0.65,
+        "runtime_workspace_gib": 0.5,
+        "safety_margin_gib": 1.0,
+        "required_gib": 2.753,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "low",
+        "compute_pressure": "dense_weight_decode_prior",
+        "model_architecture": "dense",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      }
+    },
+    "sweet_spot": {
+      "model": "model.gemma4.e4b",
+      "reported_name": "Gemma 4 E4B",
+      "prediction_status": "predicted",
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 4.243,
+        "kv_cache_gib": 0.65,
+        "runtime_workspace_gib": 0.5,
+        "safety_margin_gib": 1.0,
+        "required_gib": 6.393,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "low",
+        "compute_pressure": "dense_weight_decode_prior",
+        "model_architecture": "dense",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      }
+    },
+    "practical_upper_bound": {
+      "model": "model.glm4.7-flash",
+      "reported_name": "Glm-4.7-Flash",
+      "prediction_status": "predicted",
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 16.973,
+        "kv_cache_gib": 0.45,
+        "runtime_workspace_gib": 1.358,
+        "safety_margin_gib": 2.817,
+        "required_gib": 21.598,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "moderate",
+        "compute_pressure": "lower_active_params_prior",
+        "model_architecture": "moe",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      }
+    },
+    "capacity_frontier": {
+      "model": "model.nemotron3.5-lightning-30b-a3b",
+      "reported_name": "NVIDIA-Nemotron-3.5-Lightning-30B-A3B",
+      "prediction_status": "predicted",
+      "fit": {
+        "fits": true,
+        "status": "estimated",
+        "weight_gib": 15.087,
+        "kv_cache_gib": 0.45,
+        "runtime_workspace_gib": 1.207,
+        "safety_margin_gib": 2.512,
+        "required_gib": 19.256,
+        "available_vram_gib": 28.0,
+        "cpu_offload": false,
+        "cpu_offload_capacity_gib": 48.0,
+        "deficit_gib": 0.0,
+        "memory_pressure": "low",
+        "compute_pressure": "lower_active_params_prior",
+        "model_architecture": "moe",
+        "hardware_architectures": [
+          "Ampere",
+          "Pascal"
+        ],
+        "confidence": "low",
+        "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+      }
+    }
+  },
+  "runtime_candidates": {
+    "model.gemma4.e4b": [
+      {
+        "runtime": "runtime.llama-cpp",
+        "reason": "declared compatible; execution still required",
+        "compatibility": "candidate",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "baseline"
+      },
+      {
+        "runtime": "runtime.vllm",
+        "reason": "declared format or architecture incompatibility",
+        "compatibility": "reject",
+        "expected_gain": null,
+        "confidence": "high",
+        "benchmark_cost": "skip",
+        "priority": "none"
+      },
+      {
+        "runtime": "runtime.ollama",
+        "reason": "declared compatible; execution still required",
+        "compatibility": "candidate",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "baseline"
+      },
+      {
+        "runtime": "runtime.fork",
+        "reason": "compatibility is unknown; fork declaration and execution are required",
+        "compatibility": "experimental",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "experimental"
+      }
+    ],
+    "model.glm4.7-flash": [
+      {
+        "runtime": "runtime.llama-cpp",
+        "reason": "declared compatible; execution still required",
+        "compatibility": "candidate",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "baseline"
+      },
+      {
+        "runtime": "runtime.vllm",
+        "reason": "declared format or architecture incompatibility",
+        "compatibility": "reject",
+        "expected_gain": null,
+        "confidence": "high",
+        "benchmark_cost": "skip",
+        "priority": "none"
+      },
+      {
+        "runtime": "runtime.ollama",
+        "reason": "declared compatible; execution still required",
+        "compatibility": "candidate",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "baseline"
+      },
+      {
+        "runtime": "runtime.fork",
+        "reason": "compatibility is unknown; fork declaration and execution are required",
+        "compatibility": "experimental",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "experimental"
+      }
+    ],
+    "model.gpt-oss.20b": [
+      {
+        "runtime": "runtime.llama-cpp",
+        "reason": "declared compatible; execution still required",
+        "compatibility": "candidate",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "baseline"
+      },
+      {
+        "runtime": "runtime.vllm",
+        "reason": "declared format or architecture incompatibility",
+        "compatibility": "reject",
+        "expected_gain": null,
+        "confidence": "high",
+        "benchmark_cost": "skip",
+        "priority": "none"
+      },
+      {
+        "runtime": "runtime.ollama",
+        "reason": "declared compatible; execution still required",
+        "compatibility": "candidate",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "baseline"
+      },
+      {
+        "runtime": "runtime.fork",
+        "reason": "compatibility is unknown; fork declaration and execution are required",
+        "compatibility": "experimental",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "experimental"
+      }
+    ],
+    "model.nemotron3.5-lightning-30b-a3b": [
+      {
+        "runtime": "runtime.llama-cpp",
+        "reason": "declared compatible; execution still required",
+        "compatibility": "candidate",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "baseline"
+      },
+      {
+        "runtime": "runtime.vllm",
+        "reason": "declared format or architecture incompatibility",
+        "compatibility": "reject",
+        "expected_gain": null,
+        "confidence": "high",
+        "benchmark_cost": "skip",
+        "priority": "none"
+      },
+      {
+        "runtime": "runtime.ollama",
+        "reason": "declared compatible; execution still required",
+        "compatibility": "candidate",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "baseline"
+      },
+      {
+        "runtime": "runtime.fork",
+        "reason": "compatibility is unknown; fork declaration and execution are required",
+        "compatibility": "experimental",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "experimental"
+      }
+    ],
+    "model.qwen3.0.6b": [
+      {
+        "runtime": "runtime.llama-cpp",
+        "reason": "declared compatible; execution still required",
+        "compatibility": "candidate",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "baseline"
+      },
+      {
+        "runtime": "runtime.vllm",
+        "reason": "declared format or architecture incompatibility",
+        "compatibility": "reject",
+        "expected_gain": null,
+        "confidence": "high",
+        "benchmark_cost": "skip",
+        "priority": "none"
+      },
+      {
+        "runtime": "runtime.ollama",
+        "reason": "declared compatible; execution still required",
+        "compatibility": "candidate",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "baseline"
+      },
+      {
+        "runtime": "runtime.fork",
+        "reason": "compatibility is unknown; fork declaration and execution are required",
+        "compatibility": "experimental",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "experimental"
+      }
+    ],
+    "model.qwen3.4b": [
+      {
+        "runtime": "runtime.llama-cpp",
+        "reason": "declared compatible; execution still required",
+        "compatibility": "candidate",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "baseline"
+      },
+      {
+        "runtime": "runtime.vllm",
+        "reason": "declared format or architecture incompatibility",
+        "compatibility": "reject",
+        "expected_gain": null,
+        "confidence": "high",
+        "benchmark_cost": "skip",
+        "priority": "none"
+      },
+      {
+        "runtime": "runtime.ollama",
+        "reason": "declared compatible; execution still required",
+        "compatibility": "candidate",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "baseline"
+      },
+      {
+        "runtime": "runtime.fork",
+        "reason": "compatibility is unknown; fork declaration and execution are required",
+        "compatibility": "experimental",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "experimental"
+      }
+    ]
+  },
+  "retrieval": {
+    "used": false,
+    "records": 0,
+    "labels_used": false,
+    "reason": "no observation corpus supplied"
+  },
+  "training_labels_used": false,
+  "heuristic_disclaimer": "v0.3 PASS/FAIL verdicts are not used as training truth; predictions require observed benchmark runs",
+  "schema_version": "normalized-corpus-v0.2",
+  "record_type": "planner",
+  "provenance": {
+    "kind": "derived",
+    "source": "hardware facts + registry + deterministic planner heuristics"
+  },
+  "prediction": {
+    "status": "predicted"
+  },
+  "next_best_benchmark": {
+    "model": "model.qwen3.0.6b",
+    "reported_name": "Qwen3 0.6B Instruct",
+    "model_metadata": {
+      "canonical_id": "model.qwen3.0.6b",
+      "reported_name": "Qwen3 0.6B Instruct",
+      "aliases": [
+        "qwen3-0.6b",
+        "Qwen3 0.6B Instruct"
+      ],
+      "family": "qwen3",
+      "architecture": {
+        "type": "dense",
+        "total_params_b": 0.6,
+        "active_params_b": 0.6,
+        "expert_count": null,
+        "active_experts": null
+      },
+      "quant": "Q8_0",
+      "bpw": 8.0,
+      "format": "GGUF",
+      "context_length": null,
+      "source": "results/v0.3/normalized/models.jsonl"
+    },
+    "fit": {
+      "fits": true,
+      "status": "estimated",
+      "weight_gib": 0.603,
+      "kv_cache_gib": 0.65,
+      "runtime_workspace_gib": 0.5,
+      "safety_margin_gib": 1.0,
+      "required_gib": 2.753,
+      "available_vram_gib": 28.0,
+      "cpu_offload": false,
+      "cpu_offload_capacity_gib": 48.0,
+      "deficit_gib": 0.0,
+      "memory_pressure": "low",
+      "compute_pressure": "dense_weight_decode_prior",
+      "model_architecture": "dense",
+      "hardware_architectures": [
+        "Ampere",
+        "Pascal"
+      ],
+      "confidence": "low",
+      "reason": "heuristic estimate; GiB conversion, multi-GPU aggregate and KV/workspace priors are estimates; validate with an observed run"
+    },
+    "runtime": [
+      {
+        "runtime": "runtime.llama-cpp",
+        "reason": "declared compatible; execution still required",
+        "compatibility": "candidate",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "baseline"
+      },
+      {
+        "runtime": "runtime.vllm",
+        "reason": "declared format or architecture incompatibility",
+        "compatibility": "reject",
+        "expected_gain": null,
+        "confidence": "high",
+        "benchmark_cost": "skip",
+        "priority": "none"
+      },
+      {
+        "runtime": "runtime.ollama",
+        "reason": "declared compatible; execution still required",
+        "compatibility": "candidate",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "baseline"
+      },
+      {
+        "runtime": "runtime.fork",
+        "reason": "compatibility is unknown; fork declaration and execution are required",
+        "compatibility": "experimental",
+        "expected_gain": "unknown",
+        "confidence": "low",
+        "benchmark_cost": "measure",
+        "priority": "experimental"
+      }
+    ],
+    "objective": "envelope",
+    "prediction_status": "predicted",
+    "reason": "hardware facts + model metadata + deterministic heuristic; no verdict labels used",
+    "confidence": "low",
+    "size_class_b": 0.6,
+    "architecture_type": "dense"
+  }
+}

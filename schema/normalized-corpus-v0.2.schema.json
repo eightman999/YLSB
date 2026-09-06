@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/eightman999/YLSB/blob/master/schema/normalized-corpus-v0.2.schema.json",
+  "title": "YLSB normalized corpus v0.2",
+  "description": "Observation, prediction, registry metadata, and policy verdicts are separate record types. Unknown values are represented by null plus provenance.kind=unknown.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["schema_version", "record_type", "provenance"],
+  "properties": {
+    "schema_version": {"const": "normalized-corpus-v0.2"},
+    "record_type": {"enum": ["submission", "model", "run", "task_result", "performance", "verdict", "hardware", "machine", "runtime", "planner", "import"]},
+    "provenance": {"$ref": "#/$defs/provenance_container"},
+    "prediction": {"$ref": "#/$defs/prediction"},
+    "observation": {"$ref": "#/$defs/observation"}
+  },
+  "allOf": [
+    {"if": {"required": ["prediction"]}, "then": {"not": {"required": ["observation"]}}},
+    {"if": {"properties": {"record_type": {"const": "submission"}}, "required": ["record_type"]}, "then": {"$ref": "#/$defs/submission"}},
+    {"if": {"properties": {"record_type": {"const": "model"}}, "required": ["record_type"]}, "then": {"$ref": "#/$defs/model"}},
+    {"if": {"properties": {"record_type": {"const": "run"}}, "required": ["record_type"]}, "then": {"$ref": "#/$defs/run"}},
+    {"if": {"properties": {"record_type": {"const": "task_result"}}, "required": ["record_type"]}, "then": {"$ref": "#/$defs/task_result"}},
+    {"if": {"properties": {"record_type": {"const": "performance"}}, "required": ["record_type"]}, "then": {"$ref": "#/$defs/performance"}},
+    {"if": {"properties": {"record_type": {"const": "verdict"}}, "required": ["record_type"]}, "then": {"$ref": "#/$defs/verdict"}},
+    {"if": {"properties": {"record_type": {"const": "hardware"}}, "required": ["record_type"]}, "then": {"$ref": "#/$defs/hardware"}},
+    {"if": {"properties": {"record_type": {"const": "machine"}}, "required": ["record_type"]}, "then": {"$ref": "#/$defs/machine"}},
+    {"if": {"properties": {"record_type": {"const": "runtime"}}, "required": ["record_type"]}, "then": {"$ref": "#/$defs/runtime"}},
+    {"if": {"properties": {"record_type": {"const": "import"}}, "required": ["record_type"]}, "then": {"$ref": "#/$defs/import"}},
+    {"if": {"properties": {"record_type": {"const": "planner"}}, "required": ["record_type"]}, "then": {"allOf": [{"$ref": "#/$defs/planner"}, {"required": ["prediction"], "not": {"required": ["observation"]}}]}},
+    {"if": {"properties": {"record_type": {"const": "verdict"}}, "required": ["record_type"]}, "then": {"not": {"required": ["prediction"]}}}
+  ],
+  "$defs": {
+    "provenance_entry": {
+      "type": "object", "additionalProperties": true, "required": ["kind"],
+      "properties": {"kind": {"enum": ["reported", "registry", "derived", "inferred", "unknown"]}, "source": {"type": "string", "minLength": 1}, "reason": {"type": "string", "minLength": 1}},
+      "allOf": [
+        {"if": {"properties": {"kind": {"const": "unknown"}}, "required": ["kind"]}, "then": {"required": ["reason"]}},
+        {"if": {"properties": {"kind": {"enum": ["reported", "registry", "derived", "inferred"]}}, "required": ["kind"]}, "then": {"required": ["source"]}}
+      ]
+    },
+    "provenance_container": {"oneOf": [{"$ref": "#/$defs/provenance_entry"}, {"type": "object", "minProperties": 1, "additionalProperties": {"$ref": "#/$defs/provenance_entry"}}]},
+    "prediction": {"type": "object", "additionalProperties": true, "required": ["status"], "properties": {"status": {"const": "predicted"}}},
+    "observation": {"type": "object", "additionalProperties": true, "required": ["status"], "properties": {"status": {"const": "observed"}}},
+    "base": {"type": "object", "required": ["schema_version", "record_type", "provenance"], "properties": {"schema_version": {"const": "normalized-corpus-v0.2"}, "provenance": {"$ref": "#/$defs/provenance_container"}}},
+    "submission": {"allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["submission_id", "benchmark", "timestamp", "dataset_status"], "properties": {"record_type": {"const": "submission"}, "dataset_status": {"enum": ["frozen", "mutable", "derived"]}}}]},
+    "model": {"allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["model_id", "reported_name", "architecture", "quant", "format"], "properties": {"record_type": {"const": "model"}, "model_id": {"type": "string", "minLength": 1}, "reported_name": {"type": ["string", "null"]}, "architecture": {"type": "object"}, "quant": {"type": ["string", "null"]}, "format": {"type": ["string", "null"]}}}]},
+    "run": {"allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["run_id", "submission_id", "machine_id", "model_id", "runtime_id", "config", "artifacts"], "properties": {"record_type": {"const": "run"}, "run_id": {"type": "string", "minLength": 1}, "config": {"type": "object"}, "artifacts": {"type": "object"}}}]},
+    "task_result": {"allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["task_result_id", "run_id", "task_id", "section", "score", "status", "grader", "reuse", "source"], "properties": {"record_type": {"const": "task_result"}, "score": {"type": ["number", "null"], "minimum": 0, "maximum": 1}, "status": {"enum": ["pass", "fail", "error", "skipped", "PASS", "CAPABILITY", "PROTOCOL", "INFRA", "FIXTURE_INVALID"]}, "reuse": {"type": "object"}, "source": {"type": "object"}}}]},
+    "performance": {"allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["measurement_id", "run_id", "measurement_phase", "metric", "value", "unit", "repeat", "reuse", "source"], "properties": {"record_type": {"const": "performance"}, "measurement_phase": {"enum": ["original_run", "posthoc_vram_remeasurement"]}, "value": {"type": ["number", "null"]}, "reuse": {"type": "object"}, "source": {"type": "object"}}}]},
+    "verdict": {"allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["run_id", "policy_version", "gates"], "properties": {"record_type": {"const": "verdict"}, "policy_version": {"type": "string", "minLength": 1}, "gates": {"type": "object"}}}]},
+    "hardware": {"allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["hardware_id", "reported_name", "canonical_name", "vendor", "architecture", "count"], "properties": {"record_type": {"const": "hardware"}, "hardware_id": {"type": "string", "minLength": 1}, "reported_name": {"type": ["string", "null"]}, "canonical_name": {"type": ["string", "null"]}, "count": {"type": ["integer", "null"], "minimum": 1}}}]},
+    "machine": {"allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["machine_id", "cpu", "ram", "gpu_ids", "aggregate", "os", "driver", "cuda", "rocm"], "properties": {"record_type": {"const": "machine"}, "machine_id": {"type": "string", "minLength": 1}, "gpu_ids": {"type": "array"}, "cpu": {"type": "object"}, "ram": {"type": "object"}, "aggregate": {"type": "object"}}}]},
+    "runtime": {"allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["runtime_id", "name", "family", "version", "backend", "features"], "properties": {"record_type": {"const": "runtime"}, "runtime_id": {"type": "string", "minLength": 1}, "name": {"type": "string", "minLength": 1}, "family": {"type": ["string", "null"]}, "version": {"type": ["string", "null"]}, "backend": {}, "features": {"type": "object"}}}]},
+    "import": {"allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["source"], "properties": {"record_type": {"const": "import"}, "source": {"type": "object"}}}]},
+    "planner": {"allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["candidates"], "properties": {"record_type": {"const": "planner"}, "candidates": {"type": "array"}}}]},
+    "gpu_group": {"type": "object", "additionalProperties": true, "required": ["canonical_id", "reported_name", "count", "vram_gib_each", "provenance"], "properties": {"canonical_id": {"type": ["string", "null"]}, "reported_name": {"type": ["string", "null"]}, "count": {"type": ["integer", "null"], "minimum": 1}, "vram_gib_each": {"type": ["number", "null"], "exclusiveMinimum": 0}, "provenance": {"$ref": "#/$defs/provenance_entry"}}}
+  }
+}
