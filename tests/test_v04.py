@@ -11,6 +11,7 @@ from ylsb_v04.planner import CandidatePlanner, estimate_model_fit
 from ylsb_v04.policy.engine import Policy, evaluate_run, load_policy
 from ylsb_v04.regrade import _adapt_rows
 from ylsb_v04.schema import migrate_v03_record, validate_normalized_record, validate_run_record
+from tests.test_rc2_schema import synthetic_formal_record
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -134,7 +135,8 @@ class V04Tests(unittest.TestCase):
         migrated = migrate_v03_record({"task_id": "X", "answer": "A"})
         self.assertEqual("normalized-corpus-v0.2", migrated["schema_version"])
         self.assertEqual([], validate_normalized_record(migrated))
-        valid = {"schema_version": 2, "run_id": "r", "course_id": "YLSB-UME", "lane": "R0", "recorded_at": "2026-09-07T00:00:00Z", "hardware": {"cpu": {"reported_name": None, "canonical_id": None, "cores": None, "threads": None, "memory_channels": None, "pcie_generation": None, "pcie_lanes": None, "provenance": {"kind": "unknown", "reason": "not reported"}}, "ram": {"total_gib": 1, "provenance": {"kind": "reported", "source": "test"}}, "gpu_groups": [{"canonical_id": "g", "reported_name": "GPU", "count": 1, "vram_gib_each": 1, "provenance": {"kind": "unknown", "reason": "not reported"}}]}, "runtime": {"name": "r", "version": "v", "commit_hash": "a"}, "model": {"canonical_id": "m", "reported_name": "M"}, "environment": {"os_name": "test", "os_version": "1", "kernel_version": "1", "cuda_version": None, "driver_version": None, "not_applicable_reason": "test"}, "fixture": {"path": "fixture.jsonl", "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}, "grader": {"path": "grader.py", "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"}, "chat_template": {"id": "test", "source": "test", "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "thinking_disabled": True, "thinking_disabled_method": "test"}, "runtime_config": {"ctx_size": 1, "kv_cache": {}, "seed": None, "max_tokens": 1, "batch_size": 1, "ubatch_size": 1, "flash_attention": None, "split_mode": "none", "tensor_split": None, "mtp_enabled": False, "raw_cli_args": [], "timings": {}}, "performance_samples": [], "performance_summary": []}
+        # Use the complete formal synthetic record used by the RC2 schema tests.
+        valid = synthetic_formal_record()
         self.assertEqual([], validate_run_record(valid))
         self.assertTrue(validate_run_record({"schema_version": 2, "run_id": "r", "hardware": {"cpu": {}, "ram": {}, "gpu_groups": [{"provenance": {}}]}, "runtime": {}, "model": {}}))
 

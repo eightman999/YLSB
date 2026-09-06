@@ -1,8 +1,28 @@
-# Candidate Planner v0.1
+# Candidate Planner v0.2 (v0.4-rc2)
 
 Candidate Plannerはベンチマーク前の推薦器です。S/F/L/D/Xを確定せず、各候補の
 `prediction_status: predicted`、runtime互換性、メモリ配置条件、近傍実測を返します。
 最終slotは実測observationとpolicy評価で決まります。
+
+## observed registry と candidate catalog
+
+`registries/models.json` は v0.3 から継承した観測モデルの正本です。実測の artifact、量子化、
+provenance を保持するため、候補を追加する用途には使いません。ベンチマーク前に探索できる
+モデルは `registries/candidate_models.json` に置き、`registries/candidate-model-catalog.schema.json`
+で検証します。catalog の各レコードは `registry_kind: candidate`、`observed: false`、
+`prediction_status: predicted` を持ち、公式モデルカードの URL と取得日、reported/estimated/unknown
+の区別を保持します。catalog の推定 bpw は、公式カードが BF16 しか報告していない場合の
+planner 用の見積もりであり、実 artifact の量子化事実ではありません。
+
+```python
+from ylsb_v04.planner import CandidatePlanner, load_candidate_catalog
+
+catalog = load_candidate_catalog("registries/candidate_models.json")
+plan = CandidatePlanner(hardware, catalog, runtimes, corpus=corpus).plan()
+```
+
+観測として扱うのは normalized corpus に実行結果が import された後だけです。catalog の
+予測レコードは近傍 observation retrieval に混入せず、S/F/L/D/X の最終判定にもなりません。
 
 ## 入力とAPI
 
@@ -45,13 +65,15 @@ runtime)` を使えます。
 
 CLI統合時は、planner入力に `--hardware`、`--models`、`--runtimes`、任意の
 `--corpus`（normalized directoryまたはJSONL）を渡し、出力を `plan` JSONとして
-保存します。`tools/ylsb.py`側では `CandidatePlanner(..., corpus=...)` と
+保存します。`tools/ylsb.py`側では既定で `load_candidate_catalog()` も結合し、
+`CandidatePlanner(..., corpus=..., candidate_catalog=...)` と
 `next_benchmark_candidate(plan, observed)` を呼び出します。
 
 ## 出力の読み方
 
-`anchor` は比較可能なサイズ（現在は35B近傍）、`envelope` はruntimeがrejectして
-いない候補をサイズ順に並べた実用範囲探索です。`meaningful_window` は
+`anchor` はその hardware profile で score が最も高い比較候補、`envelope` はruntimeがrejectして
+いない候補を hardware-aware score 順に並べた探索範囲です。`ranking` は同じ順位を全件返し、
+`meaningful_window` は
 `lower_bound`、`practical_lower_bound`、`sweet_spot`、`practical_upper_bound`、
 `capacity_frontier`を持ち、すべて予測値として返ります。runtimeが全てrejectした
 modelは通常候補・envelope・S/F/L/D/Xから除外し、`candidates`内にreject理由と
@@ -62,6 +84,21 @@ successだけなら観測最大値より一段大きい候補、OOMだけならO
 両方あればその間の候補を選びます。例えば `35 easy / 110 barely / 235 OOM`
 では、未観測の `70 practical` を選ぶカタログを想定できます。予測でfits=Falseの
 frontierも、runtime互換性があれば探索対象です。
+
+## hardware-aware score
+
+各候補には `score` と `score_breakdown` を返します。内訳は memory headroom、total parameter
+footprint、active compute pressure、compute capability、memory bandwidth、GPU count、
+topology、runtime compatibility、historical evidence、benchmark cost、architecture prior です。
+GPU 機種名による絶対ルールは使わず、報告された hardware facts から profile を作ります。
+古い compute generation で aggregate VRAM が大きい場合は、total footprint が収まって active
+parameters が小さい MoE に prior が付きます。単一 GPU で収まる Dense は daily-use prior を
+持ち、異種 GPU 構成は topology penalty と low confidence を明示します。未知の値は neutral
+component と low confidence に留め、v0.3 の gate label から補完しません。
+
+P100 x13、V100 32 GiB x1、RTX 3060 12 GiB + P100 16 GiB の synthetic profile は、同一 catalog
+でも score/order、topology component、候補説明が変わります。これは実測性能の保証ではなく、
+次に測る候補を選ぶための deterministic heuristic です。
 
 ## fitとruntimeの制約
 

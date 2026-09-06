@@ -6,6 +6,7 @@ from .core import (
     estimate_model_fit,
     join_normalized_corpus,
     load_normalized_corpus,
+    load_candidate_catalog,
     next_benchmark_candidate,
     retrieve_nearest_observations,
 )
@@ -18,6 +19,7 @@ __all__ = [
     "estimate_model_fit",
     "join_normalized_corpus",
     "load_normalized_corpus",
+    "load_candidate_catalog",
     "next_benchmark_candidate",
     "retrieve_nearest_observations",
 ]

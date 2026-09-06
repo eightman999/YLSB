@@ -163,20 +163,22 @@ v0.3では、公開済みの固定anchorとして次の2問を収録していま
 
 Legacy Inverse ChallengeとしてLIC-S1（`answers_10001.txt`）とLIC-C1（`message.txt`）を追加しました。マイコンREは含みません。
 
-## v0.4-rc1（校正版）
+## v0.4-rc2（再生成版）
 
 YLSBを、hardwareに対して意味のあるbenchmark candidateを提案し、その構成を再現可能に比較するframeworkへ拡張します。`ylsb_v04` のversioned policy、v2 grader、異種GPU対応run schema、registry、Candidate Planner、generic importerを利用できます。
 
-v0.3 frozen/raw/normalized/derivedは変更しません。同じobservationを `python tools/ylsb.py regrade --input results/v0.3/normalized/task_results.jsonl --policy YLSB-v0.4-rc1` で再評価し、`results/v0.4-rc1/`へ出力します。thresholdはcalibration用でfinal確定値ではありません。
+v0.3 frozen/raw/normalized/derivedは変更しません。同じ observation を `YLSB-v0.4-rc1` policy で再評価し、現行 planner とともに `results/v0.4-rc1/`へ決定論的に再生成します。thresholdはcalibration用でfinal確定値ではありません。
 
-v0.4-rc1を新規実行する場合のfixture入口は [`fixtures/v0.4-rc1/`](fixtures/v0.4-rc1/) です。既存の`ume/`、`take/`、`matsu/` profileはv0.3のままなので、旧fixtureを暗黙にv0.4へ読み替えません。検証からレポートまでの最小手順は次の通りです。
+v0.4-rc2を新規実行する場合のfixture入口は [`fixtures/v0.4-rc1/`](fixtures/v0.4-rc1/) です。既存の`ume/`、`take/`、`matsu/` profileはv0.3のままなので、旧fixtureを暗黙にv0.4へ読み替えません。検証からレポートまでの最小手順は次の通りです。
 
 ```sh
 python3 -m pip install -r requirements-v04.txt
-python3 tools/ylsb.py validate-fixtures
-python3 tools/ylsb.py migrate --input results/v0.3/normalized --output results/v0.4-rc1/normalized
-python3 tools/ylsb.py regrade --input results/v0.3/normalized/task_results.jsonl --policy YLSB-v0.4-rc1
-python3 tools/ylsb.py report --input results/v0.3/normalized/task_results.jsonl
+python3 tools/regenerate_v04.py
+python3 tools/regenerate_v04.py --check
 ```
 
-詳細な要求チェックは [`docs/V0.4_PLAN.md`](docs/V0.4_PLAN.md)、移行手順とbaselineは [`docs/V0.4_MIGRATION.md`](docs/V0.4_MIGRATION.md)、6モデルの生成結果に基づく証拠は [`docs/V0.4_IMPLEMENTATION_REPORT.md`](docs/V0.4_IMPLEMENTATION_REPORT.md)を参照してください。v0.4-rc1ではtag/release/pushを行っていません。
+生成器は normalized corpus、regrade、calibration、planner、schema mirror、manifestを一時treeで作り、出力を一括更新します。manifestには入力・fixture・grader・planner・registryのcontent hashと件数を保存し、生成時刻や変化するHEADは埋め込みません。差分があれば`--check`は非0で終了します。
+
+v0.3 UMEのrawレポートdirectory／ZIPは `python3 tools/ylsb.py import-raw ./submission.zip --dry-run` で検査できます。取り込みと重複検知の手順は [Raw report import](docs/RAW_REPORT_IMPORT.md) を参照してください。
+
+詳細な要求チェックは [`docs/V0.4_PLAN.md`](docs/V0.4_PLAN.md)、移行手順とbaselineは [`docs/V0.4_MIGRATION.md`](docs/V0.4_MIGRATION.md)、生成結果に基づく証拠は [`docs/V0.4_IMPLEMENTATION_REPORT.md`](docs/V0.4_IMPLEMENTATION_REPORT.md)を参照してください。評価policyはrc1のまま、生成engineの版をrc2として記録します。

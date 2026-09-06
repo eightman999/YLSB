@@ -14,6 +14,19 @@ from .fixtures import load_sentinel_v04, load_core_v04
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def _source_label(path: Path) -> str:
+    """Return a repository-relative identity for generated provenance.
+
+    Absolute workspace paths make otherwise identical release artifacts differ
+    between checkouts.  Keep external paths readable, but canonicalize paths
+    inside this repository to stable POSIX labels.
+    """
+    try:
+        return path.resolve().relative_to(ROOT).as_posix()
+    except ValueError:
+        return path.as_posix()
+
+
 def _read(path: Path) -> list[dict[str, Any]]:
     return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
@@ -203,7 +216,7 @@ def regrade(input_path: str | Path, policy_name: str = "YLSB-v0.4-rc1", output_d
         row["record_type"] = "task_result"
         row["grader_identity"] = grader_identity
         legacy_provenance = row.get("provenance")
-        row["provenance"] = {"kind": "derived", "source": str(input_path), "method": "v0.3 observation + v2 grader + explicit fixture metadata", "legacy": legacy_provenance}
+        row["provenance"] = {"kind": "derived", "source": _source_label(input_path), "method": "v0.3 observation + v2 grader + explicit fixture metadata", "legacy": legacy_provenance}
     (normalized_dir / "task_results.jsonl").write_text("".join(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n" for row in rows), encoding="utf-8")
     result = []
     for run_id in sorted(grouped):
@@ -215,7 +228,7 @@ def regrade(input_path: str | Path, policy_name: str = "YLSB-v0.4-rc1", output_d
                 changed.append(name)
         observed = comparable.get(run_id, [])
         mean = statistics.mean([x["value"] for x in observed]) if observed else None
-        result.append({"schema_version": "normalized-corpus-v0.2", "record_type": "verdict", "run_id": run_id, "policy_version": policy.policy_version, "gates": new["gates"], "original_v0_3_verdict": previous, "policy_verdict": new, **({"v0_4_rc1_verdict": new} if policy.policy_version == "YLSB-v0.4-rc1" else {}), "changed_reason": changed or ["policy dimensions unchanged"], "observed_comparable_performance": {"metric": "TG", "target_tokens": 128, "depth_tokens": 0, "lane": "R0", "phase": "original_run", "aggregation": "mean", "samples": observed, "mean_tokens_per_second": mean, "sample_count": len(observed), "slot_status": "candidate_only_until_observed_gate_pass", "source_corpus": str(bundle_root)}, "source_observation": str(input_path), "provenance": {"kind": "derived", "method": "v2 grader + explicit fixture metadata + deterministic policy engine", "source": str(input_path)}})
+        result.append({"schema_version": "normalized-corpus-v0.2", "record_type": "verdict", "run_id": run_id, "policy_version": policy.policy_version, "gates": new["gates"], "original_v0_3_verdict": previous, "policy_verdict": new, **({"v0_4_rc1_verdict": new} if policy.policy_version == "YLSB-v0.4-rc1" else {}), "changed_reason": changed or ["policy dimensions unchanged"], "observed_comparable_performance": {"metric": "TG", "target_tokens": 128, "depth_tokens": 0, "lane": "R0", "phase": "original_run", "aggregation": "mean", "samples": observed, "mean_tokens_per_second": mean, "sample_count": len(observed), "slot_status": "candidate_only_until_observed_gate_pass", "source_corpus": _source_label(bundle_root)}, "source_observation": _source_label(input_path), "provenance": {"kind": "derived", "method": "v2 grader + explicit fixture metadata + deterministic policy engine", "source": _source_label(input_path)}})
     slug = policy.policy_version.lower().replace("ylsb-", "")
     jsonl = output_dir / f"{slug}-regrade.jsonl"
     lines = [f"# {policy.policy_version} regrade", "", f"Same observations were evaluated with versioned {policy.policy_version}. Raw/frozen inputs and prior verdicts are unchanged.", "", f"| run | prior Smallest | {policy.policy_version} Smallest | prior Fastest | {policy.policy_version} Fastest | change |", "|---|---:|---:|---:|---:|---|"]
@@ -256,7 +269,7 @@ def calibration(input_path: str | Path) -> str:
         "# YLSB v0.4-rc1 calibration",
         "",
         "これは release candidate の校正結果であり、恒久 threshold の確定ではない。",
-        f"入力 bundle: `{bundle_root}`。v0.3 の観測値を v2 grader と明示 fixture metadata で再評価した。",
+        f"入力 bundle: `{_source_label(bundle_root)}`。v0.3 の観測値を v2 grader と明示 fixture metadata で再評価した。",
         "",
         "## 校正で確認する変更点",
         "- Core 28 / Hard Sentinel 4 / API smoke 10 を fixture metadata の tier と gate role で集計する。",

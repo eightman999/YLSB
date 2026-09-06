@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ylsb.local/schema/candidate-model-catalog-v0.1.json",
+  "title": "YLSB planner candidate model catalog",
+  "type": "object",
+  "required": ["registry_version", "registry_kind", "observed_registry", "retrieved_at", "entries"],
+  "properties": {
+    "registry_version": {"type": "string"},
+    "registry_kind": {"const": "candidate_catalog"},
+    "observed_registry": {"type": "string", "const": "registries/models.json"},
+    "retrieved_at": {"type": "string", "format": "date"},
+    "entries": {
+      "type": "array",
+      "minItems": 6,
+      "items": {"$ref": "#/$defs/entry"}
+    }
+  },
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "required": ["canonical_id", "reported_name", "family", "architecture", "quantization_status", "format", "source", "retrieved_at", "provenance", "registry_kind", "observed"],
+      "properties": {
+        "canonical_id": {"type": "string", "pattern": "^candidate\\."},
+        "reported_name": {"type": "string"},
+        "family": {"type": "string"},
+        "architecture": {
+          "type": "object",
+          "required": ["type", "total_params_b", "active_params_b"],
+          "properties": {
+            "type": {"enum": ["dense", "moe", "unknown"]},
+            "total_params_b": {"type": ["number", "null"]},
+            "active_params_b": {"type": ["number", "null"]},
+            "expert_count": {"type": ["integer", "null"]},
+            "active_experts": {"type": ["integer", "null"]}
+          }
+        },
+        "quant": {"type": ["string", "null"]},
+        "bpw": {"type": ["number", "null"]},
+        "quantization_status": {"enum": ["reported", "estimated", "unknown"]},
+        "format": {"type": ["string", "null"]},
+        "context_length": {"type": ["integer", "null"]},
+        "status": {"enum": ["stable", "experimental", "unknown"]},
+        "source": {"type": "string", "format": "uri"},
+        "retrieved_at": {"type": "string", "format": "date"},
+        "provenance": {"type": "object", "required": ["kind", "source", "retrieved_at", "reported_fields", "estimated_fields"], "properties": {"kind": {"enum": ["reported", "registry", "derived", "inferred", "unknown"]}, "source_type": {"type": "string"}, "source": {"type": "string", "format": "uri"}, "retrieved_at": {"type": "string", "format": "date"}, "reported_fields": {"type": "array", "items": {"type": "string"}}, "estimated_fields": {"type": "array", "items": {"type": "string"}}}, "additionalProperties": true},
+        "registry_kind": {"const": "candidate"},
+        "observed": {"const": false}
+      }
+    }
+  }
+}

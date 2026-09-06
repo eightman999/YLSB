@@ -350,6 +350,7 @@
 		公開・共有済みなのでfresh未知問題性能の単独根拠にはしない。
 		canonical solution / hidden inputは公開パック外。
 
-[* v0.4-rc1追補]
-		v0.3 frozen observationはimmutable。versioned policy、tier付きUME、grader v2、異種GPU schema、registry、Candidate Planner、normalized-corpus-v0.2を導入する。
-		thresholdはcalibration用でfinalではない。Hard Sentinelはdiscriminatorとしてusefulness gateから分離する。
+[* v0.4-rc2追補]
+	 v0.3 frozen observationはimmutable。versioned policy、tier付きUME、grader v2、異種GPU schema、registry、Candidate Planner、normalized-corpus-v0.2を導入する。
+	 thresholdはcalibration用でfinalではない。Hard Sentinelはdiscriminatorとしてusefulness gateから分離する。
+	 派生物は tools/regenerate_v04.py で一括生成し、--check でfreshnessを検査する。manifestは入力とgeneratorのcontent hash・件数を保存し、時刻とcurrent HEADを含めない。

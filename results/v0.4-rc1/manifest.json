@@ -1,0 +1,141 @@
+{
+  "artifacts": {
+    "derived/v0.4-rc1-calibration.md": {
+      "bytes": 4760,
+      "sha256": "0a285a814bc83a06d76b9bf356e620b39350b707ae76a98f2f919689ee9d3c05"
+    },
+    "derived/v0.4-rc1-implementation-report.md": {
+      "bytes": 587,
+      "sha256": "6926b24390377ee5897847cdee64bb9357cebeeb94b1f19d8a6504c3f1d02849"
+    },
+    "derived/v0.4-rc1-regrade.jsonl": {
+      "bytes": 39792,
+      "records": 6,
+      "sha256": "69d4d2261b46bcb3e5d673a7d9c29cffbb567eb160e7de6fd9ba2d2e9a51c970"
+    },
+    "derived/v0.4-rc1-regrade.md": {
+      "bytes": 1568,
+      "sha256": "815f53d4520bc00b2786581270759485712e4397e11c0132ac545a08d3245955"
+    },
+    "normalized/hardware.jsonl": {
+      "bytes": 4825,
+      "records": 2,
+      "sha256": "d8bb53a25f802f67245214c7e326cc7ddf25c1af70e0fff14da23c7dbe792161"
+    },
+    "normalized/machines.jsonl": {
+      "bytes": 1492,
+      "records": 1,
+      "sha256": "480044dda102f1f40129a300df065daa77c764a4a5b507e4edd4ffd7f246cb30"
+    },
+    "normalized/models.jsonl": {
+      "bytes": 12007,
+      "records": 6,
+      "sha256": "418327509508c9e4f96b3da68004c3864b06502b4eff11d17d0b9c0acfcd966f"
+    },
+    "normalized/performance.jsonl": {
+      "bytes": 505703,
+      "records": 198,
+      "sha256": "5709d0b60c766ecb59bdea9d2bdbab11452e4d610f172d1ec3a362f4385cd795"
+    },
+    "normalized/planner.json": {
+      "bytes": 6279689,
+      "sha256": "b3f9db356b904d35f2d5a9d8369e1080d40c6dce19da8211e42ebfae62a97a1d"
+    },
+    "normalized/runs.jsonl": {
+      "bytes": 17427,
+      "records": 6,
+      "sha256": "b764920803d4eb9251a75f7d7c93f3503d8b9260a94cb3dd585a816eeb7bb276"
+    },
+    "normalized/runtimes.jsonl": {
+      "bytes": 1813,
+      "records": 1,
+      "sha256": "902e1a37f2162ccdb1424aa4d0e181101072ccd13828f45b4fa1f7380709a5c1"
+    },
+    "normalized/submissions.jsonl": {
+      "bytes": 4794,
+      "records": 6,
+      "sha256": "9aabeec4d6457ae05fd0855c9bf7611b3460a8b26dbfc0a8159c4501f5f3439e"
+    },
+    "normalized/task_results.jsonl": {
+      "bytes": 648303,
+      "records": 252,
+      "sha256": "387fcde74c73eef851d483c1ac64a0b1b3239d39558f789c903fab087685c259"
+    },
+    "schema/normalized-corpus-v0.2.schema.json": {
+      "bytes": 8264,
+      "sha256": "b2fc3464ab2eecf4a36d03bf80691d082d4b2c0f903cd29ed387928ab6acd5ba"
+    },
+    "schema/run-record-v0.2.schema.json": {
+      "bytes": 9405,
+      "sha256": "e5cc84719fdc9c74434089d17b5e3b545a48658763f7b9c396674c43a339298d"
+    }
+  },
+  "engine_release": "v0.4-rc2",
+  "evaluation_policy": {
+    "name": "YLSB-v0.4-rc1",
+    "path": "policies/ylsb-v0.4-rc1.json",
+    "sha256": "9ed839051651442e0bc41516d82a7bfe56e903ea7de8be002f1a105002c0d050"
+  },
+  "fixture_counts": {
+    "core": 28,
+    "sentinel": 4
+  },
+  "generator": {
+    "path": "tools/regenerate_v04.py",
+    "sha256": "930d2bc97d51699d2fead4eb89d437fa04a7e23838b4d6836187a4788a4ffefa",
+    "version": "ylsb-v0.4-regenerator-1"
+  },
+  "immutable_inputs": {
+    "candidate_catalog": {
+      "path": "registries/candidate_models.json",
+      "sha256": "2a3cc73f11026b1f74c442395c1087718fc67430087ef9564a772185ee0f1ffe"
+    },
+    "grader": {
+      "path": "common/grader_basic.py",
+      "sha256": "f54dfb759e7d490d04c10563ec19a1374a7289c0c844224d39526c45bf6d2719"
+    },
+    "normalized_schema": {
+      "path": "schema/normalized-corpus-v0.2.schema.json",
+      "sha256": "b2fc3464ab2eecf4a36d03bf80691d082d4b2c0f903cd29ed387928ab6acd5ba"
+    },
+    "planner_sources": {
+      "path": "ylsb_v04/planner",
+      "tree_sha256": "0dd95e19f6028be7010523f985a70b5c52fa529a43b0bd9b8273f145bb08bce2"
+    },
+    "registry_sources": {
+      "path": "registries",
+      "tree_sha256": "089378544a31f56eef529ee9a8c94eac6d975d2eb254290c1cbe49030ccc3edc"
+    },
+    "run_record_schema": {
+      "path": "schema/run-record-v0.2.schema.json",
+      "sha256": "e5cc84719fdc9c74434089d17b5e3b545a48658763f7b9c396674c43a339298d"
+    },
+    "run_record_schema_mirror": {
+      "path": "common/run_record.schema.v2.json",
+      "sha256": "e5cc84719fdc9c74434089d17b5e3b545a48658763f7b9c396674c43a339298d"
+    },
+    "v03_normalized": {
+      "path": "results/v0.3/normalized",
+      "tree_sha256": "ae4398f65c8d904dd5ec5be9b9b45c780b43acf48e34daf34d4b731da904909b"
+    },
+    "v04_fixture": {
+      "path": "fixtures/v0.4-rc1",
+      "tree_sha256": "b53cd5de032f920f3e6775878c4823328b1c70833918f6fa1e0413c499610e07"
+    }
+  },
+  "normalized_record_counts": {
+    "hardware.jsonl": 2,
+    "machines.jsonl": 1,
+    "models.jsonl": 6,
+    "performance.jsonl": 198,
+    "planner.json": 1,
+    "runs.jsonl": 6,
+    "runtimes.jsonl": 1,
+    "submissions.jsonl": 6,
+    "task_results.jsonl": 252,
+    "v0.4-rc1-regrade.jsonl": 6
+  },
+  "provenance_note": "Current git HEAD and generated_at are intentionally omitted; content identities above are the freshness contract.",
+  "release": "v0.4-rc1",
+  "schema_version": "normalized-corpus-v0.2"
+}

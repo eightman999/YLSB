@@ -128,6 +128,43 @@ def _model_info(model: Mapping[str, Any]) -> dict[str, Any]:
     }
 
 
+def load_candidate_catalog(source: Any = None) -> list[dict[str, Any]]:
+    """Load planner candidates without turning them into observations.
+
+    The observed registry is intentionally not used as the default here.  A
+    catalog entry is a proposal until a real run is imported into the
+    normalized corpus, and the marker is kept on the copied record so callers
+    can enforce that boundary.
+    """
+    if source is None:
+        source = Path(__file__).resolve().parents[2] / "registries" / "candidate_models.json"
+    if isinstance(source, (str, Path)):
+        value = json.loads(Path(source).read_text(encoding="utf-8"))
+    elif isinstance(source, Mapping):
+        value = source
+    else:
+        value = {"entries": source or []}
+    entries = value.get("entries", []) if isinstance(value, Mapping) else []
+    result: list[dict[str, Any]] = []
+    for raw in entries:
+        if not isinstance(raw, Mapping):
+            continue
+        item = copy.deepcopy(dict(raw))
+        if item.get("registry_kind", "candidate") != "candidate":
+            raise ValueError("candidate catalog entries must have registry_kind='candidate'")
+        if item.get("observed", False) is not False:
+            raise ValueError("candidate catalog entries cannot be marked observed")
+        if item.get("prediction_status", "predicted") != "predicted":
+            raise ValueError("candidate catalog entries must have prediction_status='predicted'")
+        # Force the boundary on records that omitted optional markers.  A
+        # contradictory marker is rejected above instead of being normalized.
+        item["registry_kind"] = "candidate"
+        item["observed"] = False
+        item["prediction_status"] = "predicted"
+        result.append(item)
+    return result
+
+
 def _model_params(model: Mapping[str, Any]) -> tuple[float | None, float | None, str]:
     """Backward-compatible compact model metadata helper."""
     info = _model_info(model)
@@ -648,7 +685,136 @@ def _ref(item: Mapping[str, Any] | None) -> dict[str, Any] | None:
         "fit": copy.deepcopy(item.get("fit")),
         "runtime": copy.deepcopy(item.get("runtime")),
         "reason": item.get("reason"),
+        "score": item.get("score"),
+        "score_breakdown": copy.deepcopy(item.get("score_breakdown", {})),
     }
+
+
+def _hardware_profile(hardware: Mapping[str, Any]) -> dict[str, Any]:
+    """Derive explicit, model-agnostic hardware facts for ranking."""
+    groups = _gpu_groups(hardware)
+    devices = []
+    for group in groups:
+        for _ in range(int(group["count"])):
+            devices.append(group)
+    ccs = [value for value in (_cc(item) for item in devices) if value is not None]
+    bandwidths = []
+    for item in devices:
+        value = _as_number(item.get("memory_bandwidth_gbps", item.get("bandwidth_gbps")))
+        if value is not None:
+            bandwidths.append(value)
+    identities = {(str(item.get("architecture", "unknown")).casefold(), _as_number(item.get("vram_gib_each", item.get("vram_each_gb", item.get("vram_gib"))))) for item in groups}
+    architecture_names = {str(item.get("architecture", "")).casefold() for item in devices if item.get("architecture")}
+    old_architecture = bool(architecture_names & {"pascal", "maxwell", "volta", "kepler"})
+    mean_cc = sum(ccs) / len(ccs) if ccs else None
+    mean_bandwidth = sum(bandwidths) / len(bandwidths) if bandwidths else None
+    return {
+        "gpu_count": len(devices),
+        "homogeneous": len(identities) <= 1,
+        "heterogeneous": len(identities) > 1,
+        "compute_capability": round(mean_cc, 3) if mean_cc is not None else None,
+        "memory_bandwidth_gbps": round(mean_bandwidth, 3) if mean_bandwidth is not None else None,
+        "old_compute_generation": old_architecture or (mean_cc is not None and mean_cc < 7.0),
+        "interconnect_known": bool((hardware.get("interconnect") or hardware.get("topology"))) if isinstance(hardware, Mapping) else False,
+        "topology_penalty": 0.0 if len(identities) <= 1 else 0.22,
+    }
+
+
+def _clamp(value: float, low: float = 0.0, high: float = 1.0) -> float:
+    return max(low, min(high, value))
+
+
+def _score_candidate(
+    hardware: Mapping[str, Any],
+    model: Mapping[str, Any],
+    fit: Mapping[str, Any],
+    runtimes: Sequence[Mapping[str, Any]],
+    retrieval: Mapping[str, Any],
+) -> tuple[float, dict[str, float], list[str], str]:
+    """Return a transparent hardware-aware score and explanation.
+
+    Components are deliberately heuristic and are never converted into gate
+    labels.  Missing facts receive a neutral value and lower confidence in the
+    caller rather than an invented hardware/model value.
+    """
+    profile = _hardware_profile(hardware)
+    info = _model_info(model)
+    total = info["total_params_b"]
+    active = info["active_params_b"]
+    required = _as_number(fit.get("required_gib"))
+    available = _as_number(fit.get("available_vram_gib")) or 0.0
+    headroom = _clamp((available - required) / max(available, 1.0) + 0.5) if required is not None and available else 0.5
+    if fit.get("fits") is False:
+        headroom *= 0.35
+    total_component = _clamp(1.0 - (float(total) / 420.0 if total is not None else 0.5))
+    if fit.get("fits") is True:
+        total_component = _clamp(total_component + 0.25)
+    active_component = _clamp(1.0 - (float(active) / 80.0 if active is not None else 0.5))
+    cc = profile["compute_capability"]
+    cc_component = _clamp((cc - 5.0) / 5.5) if cc is not None else 0.5
+    bandwidth = profile["memory_bandwidth_gbps"]
+    bandwidth_component = _clamp(bandwidth / 1000.0) if bandwidth is not None else 0.5
+    count_component = _clamp(profile["gpu_count"] / 8.0)
+    topology_component = 1.0 - profile["topology_penalty"]
+    if profile["gpu_count"] > 1 and not profile["interconnect_known"]:
+        topology_component = max(0.0, topology_component - 0.08)
+    model_type = info["type"]
+    ratio = (active / total) if active is not None and total else None
+    if model_type == "moe" and ratio is not None and ratio <= 0.25 and profile["old_compute_generation"]:
+        architecture_component = 1.0
+    elif model_type == "dense" and profile["gpu_count"] == 1 and fit.get("fits") is True:
+        architecture_component = 0.82
+    elif model_type == "moe" and ratio is not None:
+        architecture_component = _clamp(0.55 + (0.25 - min(ratio, 0.25)))
+    else:
+        architecture_component = 0.58
+    runtime_items = list(runtimes)
+    accepted = [item for item in runtime_items if item.get("compatibility") in {"candidate", "experimental", "unknown"}]
+    runtime_component = 0.85 if any(item.get("compatibility") == "candidate" for item in accepted) else 0.55 if accepted else 0.0
+    history_component = 0.75 if retrieval.get("used") else 0.45
+    cost_component = _clamp(1.0 - ((active if active is not None else total or 0.0) / 80.0))
+    if profile["heterogeneous"]:
+        cost_component = max(0.0, cost_component - 0.08)
+    components = {
+        "memory_headroom": round(headroom, 6),
+        "total_parameter_footprint": round(total_component, 6),
+        "active_compute_pressure": round(active_component, 6),
+        "compute_capability": round(cc_component, 6),
+        "memory_bandwidth": round(bandwidth_component, 6),
+        "gpu_count": round(count_component, 6),
+        "topology": round(topology_component, 6),
+        "runtime_compatibility": round(runtime_component, 6),
+        "historical_evidence": round(history_component, 6),
+        "benchmark_cost": round(cost_component, 6),
+        "architecture_prior": round(architecture_component, 6),
+    }
+    weights = {
+        "memory_headroom": 0.18,
+        "total_parameter_footprint": 0.08,
+        "active_compute_pressure": 0.16,
+        "compute_capability": 0.08,
+        "memory_bandwidth": 0.10,
+        "gpu_count": 0.04,
+        "topology": 0.13,
+        "runtime_compatibility": 0.09,
+        "historical_evidence": 0.05,
+        "benchmark_cost": 0.04,
+        "architecture_prior": 0.05,
+    }
+    score = sum(components[key] * weights[key] for key in weights)
+    reasons = []
+    if profile["heterogeneous"]:
+        reasons.append("heterogeneous GPU topology penalty applied; balanced split/interconnect validation is required")
+    if profile["old_compute_generation"] and model_type == "moe" and ratio is not None and ratio <= 0.25:
+        reasons.append("low active/total MoE ratio is favored when memory is abundant relative to compute")
+    if model_type == "dense" and profile["gpu_count"] == 1 and fit.get("fits") is True:
+        reasons.append("single-device fitting Dense candidate receives a daily-use prior")
+    if retrieval.get("used"):
+        reasons.append("nearest historical observations provide contextual evidence; verdict labels are ignored")
+    confidence = "low" if any(value is None for value in (total, active, required)) else "medium"
+    if not profile["homogeneous"] or not profile["interconnect_known"] and profile["gpu_count"] > 1:
+        confidence = "low"
+    return round(score * 100.0, 6), components, reasons, confidence
 
 
 @dataclass
@@ -657,11 +823,26 @@ class CandidatePlanner:
     models: list[dict[str, Any]]
     runtimes: list[dict[str, Any]]
     corpus: Any = None
+    candidate_catalog: list[dict[str, Any]] | None = None
 
     def plan(self) -> dict[str, Any]:
         available, architectures = _gpu_total(self.hardware)
         all_candidates: list[dict[str, Any]] = []
-        for model in sorted(self.models, key=lambda x: str(x.get("canonical_id", x.get("model_id", x.get("reported_name", ""))))):
+        supplied: dict[str, dict[str, Any]] = {}
+        for index, raw in enumerate([*self.models, *(self.candidate_catalog or [])]):
+            if not isinstance(raw, Mapping):
+                continue
+            model = copy.deepcopy(dict(raw))
+            model_id = model.get("canonical_id", model.get("model_id", model.get("reported_name")))
+            if model_id is None:
+                # Preserve the v0.1 API where a minimal model dict was allowed
+                # without an identifier; this synthetic key is not provenance.
+                model_id = f"model-{index}"
+                model["canonical_id"] = model_id
+            # A catalog entry may intentionally shadow an observed registry
+            # alias only when it is a distinct canonical config ID.
+            supplied.setdefault(str(model_id), model)
+        for model in sorted(supplied.values(), key=lambda x: str(x.get("canonical_id", x.get("model_id", x.get("reported_name", ""))))):
             info = _model_info(model)
             fit = estimate_model_fit(self.hardware, model)
             runtime = _runtime_candidates(model, self.hardware, self.runtimes)
@@ -676,6 +857,12 @@ class CandidatePlanner:
             retrieval_runtime = None
             if usable_runtime:
                 retrieval_runtime = {"canonical_id": usable_runtime[0].get("runtime"), "name": usable_runtime[0].get("name")}
+            retrieval = _retrieval(self.corpus, self.hardware, model, retrieval_runtime) if self.corpus is not None else {"used": False, "records": 0, "labels_used": False, "reason": "no observation corpus supplied"}
+            score, breakdown, score_reasons, score_confidence = _score_candidate(self.hardware, model, fit, runtime, retrieval)
+            source_kind = str(model.get("registry_kind", "observed_registry"))
+            observed = bool(model.get("observed", source_kind == "observed_registry"))
+            if source_kind == "candidate":
+                observed = False
             all_candidates.append({
                 "model": model_id,
                 "reported_name": model.get("reported_name", model.get("canonical_name")),
@@ -686,21 +873,29 @@ class CandidatePlanner:
                 "candidate_status": "experimental" if any(x["compatibility"] == "unknown" for x in usable_runtime) else candidate_status,
                 "objective": "envelope" if usable_runtime else "rejected",
                 "prediction_status": "predicted",
-                "reason": reason,
-                "confidence": fit.get("confidence", "low"),
+                "observed": observed,
+                "registry_kind": source_kind,
+                "reason": "; ".join([reason, *score_reasons]),
+                "confidence": "low" if fit.get("confidence") == "low" else score_confidence,
                 "size_class_b": info["total_params_b"],
                 "architecture_type": info["type"],
                 "memory_params_b": info["total_params_b"],
                 "compute_active_params_b": info["active_params_b"],
-                "retrieval": _retrieval(self.corpus, self.hardware, model, retrieval_runtime) if self.corpus is not None else {"used": False, "records": 0, "labels_used": False, "reason": "no observation corpus supplied"},
+                "score": score,
+                "score_breakdown": breakdown,
+                "retrieval": retrieval,
             })
         eligible = [x for x in all_candidates if x["eligible"]]
         by_size = sorted(eligible, key=lambda x: (x.get("size_class_b") is None, x.get("size_class_b") or math.inf, str(x.get("model"))))
-        anchor = min(by_size, key=lambda x: abs((x.get("size_class_b") or 0) - 35.0)) if by_size else None
+        ranked = sorted(eligible, key=lambda x: (-float(x.get("score") or 0.0), str(x.get("model"))))
+        # Choose a hardware-scored representative.  No model size is a
+        # permanent anchor; the catalog and profile determine this run's
+        # comparison point.
+        anchor = ranked[0] if ranked else None
         anchor_result = copy.deepcopy(anchor) if anchor else None
         if anchor_result:
             anchor_result["objective"] = "anchor"
-        envelope = [copy.deepcopy(item) for item in by_size]
+        envelope = [copy.deepcopy(item) for item in ranked]
         for item in envelope:
             item["objective"] = "envelope"
         practical = [x for x in by_size if x["fit"].get("fits") is True]
@@ -708,9 +903,10 @@ class CandidatePlanner:
         # but cannot become an S/F/L/D or practical window bound.
         lower = min(practical, key=lambda x: (x.get("size_class_b") is None, x.get("size_class_b") or math.inf)) if practical else None
         largest = max(practical, key=lambda x: x.get("size_class_b") or 0) if practical else None
-        sweet = min(practical, key=lambda x: abs((x.get("size_class_b") or 0) - 14.0)) if practical else None
+        sweet = max(practical, key=lambda x: (float(x.get("score") or 0.0), -float(x.get("size_class_b") or math.inf))) if practical else None
         frontier = max(by_size, key=lambda x: x.get("size_class_b") or 0) if by_size else None
-        slots = {"S": _ref(lower), "F": _ref(lower), "L": _ref(largest), "D": _ref(sweet), "X": _ref(frontier)}
+        daily = max(practical, key=lambda x: (float(x.get("score") or 0.0), -float(x.get("size_class_b") or math.inf))) if practical else None
+        slots = {"S": _ref(lower), "F": _ref(lower), "L": _ref(largest), "D": _ref(daily or sweet), "X": _ref(frontier)}
         retrieval = _retrieval(self.corpus, self.hardware) if self.corpus is not None else {"used": False, "records": 0, "labels_used": False, "reason": "no observation corpus supplied"}
         return {
             "planner_version": "candidate-planner-v0.1",
@@ -718,7 +914,9 @@ class CandidatePlanner:
             "hardware": copy.deepcopy(self.hardware),
             "hardware_vram_gib": available,
             "hardware_architectures": architectures,
+            "hardware_profile": _hardware_profile(self.hardware),
             "candidates": all_candidates,
+            "ranking": [copy.deepcopy(item) for item in ranked],
             "anchor": anchor_result,
             "envelope": envelope,
             "slots": slots,

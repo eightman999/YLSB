@@ -8,20 +8,13 @@ from pathlib import Path
 from ylsb_v04.importer import SubmissionImporter
 from ylsb_v04.registry import Registry, load_registry
 from ylsb_v04.schema import migrate_v03_record, validate_normalized_record, validate_run_record
+from tests.test_rc2_schema import synthetic_formal_record
 
 
 def run_record(**overrides):
-    value = {
-        "schema_version": 2,
-        "run_id": "r1",
-        "hardware": {
-            "cpu": {"reported_name": None, "canonical_id": None, "cores": None, "threads": None, "memory_channels": None, "pcie_generation": None, "pcie_lanes": None, "provenance": {"kind": "unknown", "reason": "not reported"}},
-            "ram": {"total_gib": 32},
-            "gpu_groups": [{"canonical_id": "gpu.a", "reported_name": "A", "count": 1, "vram_gib_each": 8, "provenance": {"kind": "reported", "source": "runner"}}, {"canonical_id": "gpu.b", "reported_name": "B", "count": 1, "vram_gib_each": 16, "provenance": {"kind": "reported", "source": "runner"}}],
-        },
-        "runtime": {"name": "llama", "version": "x", "commit_hash": "abc"},
-        "model": {"canonical_id": "model.a", "reported_name": "A"},
-    }
+    # Keep all positive run fixtures on the RC2 formal contract.  Negative
+    # callers still replace the requested subtree below this helper's API.
+    value = synthetic_formal_record()
     value.update(overrides)
     return value
 

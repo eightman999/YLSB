@@ -252,6 +252,7 @@ class SubmissionImporter:
                         handle.write(json.dumps({"fingerprint": fingerprint, "source": source_path.name, "records": len(records)}, ensure_ascii=False) + "\n")
             else:
                 reason = None
+                duplicate = False
             return ImportResult(fingerprint, duplicate, records, str(source_path), reason)
         finally:
             if temporary is not None:
