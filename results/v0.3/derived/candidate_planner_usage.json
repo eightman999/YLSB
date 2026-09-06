@@ -1,0 +1,46 @@
+{
+  "provenance": {
+    "inputs": [
+      "normalized/task_results.jsonl",
+      "normalized/performance.jsonl",
+      "derived/v0.3_verdicts.jsonl"
+    ],
+    "kind": "derived"
+  },
+  "reason": "The first-wave data reveals fixture, protocol/template, and gate-calibration confounders. v0.3 labels are retained for history, not treated as ground truth.",
+  "schema_version": "normalized-corpus-v0.1",
+  "usage": {
+    "candidate_planner_retrieval": {
+      "allowed": true,
+      "conditions": [
+        "Retrieve observations and provenance, not only verdicts."
+      ]
+    },
+    "candidate_planner_training_on_raw_measurements": {
+      "allowed": true,
+      "conditions": [
+        "Exclude invalid fixtures and isolate requires_rerun records."
+      ]
+    },
+    "candidate_planner_training_on_v0_3_gate_labels": false,
+    "hardware_model_analysis": {
+      "allowed": true,
+      "conditions": [
+        "Treat CPU fields and unreported hardware properties as unknown."
+      ]
+    },
+    "historical_comparison": {
+      "allowed": true,
+      "conditions": [
+        "Keep original and post-hoc measurement phases separate.",
+        "Apply fixture/protocol audit flags."
+      ]
+    },
+    "performance_corpus": {
+      "allowed": true,
+      "conditions": [
+        "Use raw repeats; original-run VRAM is unavailable."
+      ]
+    }
+  }
+}

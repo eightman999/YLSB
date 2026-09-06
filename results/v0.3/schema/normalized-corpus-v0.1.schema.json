@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/eightman999/YLSB/results/v0.3/schema/normalized-corpus-v0.1.schema.json",
+  "title": "YLSB normalized corpus v0.1 record",
+  "oneOf": [
+    {"$ref": "#/$defs/submission"},
+    {"$ref": "#/$defs/machine"},
+    {"$ref": "#/$defs/hardware"},
+    {"$ref": "#/$defs/model"},
+    {"$ref": "#/$defs/runtime"},
+    {"$ref": "#/$defs/run"},
+    {"$ref": "#/$defs/task_result"},
+    {"$ref": "#/$defs/performance"},
+    {"$ref": "#/$defs/verdict"}
+  ],
+  "$defs": {
+    "base": {
+      "type": "object",
+      "required": ["schema_version", "record_type", "provenance"],
+      "properties": {
+        "schema_version": {"const": "normalized-corpus-v0.1"},
+        "record_type": {"type": "string"},
+        "provenance": {"type": "object", "additionalProperties": {"$ref": "#/$defs/provenance"}}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["kind"],
+      "properties": {"kind": {"enum": ["reported", "derived", "registry", "inferred", "unknown"]}},
+      "additionalProperties": true
+    },
+    "reuse": {
+      "type": "object",
+      "required": ["classification", "reason"],
+      "properties": {
+        "classification": {"enum": ["reusable_as_is", "regradable", "requires_rerun", "invalid"]},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    },
+    "submission": {
+      "allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["submission_id", "benchmark", "timestamp", "author", "source_path", "dataset_status"], "properties": {"record_type": {"const": "submission"}, "dataset_status": {"const": "frozen"}}}]
+    },
+    "machine": {
+      "allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["machine_id", "cpu", "ram", "gpu_ids", "aggregate", "os", "driver", "cuda", "rocm"], "properties": {"record_type": {"const": "machine"}}}]
+    },
+    "hardware": {
+      "allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["hardware_id", "hardware_type", "reported_name", "canonical_name", "vendor", "architecture", "count", "vram_each_gb"], "properties": {"record_type": {"const": "hardware"}, "hardware_type": {"const": "gpu"}}}]
+    },
+    "model": {
+      "allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["model_id", "reported_name", "canonical_name", "architecture", "quant", "format", "source_repo", "sha256"], "properties": {"record_type": {"const": "model"}, "architecture": {"type": "object", "required": ["type", "total_params_b", "active_params_b", "experts", "active_experts"]}}}]
+    },
+    "runtime": {
+      "allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["runtime_id", "name", "family", "fork", "version", "commit", "backend", "features"], "properties": {"record_type": {"const": "runtime"}, "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"}}}]
+    },
+    "run": {
+      "allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["run_id", "submission_id", "machine_id", "model_id", "runtime_id", "config", "artifacts", "formal_record_compliance"], "properties": {"record_type": {"const": "run"}}}]
+    },
+    "task_result": {
+      "allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["task_result_id", "run_id", "task_id", "section", "category", "model_output", "normalized_answer", "expected_answer", "score", "status", "failure_class_reported", "failure_class_audited", "grader", "reuse", "source"], "properties": {"record_type": {"const": "task_result"}, "reuse": {"$ref": "#/$defs/reuse"}}}]
+    },
+    "performance": {
+      "allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["measurement_id", "run_id", "measurement_phase", "metric", "value", "unit", "repeat", "timings_cache_n", "vram", "measurement_source", "reuse", "source"], "properties": {"record_type": {"const": "performance"}, "measurement_phase": {"enum": ["original_run", "posthoc_vram_remeasurement"]}, "reuse": {"$ref": "#/$defs/reuse"}, "group_statistics": {"type": "object", "properties": {"stdev_kind": {"enum": ["sample", null]}}}}}]
+    },
+    "verdict": {
+      "allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "required": ["run_id", "policy_version", "gates", "hard_sentinel_observation", "source"], "properties": {"record_type": {"const": "verdict"}, "policy_version": {"const": "YLSB-v0.3"}}}]
+    }
+  }
+}

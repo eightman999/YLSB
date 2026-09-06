@@ -1,0 +1,645 @@
+{
+  "categories": [
+    {
+      "accuracy": 0.716667,
+      "attempts": 60,
+      "category": "exact",
+      "correct": 43,
+      "models_attempted": 6,
+      "models_zero_correct": 1,
+      "section": "api_smoke"
+    },
+    {
+      "accuracy": 0.458333,
+      "attempts": 24,
+      "category": "arithmetic",
+      "correct": 11,
+      "models_attempted": 6,
+      "models_zero_correct": 1,
+      "section": "core"
+    },
+    {
+      "accuracy": 0.833333,
+      "attempts": 24,
+      "category": "common_sense",
+      "correct": 20,
+      "models_attempted": 6,
+      "models_zero_correct": 0,
+      "section": "core"
+    },
+    {
+      "accuracy": 0.0,
+      "attempts": 24,
+      "category": "constraint",
+      "correct": 0,
+      "models_attempted": 6,
+      "models_zero_correct": 6,
+      "section": "core"
+    },
+    {
+      "accuracy": 0.583333,
+      "attempts": 24,
+      "category": "instruction",
+      "correct": 14,
+      "models_attempted": 6,
+      "models_zero_correct": 1,
+      "section": "core"
+    },
+    {
+      "accuracy": 0.958333,
+      "attempts": 24,
+      "category": "logic",
+      "correct": 23,
+      "models_attempted": 6,
+      "models_zero_correct": 0,
+      "section": "core"
+    },
+    {
+      "accuracy": 0.5,
+      "attempts": 24,
+      "category": "math_word",
+      "correct": 12,
+      "models_attempted": 6,
+      "models_zero_correct": 1,
+      "section": "core"
+    },
+    {
+      "accuracy": 0.791667,
+      "attempts": 24,
+      "category": "reading",
+      "correct": 19,
+      "models_attempted": 6,
+      "models_zero_correct": 0,
+      "section": "core"
+    },
+    {
+      "accuracy": 0.166667,
+      "attempts": 6,
+      "category": "CRT",
+      "correct": 1,
+      "models_attempted": 6,
+      "models_zero_correct": 5,
+      "section": "sentinel"
+    },
+    {
+      "accuracy": 0.166667,
+      "attempts": 6,
+      "category": "Python Trace",
+      "correct": 1,
+      "models_attempted": 6,
+      "models_zero_correct": 5,
+      "section": "sentinel"
+    },
+    {
+      "accuracy": 0.166667,
+      "attempts": 6,
+      "category": "Scheduling",
+      "correct": 1,
+      "models_attempted": 6,
+      "models_zero_correct": 5,
+      "section": "sentinel"
+    },
+    {
+      "accuracy": 0.0,
+      "attempts": 6,
+      "category": "Shortest Path",
+      "correct": 0,
+      "models_attempted": 6,
+      "models_zero_correct": 6,
+      "section": "sentinel"
+    }
+  ],
+  "constraint_fixture_audit": {
+    "CORE-CONSTRAINT-001": {
+      "enumerated_solutions": [
+        "ABEDC"
+      ],
+      "gold_valid": true,
+      "reported_gold": "ABEDC",
+      "unique": true
+    },
+    "CORE-CONSTRAINT-002": {
+      "enumerated_solutions": [
+        "EDACB"
+      ],
+      "gold_valid": true,
+      "reported_gold": "EDACB",
+      "unique": true
+    },
+    "CORE-CONSTRAINT-003": {
+      "enumerated_solutions": [
+        "DCBAE"
+      ],
+      "gold_valid": false,
+      "reported_gold": "DCABE",
+      "unique": true
+    },
+    "CORE-CONSTRAINT-004": {
+      "enumerated_solutions": [
+        "DACEB"
+      ],
+      "gold_valid": true,
+      "reported_gold": "DACEB",
+      "unique": true
+    }
+  },
+  "schema_version": "normalized-corpus-v0.1",
+  "tasks": [
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "arithmetic",
+      "correct": 3,
+      "failure_modes_reported": {
+        "CAPABILITY": 3
+      },
+      "section": "core",
+      "success_rate": 0.5,
+      "task_id": "CORE-ARITHMETIC-001"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "arithmetic",
+      "correct": 3,
+      "failure_modes_reported": {
+        "CAPABILITY": 3
+      },
+      "section": "core",
+      "success_rate": 0.5,
+      "task_id": "CORE-ARITHMETIC-002"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "arithmetic",
+      "correct": 3,
+      "failure_modes_reported": {
+        "CAPABILITY": 3
+      },
+      "section": "core",
+      "success_rate": 0.5,
+      "task_id": "CORE-ARITHMETIC-003"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "arithmetic",
+      "correct": 2,
+      "failure_modes_reported": {
+        "CAPABILITY": 4
+      },
+      "section": "core",
+      "success_rate": 0.333333,
+      "task_id": "CORE-ARITHMETIC-004"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "common_sense",
+      "correct": 5,
+      "failure_modes_reported": {
+        "CAPABILITY": 1
+      },
+      "section": "core",
+      "success_rate": 0.833333,
+      "task_id": "CORE-COMMON_SENSE-001"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "common_sense",
+      "correct": 5,
+      "failure_modes_reported": {
+        "CAPABILITY": 1
+      },
+      "section": "core",
+      "success_rate": 0.833333,
+      "task_id": "CORE-COMMON_SENSE-002"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "common_sense",
+      "correct": 5,
+      "failure_modes_reported": {
+        "CAPABILITY": 1
+      },
+      "section": "core",
+      "success_rate": 0.833333,
+      "task_id": "CORE-COMMON_SENSE-003"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "common_sense",
+      "correct": 5,
+      "failure_modes_reported": {
+        "CAPABILITY": 1
+      },
+      "section": "core",
+      "success_rate": 0.833333,
+      "task_id": "CORE-COMMON_SENSE-004"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "constraint",
+      "correct": 0,
+      "failure_modes_reported": {
+        "CAPABILITY": 6
+      },
+      "section": "core",
+      "success_rate": 0.0,
+      "task_id": "CORE-CONSTRAINT-001"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "constraint",
+      "correct": 0,
+      "failure_modes_reported": {
+        "CAPABILITY": 6
+      },
+      "section": "core",
+      "success_rate": 0.0,
+      "task_id": "CORE-CONSTRAINT-002"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "fixture_invalid",
+      "category": "constraint",
+      "correct": 0,
+      "failure_modes_reported": {
+        "CAPABILITY": 6
+      },
+      "section": "core",
+      "success_rate": 0.0,
+      "task_id": "CORE-CONSTRAINT-003"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "constraint",
+      "correct": 0,
+      "failure_modes_reported": {
+        "CAPABILITY": 6
+      },
+      "section": "core",
+      "success_rate": 0.0,
+      "task_id": "CORE-CONSTRAINT-004"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "instruction",
+      "correct": 5,
+      "failure_modes_reported": {
+        "CAPABILITY": 1
+      },
+      "section": "core",
+      "success_rate": 0.833333,
+      "task_id": "CORE-INSTRUCTION-001"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "instruction",
+      "correct": 4,
+      "failure_modes_reported": {
+        "CAPABILITY": 2
+      },
+      "section": "core",
+      "success_rate": 0.666667,
+      "task_id": "CORE-INSTRUCTION-002"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "instruction",
+      "correct": 1,
+      "failure_modes_reported": {
+        "CAPABILITY": 5
+      },
+      "section": "core",
+      "success_rate": 0.166667,
+      "task_id": "CORE-INSTRUCTION-003"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "instruction",
+      "correct": 4,
+      "failure_modes_reported": {
+        "CAPABILITY": 2
+      },
+      "section": "core",
+      "success_rate": 0.666667,
+      "task_id": "CORE-INSTRUCTION-004"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "logic",
+      "correct": 6,
+      "failure_modes_reported": {},
+      "section": "core",
+      "success_rate": 1.0,
+      "task_id": "CORE-LOGIC-001"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "logic",
+      "correct": 6,
+      "failure_modes_reported": {},
+      "section": "core",
+      "success_rate": 1.0,
+      "task_id": "CORE-LOGIC-002"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "logic",
+      "correct": 6,
+      "failure_modes_reported": {},
+      "section": "core",
+      "success_rate": 1.0,
+      "task_id": "CORE-LOGIC-003"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "logic",
+      "correct": 5,
+      "failure_modes_reported": {
+        "CAPABILITY": 1
+      },
+      "section": "core",
+      "success_rate": 0.833333,
+      "task_id": "CORE-LOGIC-004"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "math_word",
+      "correct": 2,
+      "failure_modes_reported": {
+        "CAPABILITY": 4
+      },
+      "section": "core",
+      "success_rate": 0.333333,
+      "task_id": "CORE-MATH_WORD-001"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "math_word",
+      "correct": 3,
+      "failure_modes_reported": {
+        "CAPABILITY": 3
+      },
+      "section": "core",
+      "success_rate": 0.5,
+      "task_id": "CORE-MATH_WORD-002"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "math_word",
+      "correct": 5,
+      "failure_modes_reported": {
+        "CAPABILITY": 1
+      },
+      "section": "core",
+      "success_rate": 0.833333,
+      "task_id": "CORE-MATH_WORD-003"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "math_word",
+      "correct": 2,
+      "failure_modes_reported": {
+        "CAPABILITY": 4
+      },
+      "section": "core",
+      "success_rate": 0.333333,
+      "task_id": "CORE-MATH_WORD-004"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "reading",
+      "correct": 5,
+      "failure_modes_reported": {
+        "CAPABILITY": 1
+      },
+      "section": "core",
+      "success_rate": 0.833333,
+      "task_id": "CORE-READING-001"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "reading",
+      "correct": 3,
+      "failure_modes_reported": {
+        "CAPABILITY": 3
+      },
+      "section": "core",
+      "success_rate": 0.5,
+      "task_id": "CORE-READING-002"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "reading",
+      "correct": 5,
+      "failure_modes_reported": {
+        "CAPABILITY": 1
+      },
+      "section": "core",
+      "success_rate": 0.833333,
+      "task_id": "CORE-READING-003"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "reading",
+      "correct": 6,
+      "failure_modes_reported": {},
+      "section": "core",
+      "success_rate": 1.0,
+      "task_id": "CORE-READING-004"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "CRT",
+      "correct": 1,
+      "failure_modes_reported": {
+        "CAPABILITY": 5
+      },
+      "section": "sentinel",
+      "success_rate": 0.166667,
+      "task_id": "H01"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "Scheduling",
+      "correct": 1,
+      "failure_modes_reported": {
+        "CAPABILITY": 5
+      },
+      "section": "sentinel",
+      "success_rate": 0.166667,
+      "task_id": "H02"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "Shortest Path",
+      "correct": 0,
+      "failure_modes_reported": {
+        "CAPABILITY": 6
+      },
+      "section": "sentinel",
+      "success_rate": 0.0,
+      "task_id": "H03"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "Python Trace",
+      "correct": 1,
+      "failure_modes_reported": {
+        "CAPABILITY": 5
+      },
+      "section": "sentinel",
+      "success_rate": 0.166667,
+      "task_id": "H04"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "exact",
+      "correct": 4,
+      "failure_modes_reported": {
+        "CAPABILITY": 2
+      },
+      "section": "api_smoke",
+      "success_rate": 0.666667,
+      "task_id": "REL-001"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "exact",
+      "correct": 4,
+      "failure_modes_reported": {
+        "CAPABILITY": 2
+      },
+      "section": "api_smoke",
+      "success_rate": 0.666667,
+      "task_id": "REL-002"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "exact",
+      "correct": 5,
+      "failure_modes_reported": {
+        "CAPABILITY": 1
+      },
+      "section": "api_smoke",
+      "success_rate": 0.833333,
+      "task_id": "REL-003"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "exact",
+      "correct": 4,
+      "failure_modes_reported": {
+        "CAPABILITY": 2
+      },
+      "section": "api_smoke",
+      "success_rate": 0.666667,
+      "task_id": "REL-004"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "exact",
+      "correct": 4,
+      "failure_modes_reported": {
+        "CAPABILITY": 2
+      },
+      "section": "api_smoke",
+      "success_rate": 0.666667,
+      "task_id": "REL-005"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "exact",
+      "correct": 4,
+      "failure_modes_reported": {
+        "CAPABILITY": 2
+      },
+      "section": "api_smoke",
+      "success_rate": 0.666667,
+      "task_id": "REL-006"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "exact",
+      "correct": 5,
+      "failure_modes_reported": {
+        "CAPABILITY": 1
+      },
+      "section": "api_smoke",
+      "success_rate": 0.833333,
+      "task_id": "REL-007"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "exact",
+      "correct": 5,
+      "failure_modes_reported": {
+        "CAPABILITY": 1
+      },
+      "section": "api_smoke",
+      "success_rate": 0.833333,
+      "task_id": "REL-008"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "exact",
+      "correct": 4,
+      "failure_modes_reported": {
+        "CAPABILITY": 2
+      },
+      "section": "api_smoke",
+      "success_rate": 0.666667,
+      "task_id": "REL-009"
+    },
+    {
+      "attempts": 6,
+      "audit_status": "observed",
+      "category": "exact",
+      "correct": 4,
+      "failure_modes_reported": {
+        "CAPABILITY": 2
+      },
+      "section": "api_smoke",
+      "success_rate": 0.666667,
+      "task_id": "REL-010"
+    }
+  ]
+}

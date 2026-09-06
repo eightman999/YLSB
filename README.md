@@ -114,11 +114,25 @@ YLSBは、ローカルLLMのモデル単体ではなく、`model / quant / runti
 
 このリポジトリは試験仕様、問題データ、記録テンプレート、補助スクリプトを収録した**データパック**です。特定runtime向けの統合runnerは含まないため、使用するruntime/APIに合わせて実行ハーネスを用意してください。基本的な採点補助は [`common/grader_basic.py`](common/grader_basic.py)、Long Context入力の生成補助は各コースの`build_long_context.py`を利用できます。
 
+## 公開結果とnormalized corpus
+
+v0.3 UME第一陣（6モデル）の元レポートと、生の観測値を将来のpolicyで再解釈できる `normalized corpus v0.1` を [`results/v0.3/`](results/v0.3/README.md) に収録しています。
+
+- Frozen Baselineは受領ZIPの全56ファイルを改変せず、ファイル別SHA-256 manifestとともに保持
+- 6 submissions、1 machine、6 models、1 runtime、252 quality results、198 performance recordsを正規化
+- observed measurement、metadata、v0.3 verdict、将来のregrade/rerun分類を別ファイルへ分離
+- 未報告値は推測で補わず、`reported / derived / registry / inferred / unknown` provenanceを記録
+- Core constraint fixture、Hard Sentinel、GPT-OSSの空回答、template hash不一致を監査
+- Candidate Plannerではraw観測値を条件付き利用し、v0.3 gate labelsを教師ラベルにしない
+
+入口は [`corpus health`](results/v0.3/derived/corpus_health.md) と [`calibration report`](results/v0.3/derived/calibration_report.md) です。生成・schema・semantic validationは [`tools/normalized_corpus/build_corpus.py`](tools/normalized_corpus/build_corpus.py) で再現できます。
+
 ## ディレクトリ構成
 
 ```text
 common/                         共通設定、grader、Legacy Inverse Challenge
   run_record.schema.json        正式runに必要な記録項目のJSON Schema
+results/v0.3/                   Frozen Baseline、normalized corpus、派生監査
 ume/                            梅コースのprofile、問題、記録テンプレート
 take/                           竹コースのprofile、問題、記録テンプレート
 matsu/                          松コースのprofile、問題、記録テンプレート、補助script
