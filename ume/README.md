@@ -2,6 +2,10 @@
 
 最小・最速で「この構成は測る意味があるか」を判定する入口試験。
 
+## 実行前の必須事項
+
+`../common/run_record.schema.json`に従い、runtime完全commit hash、GPU/RAM、環境version、全runtime設定、model/fixture/grader/chat templateのSHA-256を先に記録する。PP/TGは全repeatのtok/s、VRAM、`timings.cache_n`、raw出力パスと、平均・標準偏差を保存する。欠落したrunは正式結果にしない。
+
 ## 試験量
 - Core: 28問（7カテゴリ×4、Directのみ）
 - Hard Sentinel: 4問

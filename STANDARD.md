@@ -18,11 +18,48 @@ Hard Sentinelも梅4問→竹8問→松12問の累積anchorとする。
 - PPとTGを分離する。
 - `llama-bench` と実API TTFT/E2Eを混ぜない。
 - R0 非Tensor Referenceを必須とし、Tensor/MTPは必ずR0との対照にする。
-- モデルSHA、quant、template、runtime commit、GPU、split、KV、ctx、batch、seed、max_tokens、cold/warmを記録する。
+- モデル・fixture・grader・chat templateのSHA-256、runtimeの完全commit hash、ハードウェア、環境、全runtime設定を記録する。
 - 正式記録は `fixture validation -> smoke -> raw -> automatic grader -> semantic audit -> frozen corrected result`。
 - `FIXTURE_INVALID / INFRA / CAPABILITY / OUTPUT_BUDGET / PROTOCOL` を分離する。
 - HTTP 200だけではPASSにしない。
 - Long Contextは設定ctxではなくactual prompt_tokensを記録する。
+
+### 2.1 必須run record契約
+
+次の項目は全コース・全runで必須とする。空欄、`unknown`、`記録済み`等の抽象表現で代用してはならない。取得不能・非該当の場合もフィールドを省略せず、理由を併記する。1項目でも欠けるrunはYLSB準拠の比較可能な正式結果として扱わない。
+
+| # | 必須項目 | 必須の具体値 |
+|---:|---|---|
+| 1 | runtime | 名前、version、llama.cpp等の完全なcommit hash |
+| 2 | GPU | 型番、枚数、1枚あたりのVRAM容量 |
+| 3 | RAM | システムRAM容量 |
+| 4 | context | runtimeへ指定したctx設定値 |
+| 5 | KV cache | K/V type・量子化・offload等の設定 |
+| 6 | seed | 使用した整数値 |
+| 7 | max_tokens | 使用した出力上限値 |
+| 8 | batch / ubatch | 両方の整数値 |
+| 9 | Flash Attention | on/off |
+| 10 | 環境version | OS、kernel、CUDA、driver等 |
+| 11 | model | artifactのSHA-256 |
+| 12 | fixture | パスとSHA-256 |
+| 13 | grader | パスとSHA-256 |
+| 14 | chat template | 識別子、取得元、SHA-256、thinking無効化の有無と方法 |
+| 15 | PP/TG VRAM | 各repeatの使用量と測定点ごとのpeak |
+| 16 | PP/TG標準偏差 | 各測定点の値と、sample/populationの別 |
+| 17 | repeat生値 | repeat番号、tok/s、raw出力パス |
+| 18 | `timings.cache_n` | runtime出力の具体的な整数値 |
+
+加えてmodel quantization、Lane、split、Tensor/MTP、runtimeの全CLI引数、各repeatのcold/warm状態も必須とする。
+
+機械可読な正本は `common/run_record.schema.json` とする。AI・runnerは実行前にschemaを読み、実行後に以下を検証する。
+
+- 全必須フィールドが具体値で存在する。
+- 各PP/TG summaryに、コース指定回数分のraw sampleが対応する。
+- meanと標準偏差をrepeat生値から再計算できる。
+- 全PP/TG sampleにVRAM使用量、`timings.cache_n`、raw出力パスがある。
+- model、fixture、grader、chat templateのSHA-256が使用artifactと一致する。
+
+不足または不整合がある間はPASS・採用判定・比較結果を確定せず、`PROTOCOL`または該当するfailure classへ分類する。
 
 ## 3. 代表モデルスロット
 
@@ -151,4 +188,3 @@ manifest.json
 
 ### 固定anchorの注意
 公開・共有済み固定問題であるため、将来のcontaminationを否定できない。過去モデルとの縦比較・回帰には使えるが、fresh未知問題性能の単独根拠にはしない。canonical solution / hidden inputsは公開ZIPに含めない。
-

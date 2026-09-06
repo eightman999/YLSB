@@ -2,6 +2,10 @@
 
 日常採用するモデル/GPU/runtime構成を決める標準試験。
 
+## 実行前の必須事項
+
+`../common/run_record.schema.json`に従い、runtime完全commit hash、GPU/RAM、環境version、全runtime設定、model/fixture/grader/chat templateのSHA-256を先に記録する。PP/TGは全repeatのtok/s、VRAM、`timings.cache_n`、raw出力パスと、平均・標準偏差を保存する。欠落したrunは正式結果にしない。
+
 ## 試験量
 - Core: 50問 × Direct/Reasoning-summary = 100応答
 - Hard Sentinel: 8問

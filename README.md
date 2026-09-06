@@ -52,6 +52,42 @@ YLSBは、ローカルLLMのモデル単体ではなく、`model / quant / runti
 
 高速化の効果を主張するときは、同じモデル・quant・KV・context・batchのR0と対にし、原則として一度に1変数だけ変更します。
 
+## AI・runner向け必須記録契約
+
+以下は**全コース・全runで必須**です。空欄、`unknown`、`記録済み`のような代替表現は不可です。取得不能または非該当なら、値を省略せず理由とともに明示してください。1項目でも欠けるrunは「YLSB準拠の比較可能な正式結果」として扱いません。
+
+| # | 必須項目 | 記録する具体値 |
+|---:|---|---|
+| 1 | runtime | runtime名・versionと、llama.cpp等の**完全なcommit hash** |
+| 2 | GPU | 型番、枚数、1枚あたりのVRAM容量 |
+| 3 | RAM | システムRAM容量 |
+| 4 | context | runtimeへ指定したctx設定値 |
+| 5 | KV cache | K/Vの型・量子化、offloadなど実際の設定 |
+| 6 | seed | 実際に使用した整数値 |
+| 7 | max tokens | 実際の出力上限値 |
+| 8 | batch | batchとubatchの両方 |
+| 9 | Flash Attention | on/off |
+| 10 | 環境 | OS名・version、kernel、CUDA、driver等のversion |
+| 11 | model | 対象model artifactのSHA-256 |
+| 12 | fixture | 使用したfixtureのパスとSHA-256 |
+| 13 | grader | 使用したgraderのパスとSHA-256 |
+| 14 | chat template | 識別子、取得元、SHA-256、thinking無効化の有無と方法 |
+| 15 | PP/TG VRAM | PP/TG各repeatのVRAM使用量と集計時のpeak |
+| 16 | PP/TG標準偏差 | 各測定点の標準偏差と、標本・母標準偏差のどちらか |
+| 17 | repeat生値 | 各repeatのtok/s、repeat番号、対応するraw出力パス |
+| 18 | `timings.cache_n` | runtime出力に現れた具体的な整数値 |
+
+既存の比較条件であるmodel quantization、Lane、split、Tensor/MTP、runtimeの全CLI引数、各repeatのcold/warm状態も同じく必須です。
+
+機械可読な必須フィールドは[`common/run_record.schema.json`](common/run_record.schema.json)に定義しています。AIやrunnerは実行前に記録先を用意し、実行後に次を検証してください。
+
+1. 必須フィールドが全て具体値で埋まっている。
+2. PP/TGの各summaryに、コース所定回数分のraw sampleが対応している。
+3. 標準偏差が対応するrepeat生値から再計算できる。
+4. 各sampleにVRAM使用量と`timings.cache_n`がある。
+5. model・fixture・grader・chat templateのSHA-256が実際に使用したartifactと一致する。
+6. 不足があればPASSや比較結果を確定せず、`PROTOCOL`または適切なfailure classとして扱う。
+
 ## 重要な測定ルール
 
 - `llama-bench` のPP/TGと、実APIのTTFT/E2Eを混ぜない
@@ -69,8 +105,8 @@ YLSBは、ローカルLLMのモデル単体ではなく、`model / quant / runti
 
 1. [`STANDARD.md`](STANDARD.md) で共通ルールを確認する。
 2. 目的に合うコースを選び、そのコースのREADMEと`profile.json`を読む。
-3. 実行前にモデルとruntimeの識別情報、ハードウェア、Lane、seedなどを固定する。
-4. コースの`tests/*.jsonl`を使用して試験を実行し、1 request = 1 JSONL recordでraw出力と測定値を保存する。
+3. [`common/run_record.schema.json`](common/run_record.schema.json)に従って、モデル、runtime、環境、設定、artifact hashの記録先を先に用意する。
+4. コースの`tests/*.jsonl`を使用して試験を実行し、1 request = 1 JSONL recordでraw出力と測定値を保存する。PP/TGは各repeatの生値、VRAM、`timings.cache_n`も保存する。
 5. 自動採点後、異常ケースを意味監査し、failure classを分けてfrozen resultを作る。
 6. 同条件のR0や過去runと比較し、用途別の構成スロットを決める。
 
@@ -80,6 +116,7 @@ YLSBは、ローカルLLMのモデル単体ではなく、`model / quant / runti
 
 ```text
 common/                         共通設定、grader、Legacy Inverse Challenge
+  run_record.schema.json        正式runに必要な記録項目のJSON Schema
 ume/                            梅コースのprofile、問題、記録テンプレート
 take/                           竹コースのprofile、問題、記録テンプレート
 matsu/                          松コースのprofile、問題、記録テンプレート、補助script

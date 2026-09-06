@@ -6,6 +6,61 @@
 	目的: 研究・公開比較・大規模構成変更の完全試験
 	試験ID: [YLSB-MATSU]
 
+[* 必須run record]
+	schema: ../common/run_record.schema.json
+	run_id:
+	recorded_at:
+	lane:
+	runtime.name:
+	runtime.version:
+	runtime.commit_hash:
+	hardware.gpu.model:
+	hardware.gpu.count:
+	hardware.gpu.vram_gib_each:
+	hardware.ram_gib:
+	environment.os_name:
+	environment.os_version:
+	environment.kernel_version:
+	environment.cuda_version:
+	environment.driver_version:
+	environment.not_applicable_reason:
+	model.id:
+	model.quantization:
+	model.sha256:
+	fixture.path:
+	fixture.sha256:
+	grader.path:
+	grader.sha256:
+	chat_template.id:
+	chat_template.source:
+	chat_template.sha256:
+	chat_template.thinking_disabled:
+	chat_template.thinking_disabled_method:
+	runtime_config.ctx_size:
+	runtime_config.kv_cache.cache_type_k:
+	runtime_config.kv_cache.cache_type_v:
+	runtime_config.kv_cache.offload:
+	runtime_config.seed:
+	runtime_config.max_tokens:
+	runtime_config.batch_size:
+	runtime_config.ubatch_size:
+	runtime_config.flash_attention:
+	runtime_config.split_mode:
+	runtime_config.tensor_split:
+	runtime_config.mtp_enabled:
+	runtime_config.raw_cli_args:
+	runtime_config.timings.cache_n:
+
+[* PP/TG repeat生値]
+	table:metric	point_tokens	depth_tokens	repeat	cold/warm	tok/s	VRAM MiB	timings.cache_n	raw output path
+		PP
+		TG
+
+[* PP/TG集計]
+	table:metric	point_tokens	depth_tokens	expected repeats	recorded repeats	mean tok/s	sd tok/s	sd kind	peak VRAM MiB
+		PP
+		TG
+
 [* Day1 Performance topology]
 	PP full: 64/128/256/512/1024/2048/4096/8192
 	TG full: 16/32/64/128/256/512

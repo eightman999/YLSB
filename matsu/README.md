@@ -2,6 +2,10 @@
 
 研究・公開比較・大規模な構成変更に使う完全試験。
 
+## 実行前の必須事項
+
+`../common/run_record.schema.json`に従い、runtime完全commit hash、GPU/RAM、環境version、全runtime設定、model/fixture/grader/chat templateのSHA-256を先に記録する。PP/TGは全repeatのtok/s、VRAM、`timings.cache_n`、raw出力パスと、平均・標準偏差を保存する。欠落したrunは正式結果にしない。
+
 ## Day 1 — Performance topology
 PP/TG full sweep、context depth、cold/warm、VRAM/RAM/power。R0を基準にTensor/MTP/FA/KVを1変数ずつ比較。
 

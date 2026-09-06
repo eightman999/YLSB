@@ -14,7 +14,7 @@
 	試験の深さを日本式に[梅試験] / [竹試験] / [松試験]の3段階に分ける。
 	松竹梅はモデルの格付けではなく、試験コースの深さを表す。
 	標準ID: [YLSB]
-	version: 0.2
+	version: 0.3
 
 [* コース]
 	table:格	試験ID	所要	用途
@@ -34,6 +34,33 @@
 	HTTP 200だけではPASSとしない。
 	Long Contextは設定ctx-sizeではなく、actual prompt_tokensを正式値として残す。
 	異なる試験群の点数を安易に一つの総合点へ合算しない。
+
+[* 必須run record契約]
+	全コース・全runで必須。空欄、unknown、記録済み等の抽象表現は禁止。
+	取得不能・非該当も省略せず理由を併記する。
+	table:#	必須項目	具体値
+		1	runtime	名前 / version / 完全commit hash
+		2	GPU	型番 / 枚数 / 1枚あたりVRAM
+		3	RAM	システムRAM容量
+		4	context	runtimeのctx設定値
+		5	KV cache	K/V type / 量子化 / offload等
+		6	seed	使用した整数値
+		7	max_tokens	使用した出力上限
+		8	batch / ubatch	両方の整数値
+		9	Flash Attention	on/off
+		10	環境	OS / kernel / CUDA / driver等のversion
+		11	model	artifact SHA-256
+		12	fixture	path / SHA-256
+		13	grader	path / SHA-256
+		14	chat template	識別子 / source / SHA-256 / thinking無効化方法
+		15	PP/TG VRAM	各repeatの使用量 / 測定点peak
+		16	PP/TG標準偏差	値 / sampleかpopulationか
+		17	repeat生値	repeat番号 / tok/s / raw出力path
+		18	timings.cache_n	runtime出力の具体的な整数値
+	model quantization / Lane / split / Tensor / MTP / runtime全CLI引数 / 各repeatのcold-warm状態も必須。
+	機械可読な正本: [common/run_record.schema.json]
+	AI / runnerは実行前にschemaを読み、実行後に必須値、repeat数、再計算可能性、artifact hashを検証する。
+	欠落・不整合があるrunは正式結果にせず、[PROTOCOL]等へ分類する。
 
 [* 標準測定フロー]
 	code: fixture validation -> smoke test -> raw result -> automatic grader -> semantic audit -> frozen corrected result

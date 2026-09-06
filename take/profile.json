@@ -1,4 +1,5 @@
 {
+  "required_run_record_schema": "../common/run_record.schema.json",
   "course": "竹",
   "duration": "half-day",
   "pp": [
