@@ -28,8 +28,8 @@
   "files": [
     {
       "path": "README.md",
-      "sha256": "64872ef149fb8f75c1339471c480483527a91a77cfed1640e63880157f186821",
-      "bytes": 1340
+      "sha256": "c73d29b28b844494ec2339b8f1fded09f4e6aa487abaa24d848ab0d0cb847d0a",
+      "bytes": 7346
     },
     {
       "path": "STANDARD.md",
@@ -38,8 +38,8 @@
     },
     {
       "path": "STANDARD_scrapbox.txt",
-      "sha256": "c05494d412b070b1d69a6a1fa79e8463d0a1c9dd7b0f98c721553ae180db69c2",
-      "bytes": 9600
+      "sha256": "969b1381300dee68869a149dc9dc2bdee7769696b95d133926ebc29402834078",
+      "bytes": 9566
     },
     {
       "path": "common/alert_policy.json",
@@ -242,7 +242,7 @@
       "bytes": 1567
     }
   ],
-  "distribution_url": "https://discord.com/channels/406357894427312148/1503087917579505757/1545840401267691590",
+  "distribution_url": "https://github.com/eightman999/yaminet-ylsb-shochikubai",
   "microcontroller_re": false,
   "legacy_inverse_challenge": {
     "family": "Legacy Inverse Challenge",
