@@ -1,0 +1,19 @@
+{
+  "run_id": "",
+  "model": "",
+  "model_sha": "",
+  "runtime": "",
+  "runtime_commit": "",
+  "track": "model_only",
+  "challenge_id": "LIC-S1",
+  "actual_prompt_tokens": null,
+  "completion_tokens": null,
+  "max_tokens": null,
+  "wall_seconds": null,
+  "status": "UNSCORED",
+  "failure_class": "",
+  "stage_scores": {},
+  "raw_output_path": "",
+  "reviewer": "",
+  "notes": ""
+}

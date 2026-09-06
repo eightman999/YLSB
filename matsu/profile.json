@@ -1,0 +1,65 @@
+{
+  "course": "松",
+  "duration": "half-day_x5",
+  "pp": [
+    64,
+    128,
+    256,
+    512,
+    1024,
+    2048,
+    4096,
+    8192
+  ],
+  "tg": [
+    16,
+    32,
+    64,
+    128,
+    256,
+    512
+  ],
+  "repetitions": 5,
+  "depth": [
+    0,
+    4096,
+    16384,
+    32768
+  ],
+  "optional_depth": [
+    49152,
+    61440
+  ],
+  "depth_pp": 512,
+  "depth_tg": 128,
+  "lanes": [
+    "R0",
+    "R1_if_supported",
+    "R2_if_supported",
+    "R3_optional"
+  ],
+  "cold_load_reps": 5,
+  "warm_api_requests": 30,
+  "quality": {
+    "core_file": "tests/core_matsu_230.jsonl",
+    "modes": [
+      "direct",
+      "reasoning_summary"
+    ],
+    "sentinel_file": "tests/sentinel_matsu_12.jsonl"
+  },
+  "version": "0.3",
+  "legacy_inverse_challenge": {
+    "required": true,
+    "track": "model_only",
+    "challenges": [
+      "LIC-S1",
+      "LIC-C1"
+    ],
+    "initial_runs_each": 1,
+    "replication_runs_each": 1,
+    "network": false,
+    "external_search": false,
+    "optional_track": "tool_assisted"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "PASS": "正常成功",
+  "CAPABILITY": "誤答・制約違反",
+  "OUTPUT_BUDGET": "max_tokens等の出力上限による打切り",
+  "PROTOCOL": "chat template/tool schema/API形式不整合",
+  "INFRA": "OOM/CUDA/runtime crash/transport failure",
+  "FIXTURE_INVALID": "問題・gold・grader不備",
+  "NOT_APPLICABLE": "ctx上限や未対応機能等で比較不能",
+  "REFUSAL": "不要拒否（refusal profileで使用）"
+}

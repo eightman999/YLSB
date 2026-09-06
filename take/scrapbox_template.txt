@@ -1,0 +1,73 @@
+闇ネット Local LLM 標準試験 — 竹
+#LocalLLM #闇ネット #ベンチマーク #竹試験
+
+[* 概要]
+	所要: 半日
+	目的: 日常採用構成の決定
+	試験ID: [YLSB-TAKE]
+
+[* Reference]
+	[R0 Non-Tensor Reference] 必須
+	Tensor/MTPはR0と対で測る
+
+[* 速度]
+	PP: 128 / 512 / 2048 / 8192 x5
+	TG: 32 / 128 / 512 x5
+	depth: d0 / d4K / d16K / d32K
+	cold load x3
+	warm API x10
+	table:lane	pp512	tg128	tg128@d16K	TTFT p50	E2E p95
+		R0
+		R1 Tensor
+		R2 MTP
+
+[* Core]
+	[core_take_50.jsonl]
+	Direct / Reasoning-summary = 100応答
+	table:category	Direct	Reasoning-summary
+		arithmetic
+		math_word
+		logic
+		constraint
+		reading
+		common_sense
+		instruction
+
+[* Hard Sentinel]
+	[sentinel_take_8.jsonl]
+	score:
+	RFC:
+	CPC:
+	[竹・難問全通過]:
+
+[* Practical]
+	[product_take_6.jsonl]
+	success:
+	median wall:
+
+[* Long Context]
+	[long_context_take_9.jsonl]
+	table:target	position	actual prompt_tokens	PASS	TTFT
+		1K	begin
+		1K	middle
+		1K	end
+		8K	begin
+		8K	middle
+		8K	end
+		32K	begin
+		32K	middle
+		32K	end
+
+[* Audit]
+	INVALID:
+	INFRA:
+	CAPABILITY:
+	採用構成:
+
+[* Legacy Inverse Challenge]
+	track: model_only
+	table:challenge	stage score	status	wall	actual prompt_tokens	completion_tokens	budget hit
+		LIC-S1
+		LIC-C1
+	[逆問題二冠]:
+	外部検索: なし

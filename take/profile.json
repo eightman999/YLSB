@@ -1,0 +1,51 @@
+{
+  "course": "竹",
+  "duration": "half-day",
+  "pp": [
+    128,
+    512,
+    2048,
+    8192
+  ],
+  "tg": [
+    32,
+    128,
+    512
+  ],
+  "repetitions": 5,
+  "depth": [
+    0,
+    4096,
+    16384,
+    32768
+  ],
+  "depth_pp": 512,
+  "depth_tg": 128,
+  "lanes": [
+    "R0",
+    "R1_optional",
+    "R2_optional"
+  ],
+  "cold_load_reps": 3,
+  "warm_api_requests": 10,
+  "quality": {
+    "core_file": "tests/core_take_50.jsonl",
+    "modes": [
+      "direct",
+      "reasoning_summary"
+    ],
+    "sentinel_file": "tests/sentinel_take_8.jsonl"
+  },
+  "version": "0.3",
+  "legacy_inverse_challenge": {
+    "required": true,
+    "track": "model_only",
+    "challenges": [
+      "LIC-S1",
+      "LIC-C1"
+    ],
+    "runs_each": 1,
+    "network": false,
+    "external_search": false
+  }
+}

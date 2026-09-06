@@ -1,0 +1,77 @@
+闇ネット Local LLM 標準試験 — 松
+#LocalLLM #闇ネット #ベンチマーク #松試験
+
+[* 概要]
+	所要: 半日 x 5日
+	目的: 研究・公開比較・大規模構成変更の完全試験
+	試験ID: [YLSB-MATSU]
+
+[* Day1 Performance topology]
+	PP full: 64/128/256/512/1024/2048/4096/8192
+	TG full: 16/32/64/128/256/512
+	depth: d0/d4K/d16K/d32K
+	optional: d49K/d61K
+	R0 -> Tensor -> MTP -> FA/KV の順に1変数ずつ
+	PP/TG/context曲線:
+	Pareto frontier:
+
+[* Day2 Reasoning & language]
+	[core_matsu_230.jsonl] x Direct/Reasoning-summary = 460
+	[sentinel_matsu_12.jsonl]
+	[japanese_parity_32.jsonl]
+	table:category	Direct	Reasoning-summary
+		arithmetic
+		math_word
+		logic
+		constraint
+		reading
+		common_sense
+		instruction
+	Hard Sentinel:
+	RFC:
+	CPC:
+	JA/EN parity:
+
+[* Day3 Practical & long context]
+	[coding_matsu_15.jsonl]
+	[long_context_matsu_54.jsonl]
+	[long_context_64k_optional_12.jsonl]
+	coding success:
+	long context success:
+	actual prompt_tokens監査:
+
+[* Day4 Serving / reliability]
+	[reliability_matsu_60.jsonl]
+	concurrency: 1 / 2 / 4
+	table:conc	success/min	p50	p95	p99	empty	OOM	crash
+		1
+		2
+		4
+	model switch:
+	fallback:
+	duplicate generation:
+
+[* Day5 Audit / freeze]
+	code: fixture validation -> smoke -> raw -> automatic grader -> semantic audit -> frozen corrected result
+	FIXTURE_INVALID:
+	INFRA:
+	CAPABILITY:
+	OUTPUT_BUDGET:
+	PROTOCOL:
+	再実行case:
+	replication:
+	[松・難問全通過]:
+	[松・再現達成]:
+	hash/manifest:
+
+[* Legacy Inverse Challenge]
+	Day2 model_only
+	table:challenge	run	stage score	status	wall	actual prompt_tokens
+		LIC-S1	1
+		LIC-C1	1
+	Day5 replication
+	table:challenge	replication	failure audit	備考
+		LIC-S1
+		LIC-C1
+	[LIC再現達成]:
+	contamination注意:

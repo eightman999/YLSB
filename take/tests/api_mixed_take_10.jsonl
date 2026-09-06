@@ -1,0 +1,10 @@
+{"id":"REL-001","kind":"exact","prompt":"107+4 の答えだけ返せ。","gold":111,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-002","kind":"exact","prompt":"114+5 の答えだけ返せ。","gold":119,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-003","kind":"exact","prompt":"121+6 の答えだけ返せ。","gold":127,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-004","kind":"exact","prompt":"128+7 の答えだけ返せ。","gold":135,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-005","kind":"exact","prompt":"135+8 の答えだけ返せ。","gold":143,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-006","kind":"exact","prompt":"142+9 の答えだけ返せ。","gold":151,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-007","kind":"exact","prompt":"149+10 の答えだけ返せ。","gold":159,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-008","kind":"exact","prompt":"156+11 の答えだけ返せ。","gold":167,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-009","kind":"exact","prompt":"163+3 の答えだけ返せ。","gold":166,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-010","kind":"exact","prompt":"170+4 の答えだけ返せ。","gold":174,"grader":"numeric_exact","max_tokens":64}

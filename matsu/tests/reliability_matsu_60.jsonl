@@ -1,0 +1,60 @@
+{"id":"REL-001","kind":"exact","prompt":"107+4 の答えだけ返せ。","gold":111,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-002","kind":"exact","prompt":"114+5 の答えだけ返せ。","gold":119,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-003","kind":"exact","prompt":"121+6 の答えだけ返せ。","gold":127,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-004","kind":"exact","prompt":"128+7 の答えだけ返せ。","gold":135,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-005","kind":"exact","prompt":"135+8 の答えだけ返せ。","gold":143,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-006","kind":"exact","prompt":"142+9 の答えだけ返せ。","gold":151,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-007","kind":"exact","prompt":"149+10 の答えだけ返せ。","gold":159,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-008","kind":"exact","prompt":"156+11 の答えだけ返せ。","gold":167,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-009","kind":"exact","prompt":"163+3 の答えだけ返せ。","gold":166,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-010","kind":"exact","prompt":"170+4 の答えだけ返せ。","gold":174,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-011","kind":"exact","prompt":"177+5 の答えだけ返せ。","gold":182,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-012","kind":"exact","prompt":"184+6 の答えだけ返せ。","gold":190,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-013","kind":"exact","prompt":"191+7 の答えだけ返せ。","gold":198,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-014","kind":"exact","prompt":"198+8 の答えだけ返せ。","gold":206,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-015","kind":"exact","prompt":"205+9 の答えだけ返せ。","gold":214,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-016","kind":"exact","prompt":"212+10 の答えだけ返せ。","gold":222,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-017","kind":"exact","prompt":"219+11 の答えだけ返せ。","gold":230,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-018","kind":"exact","prompt":"226+3 の答えだけ返せ。","gold":229,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-019","kind":"exact","prompt":"233+4 の答えだけ返せ。","gold":237,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-020","kind":"exact","prompt":"240+5 の答えだけ返せ。","gold":245,"grader":"numeric_exact","max_tokens":64}
+{"id":"REL-021","kind":"json","prompt":"vals=[0, 8, 1]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":9},"grader":"json_exact","max_tokens":64}
+{"id":"REL-022","kind":"json","prompt":"vals=[1, 0, 6]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":7},"grader":"json_exact","max_tokens":64}
+{"id":"REL-023","kind":"json","prompt":"vals=[2, 3, 11]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":16},"grader":"json_exact","max_tokens":64}
+{"id":"REL-024","kind":"json","prompt":"vals=[3, 6, 3]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":12},"grader":"json_exact","max_tokens":64}
+{"id":"REL-025","kind":"json","prompt":"vals=[4, 9, 8]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":21},"grader":"json_exact","max_tokens":64}
+{"id":"REL-026","kind":"json","prompt":"vals=[5, 1, 0]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":6},"grader":"json_exact","max_tokens":64}
+{"id":"REL-027","kind":"json","prompt":"vals=[6, 4, 5]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":15},"grader":"json_exact","max_tokens":64}
+{"id":"REL-028","kind":"json","prompt":"vals=[0, 7, 10]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":17},"grader":"json_exact","max_tokens":64}
+{"id":"REL-029","kind":"json","prompt":"vals=[1, 10, 2]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":13},"grader":"json_exact","max_tokens":64}
+{"id":"REL-030","kind":"json","prompt":"vals=[2, 2, 7]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":11},"grader":"json_exact","max_tokens":64}
+{"id":"REL-031","kind":"json","prompt":"vals=[3, 5, 12]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":20},"grader":"json_exact","max_tokens":64}
+{"id":"REL-032","kind":"json","prompt":"vals=[4, 8, 4]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":16},"grader":"json_exact","max_tokens":64}
+{"id":"REL-033","kind":"json","prompt":"vals=[5, 0, 9]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":14},"grader":"json_exact","max_tokens":64}
+{"id":"REL-034","kind":"json","prompt":"vals=[6, 3, 1]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":10},"grader":"json_exact","max_tokens":64}
+{"id":"REL-035","kind":"json","prompt":"vals=[0, 6, 6]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":12},"grader":"json_exact","max_tokens":64}
+{"id":"REL-036","kind":"json","prompt":"vals=[1, 9, 11]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":21},"grader":"json_exact","max_tokens":64}
+{"id":"REL-037","kind":"json","prompt":"vals=[2, 1, 3]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":6},"grader":"json_exact","max_tokens":64}
+{"id":"REL-038","kind":"json","prompt":"vals=[3, 4, 8]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":15},"grader":"json_exact","max_tokens":64}
+{"id":"REL-039","kind":"json","prompt":"vals=[4, 7, 0]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":11},"grader":"json_exact","max_tokens":64}
+{"id":"REL-040","kind":"json","prompt":"vals=[5, 10, 5]。説明なしでJSON `{\"sum\":N}` のみ返せ。","gold":{"sum":20},"grader":"json_exact","max_tokens":64}
+{"id":"REL-041","kind":"echo","prompt":"`PING-041` を一字一句そのまま返せ。","gold":"PING-041","grader":"exact","max_tokens":32}
+{"id":"REL-042","kind":"echo","prompt":"`PING-042` を一字一句そのまま返せ。","gold":"PING-042","grader":"exact","max_tokens":32}
+{"id":"REL-043","kind":"echo","prompt":"`PING-043` を一字一句そのまま返せ。","gold":"PING-043","grader":"exact","max_tokens":32}
+{"id":"REL-044","kind":"echo","prompt":"`PING-044` を一字一句そのまま返せ。","gold":"PING-044","grader":"exact","max_tokens":32}
+{"id":"REL-045","kind":"echo","prompt":"`PING-045` を一字一句そのまま返せ。","gold":"PING-045","grader":"exact","max_tokens":32}
+{"id":"REL-046","kind":"echo","prompt":"`PING-046` を一字一句そのまま返せ。","gold":"PING-046","grader":"exact","max_tokens":32}
+{"id":"REL-047","kind":"echo","prompt":"`PING-047` を一字一句そのまま返せ。","gold":"PING-047","grader":"exact","max_tokens":32}
+{"id":"REL-048","kind":"echo","prompt":"`PING-048` を一字一句そのまま返せ。","gold":"PING-048","grader":"exact","max_tokens":32}
+{"id":"REL-049","kind":"echo","prompt":"`PING-049` を一字一句そのまま返せ。","gold":"PING-049","grader":"exact","max_tokens":32}
+{"id":"REL-050","kind":"echo","prompt":"`PING-050` を一字一句そのまま返せ。","gold":"PING-050","grader":"exact","max_tokens":32}
+{"id":"REL-051","kind":"echo","prompt":"`PING-051` を一字一句そのまま返せ。","gold":"PING-051","grader":"exact","max_tokens":32}
+{"id":"REL-052","kind":"echo","prompt":"`PING-052` を一字一句そのまま返せ。","gold":"PING-052","grader":"exact","max_tokens":32}
+{"id":"REL-053","kind":"echo","prompt":"`PING-053` を一字一句そのまま返せ。","gold":"PING-053","grader":"exact","max_tokens":32}
+{"id":"REL-054","kind":"echo","prompt":"`PING-054` を一字一句そのまま返せ。","gold":"PING-054","grader":"exact","max_tokens":32}
+{"id":"REL-055","kind":"echo","prompt":"`PING-055` を一字一句そのまま返せ。","gold":"PING-055","grader":"exact","max_tokens":32}
+{"id":"REL-056","kind":"echo","prompt":"`PING-056` を一字一句そのまま返せ。","gold":"PING-056","grader":"exact","max_tokens":32}
+{"id":"REL-057","kind":"echo","prompt":"`PING-057` を一字一句そのまま返せ。","gold":"PING-057","grader":"exact","max_tokens":32}
+{"id":"REL-058","kind":"echo","prompt":"`PING-058` を一字一句そのまま返せ。","gold":"PING-058","grader":"exact","max_tokens":32}
+{"id":"REL-059","kind":"echo","prompt":"`PING-059` を一字一句そのまま返せ。","gold":"PING-059","grader":"exact","max_tokens":32}
+{"id":"REL-060","kind":"echo","prompt":"`PING-060` を一字一句そのまま返せ。","gold":"PING-060","grader":"exact","max_tokens":32}

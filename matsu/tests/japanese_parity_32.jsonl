@@ -1,0 +1,32 @@
+{"id":"PAIR-01-JA","pair_id":"PAIR-01","lang":"ja","prompt":"整数計算。(10 × 5) + 12 - 5 を計算せよ。整数だけ答える。","gold":57,"grader":"numeric_exact"}
+{"id":"PAIR-01-EN","pair_id":"PAIR-01","lang":"en","prompt":"Solve the following arithmetic task and return only the final answer: 整数計算。(10 × 5) + 12 - 5 を計算せよ。","gold":57,"grader":"numeric_exact"}
+{"id":"PAIR-02-JA","pair_id":"PAIR-02","lang":"ja","prompt":"整数計算。(13 × 6) + 13 - 7 を計算せよ。整数だけ答える。","gold":84,"grader":"numeric_exact"}
+{"id":"PAIR-02-EN","pair_id":"PAIR-02","lang":"en","prompt":"Solve the following arithmetic task and return only the final answer: 整数計算。(13 × 6) + 13 - 7 を計算せよ。","gold":84,"grader":"numeric_exact"}
+{"id":"PAIR-03-JA","pair_id":"PAIR-03","lang":"ja","prompt":"整数計算。(16 × 7) + 14 - 9 を計算せよ。整数だけ答える。","gold":117,"grader":"numeric_exact"}
+{"id":"PAIR-03-EN","pair_id":"PAIR-03","lang":"en","prompt":"Solve the following arithmetic task and return only the final answer: 整数計算。(16 × 7) + 14 - 9 を計算せよ。","gold":117,"grader":"numeric_exact"}
+{"id":"PAIR-04-JA","pair_id":"PAIR-04","lang":"ja","prompt":"整数計算。(19 × 8) + 15 - 11 を計算せよ。整数だけ答える。","gold":156,"grader":"numeric_exact"}
+{"id":"PAIR-04-EN","pair_id":"PAIR-04","lang":"en","prompt":"Solve the following arithmetic task and return only the final answer: 整数計算。(19 × 8) + 15 - 11 を計算せよ。","gold":156,"grader":"numeric_exact"}
+{"id":"PAIR-05-JA","pair_id":"PAIR-05","lang":"ja","prompt":"整数計算。(22 × 4) + 16 - 13 を計算せよ。整数だけ答える。","gold":91,"grader":"numeric_exact"}
+{"id":"PAIR-05-EN","pair_id":"PAIR-05","lang":"en","prompt":"Solve the following arithmetic task and return only the final answer: 整数計算。(22 × 4) + 16 - 13 を計算せよ。","gold":91,"grader":"numeric_exact"}
+{"id":"PAIR-06-JA","pair_id":"PAIR-06","lang":"ja","prompt":"整数計算。(25 × 5) + 17 - 15 を計算せよ。整数だけ答える。","gold":127,"grader":"numeric_exact"}
+{"id":"PAIR-06-EN","pair_id":"PAIR-06","lang":"en","prompt":"Solve the following arithmetic task and return only the final answer: 整数計算。(25 × 5) + 17 - 15 を計算せよ。","gold":127,"grader":"numeric_exact"}
+{"id":"PAIR-07-JA","pair_id":"PAIR-07","lang":"ja","prompt":"整数計算。(28 × 6) + 18 - 17 を計算せよ。整数だけ答える。","gold":169,"grader":"numeric_exact"}
+{"id":"PAIR-07-EN","pair_id":"PAIR-07","lang":"en","prompt":"Solve the following arithmetic task and return only the final answer: 整数計算。(28 × 6) + 18 - 17 を計算せよ。","gold":169,"grader":"numeric_exact"}
+{"id":"PAIR-08-JA","pair_id":"PAIR-08","lang":"ja","prompt":"整数計算。(31 × 7) + 19 - 19 を計算せよ。整数だけ答える。","gold":217,"grader":"numeric_exact"}
+{"id":"PAIR-08-EN","pair_id":"PAIR-08","lang":"en","prompt":"Solve the following arithmetic task and return only the final answer: 整数計算。(31 × 7) + 19 - 19 を計算せよ。","gold":217,"grader":"numeric_exact"}
+{"id":"PAIR-09-JA","pair_id":"PAIR-09","lang":"ja","prompt":"P=FALSE, Q=FALSE, R=TRUE とする。命題 `(P AND NOT Q) OR R` の真偽を TRUE/FALSE で答えよ。","gold":"TRUE","grader":"exact"}
+{"id":"PAIR-09-EN","pair_id":"PAIR-09","lang":"en","prompt":"Solve the following logic task and return only the final answer: P=FALSE, Q=FALSE, R=TRUE とする。命題 `(P AND NOT Q) OR R` の真偽を TRUE/FALSE で答えよ。","gold":"TRUE","grader":"exact"}
+{"id":"PAIR-10-JA","pair_id":"PAIR-10","lang":"ja","prompt":"数列 5, 9, 13, 17, 21, ? は一定差で増加している。? を整数で答えよ。","gold":25,"grader":"numeric_exact"}
+{"id":"PAIR-10-EN","pair_id":"PAIR-10","lang":"en","prompt":"Solve the following logic task and return only the final answer: 数列 5, 9, 13, 17, 21, ? は一定差で増加している。? を整数で答えよ。","gold":25,"grader":"numeric_exact"}
+{"id":"PAIR-11-JA","pair_id":"PAIR-11","lang":"ja","prompt":"前提: すべてのトルは青い。青いものは1つも四角くない。ある個体Xがトルである。Xは四角いか。`はい` または `いいえ` で答えよ。","gold":"いいえ","grader":"exact"}
+{"id":"PAIR-11-EN","pair_id":"PAIR-11","lang":"en","prompt":"Solve the following logic task and return only the final answer: 前提: すべてのトルは青い。青いものは1つも四角くない。ある個体Xがトルである。Xは四角いか。`はい` または `いいえ` で答えよ。","gold":"いいえ","grader":"exact"}
+{"id":"PAIR-12-JA","pair_id":"PAIR-12","lang":"ja","prompt":"ビット列 01010 の全ビットを XOR した値を 0/1 で答えよ。","gold":0,"grader":"numeric_exact"}
+{"id":"PAIR-12-EN","pair_id":"PAIR-12","lang":"en","prompt":"Solve the following logic task and return only the final answer: ビット列 01010 の全ビットを XOR した値を 0/1 で答えよ。","gold":0,"grader":"numeric_exact"}
+{"id":"PAIR-13-JA","pair_id":"PAIR-13","lang":"ja","prompt":"P=FALSE, Q=FALSE, R=TRUE とする。命題 `(P AND NOT Q) OR R` の真偽を TRUE/FALSE で答えよ。","gold":"TRUE","grader":"exact"}
+{"id":"PAIR-13-EN","pair_id":"PAIR-13","lang":"en","prompt":"Solve the following logic task and return only the final answer: P=FALSE, Q=FALSE, R=TRUE とする。命題 `(P AND NOT Q) OR R` の真偽を TRUE/FALSE で答えよ。","gold":"TRUE","grader":"exact"}
+{"id":"PAIR-14-JA","pair_id":"PAIR-14","lang":"ja","prompt":"数列 4, 8, 12, 16, 20, ? は一定差で増加している。? を整数で答えよ。","gold":24,"grader":"numeric_exact"}
+{"id":"PAIR-14-EN","pair_id":"PAIR-14","lang":"en","prompt":"Solve the following logic task and return only the final answer: 数列 4, 8, 12, 16, 20, ? は一定差で増加している。? を整数で答えよ。","gold":24,"grader":"numeric_exact"}
+{"id":"PAIR-15-JA","pair_id":"PAIR-15","lang":"ja","prompt":"前提: すべてのトルは青い。青いものは1つも四角くない。ある個体Xがトルである。Xは四角いか。`はい` または `いいえ` で答えよ。","gold":"いいえ","grader":"exact"}
+{"id":"PAIR-15-EN","pair_id":"PAIR-15","lang":"en","prompt":"Solve the following logic task and return only the final answer: 前提: すべてのトルは青い。青いものは1つも四角くない。ある個体Xがトルである。Xは四角いか。`はい` または `いいえ` で答えよ。","gold":"いいえ","grader":"exact"}
+{"id":"PAIR-16-JA","pair_id":"PAIR-16","lang":"ja","prompt":"ビット列 01010 の全ビットを XOR した値を 0/1 で答えよ。","gold":0,"grader":"numeric_exact"}
+{"id":"PAIR-16-EN","pair_id":"PAIR-16","lang":"en","prompt":"Solve the following logic task and return only the final answer: ビット列 01010 の全ビットを XOR した値を 0/1 で答えよ。","gold":0,"grader":"numeric_exact"}

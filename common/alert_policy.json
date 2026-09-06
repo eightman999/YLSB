@@ -1,0 +1,46 @@
+{
+  "ume_full_clear": {
+    "course": "梅",
+    "condition": "sentinel 4/4 AND INVALID=0 AND INFRA=0 AND non_empty=4/4",
+    "label": "梅・難問全通過"
+  },
+  "take_full_clear": {
+    "course": "竹",
+    "condition": "sentinel 8/8 AND INVALID=0 AND INFRA=0 AND non_empty=8/8",
+    "label": "竹・難問全通過"
+  },
+  "matsu_full_clear": {
+    "course": "松",
+    "condition": "sentinel 12/12 AND INVALID=0 AND INFRA=0 AND non_empty=12/12",
+    "label": "松・難問全通過"
+  },
+  "small_model_breakthrough": {
+    "condition": "Smallest Meaningful が竹sentinel 7/8以上",
+    "label": "小型モデル突破"
+  },
+  "repro_clear": {
+    "condition": "別run/別seedまたは別日で松sentinel 12/12再現",
+    "label": "松・再現達成"
+  },
+  "hook_note": "通知先はrunner hookで抽象化し、Webhook/token等の秘密情報をデータセットに保存しない。",
+  "lic_s1_clear": {
+    "course": "竹/松",
+    "condition": "LIC-S1 stage_score=100 AND status=PASS",
+    "label": "LIC-S1突破"
+  },
+  "lic_c1_clear": {
+    "course": "竹/松",
+    "condition": "LIC-C1 stage_score=100 AND status=PASS",
+    "label": "LIC-C1突破"
+  },
+  "lic_double_clear": {
+    "course": "竹/松",
+    "condition": "同一model/configでLIC-S1=PASS AND LIC-C1=PASS",
+    "label": "逆問題二冠"
+  },
+  "lic_repro_clear": {
+    "course": "松",
+    "condition": "別runでLIC-S1/C1のPASSを再現",
+    "label": "LIC再現達成"
+  }
+}

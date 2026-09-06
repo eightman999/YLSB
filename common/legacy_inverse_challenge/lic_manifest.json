@@ -1,0 +1,62 @@
+{
+  "family": "Legacy Inverse Challenge",
+  "version": "LIC-1",
+  "public_anchor": true,
+  "fresh_capability_claim_allowed": false,
+  "standard_track": "model_only",
+  "standard_track_rules": {
+    "network": false,
+    "web_search": false,
+    "other_llm": false,
+    "local_code_execution": false,
+    "note": "ファイル読込・token counting等のハーネス処理は可。解析用Python/shellを使う場合はtool_assisted trackへ分離。"
+  },
+  "optional_track": "tool_assisted",
+  "solutions_in_public_pack": false,
+  "challenges": [
+    {
+      "id": "LIC-S1",
+      "name": "Sequence Algorithm Recovery",
+      "asset": "answers_10001.txt",
+      "prompt": "この数列から元のアルゴリズムを導出してください",
+      "observations": 10001,
+      "logical_lines": 10002,
+      "footer": "#count=10001\t#first=1\t#last=10001",
+      "sha256": "3141359898ecf49cddc26b0ccea7ec2c7659c6fb9990e98e9bd9b6be877af6a6",
+      "bytes": 94131,
+      "score_weights": {
+        "algorithm_identification": 35,
+        "reproducible_implementation": 30,
+        "observed_range_consistency": 15,
+        "unseen_input_consistency": 15,
+        "self_check_consistency": 5
+      },
+      "grading_notes": [
+        "観測範囲への単純補間だけでは満点にしない。",
+        "canonical algorithm / hidden inputは公開パック外で保持する。",
+        "hidden-input検証が無い実施はprovisionalと表示する。"
+      ]
+    },
+    {
+      "id": "LIC-C1",
+      "name": "Cipher Program Recovery",
+      "asset": "message.txt",
+      "prompt_source": "message.txt",
+      "logical_lines": 67,
+      "sha256": "02c81e683998114fabb19a707fd2e96013544fbbcc121624ba2495435a19e30f",
+      "bytes": 6630,
+      "score_weights": {
+        "transform_recovery": 25,
+        "plaintext_recovery": 30,
+        "embedded_program_extraction": 20,
+        "program_semantics": 15,
+        "self_check_consistency": 10
+      },
+      "grading_notes": [
+        "canonical plaintext / decoder / embedded programは公開パック外で保持する。",
+        "復号・program extraction・program semanticsを別々に採点する。",
+        "既存暗号方式名を推測するだけでは満点にしない。"
+      ]
+    }
+  ]
+}

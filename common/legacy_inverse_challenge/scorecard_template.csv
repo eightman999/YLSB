@@ -1,0 +1,3 @@
+run_id,challenge_id,model,runtime,track,actual_prompt_tokens,completion_tokens,max_tokens,wall_seconds,stage_score,status,failure_class,raw_output_path,notes
+,LIC-S1,,,model_only,,,,,,UNSCORED,,,
+,LIC-C1,,,model_only,,,,,,UNSCORED,,,

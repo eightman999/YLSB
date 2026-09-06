@@ -1,0 +1,321 @@
+闇ネット Local LLM 標準試験要項 v0.3 — 松竹梅版
+#LocalLLM #闇ネット #ベンチマーク #llm_master #松竹梅 #標準試験
+
+[* 概要]
+	ローカルLLMを、単純な「賢さ」だけでなく、
+		速度
+		実問題の正答
+		長文脈
+		Coding
+		Serving互換性
+		安定性
+		失敗原因
+	まで含めて比較するための標準試験。
+	試験の深さを日本式に[梅試験] / [竹試験] / [松試験]の3段階に分ける。
+	松竹梅はモデルの格付けではなく、試験コースの深さを表す。
+	標準ID: [YLSB]
+	version: 0.2
+
+[* コース]
+	table:格	試験ID	所要	用途
+		梅	[YLSB-UME]	約2時間	新GPU・新モデル・新runtimeの足切り
+		竹	[YLSB-TAKE]	半日	日常採用構成の決定
+		松	[YLSB-MATSU]	半日×5日	研究・公開比較・完全監査
+	[梅試験] ⊂ [竹試験] ⊂ [松試験]
+	CoreとHard Sentinelは累積subsetとする。
+	途中から上位試験へ進んでもanchorを失わない。
+
+[* 基本原則]
+	PPとTGは分離して測る。
+	[llama-bench] のtok/sと、実APIのTTFT/E2Eは別指標。
+	[R0 Non-Tensor Reference]を必須とする。
+	Tensor Split / MTP / Speculative / Flash Attention / KV cache量子化等は、必ずReferenceとの対照実験にする。
+	モデルSHA、quant、chat template、runtime commit、GPU、split、KV、ctx、batch、seed、max_tokens、cold/warmを記録する。
+	HTTP 200だけではPASSとしない。
+	Long Contextは設定ctx-sizeではなく、actual prompt_tokensを正式値として残す。
+	異なる試験群の点数を安易に一つの総合点へ合算しない。
+
+[* 標準測定フロー]
+	code: fixture validation -> smoke test -> raw result -> automatic grader -> semantic audit -> frozen corrected result
+	最初のsummaryではなく、監査後の[frozen corrected result]を正式記録とする。
+
+[* Failure taxonomy]
+	table:class	意味
+		PASS	正常成功
+		CAPABILITY	内容誤り・制約違反
+		OUTPUT_BUDGET	max_tokens等で打切り
+		PROTOCOL	chat template / JSON schema / tool protocol / API形式の不整合
+		INFRA	OOM / CUDA error / crash / transport failure
+		FIXTURE_INVALID	問題・gold・grader不備
+		NOT_APPLICABLE	未対応機能やctx上限等で比較不能
+		REFUSAL	不要拒否を扱う試験のみ
+	能力不足と環境不良とベンチ不良を混ぜない。
+
+[* 代表モデルスロット]
+	[S: Smallest Meaningful]
+		意味のある最小モデル。
+		暫定gate:
+			Core-Mini >= 60%
+			format >= 80%
+			non-empty = 100%
+			INFRA = 0
+			Hard Sentinel >= 1 または実用task >= 1
+	[F: Fastest Useful]
+		実用最低品質を超えた中で最速のモデル。
+		暫定gate:
+			Core-Mini >= 80%
+			format >= 90%
+			non-empty = 100%
+			INFRA = 0
+		その中でR0 tg128@d0最大。
+	[L: Largest Practical]
+		対象マシンで実用可能な最大モデル。
+	[D: Daily / Default]
+		通常運用の基準モデル。
+	[X: Experimental]
+		Tensor / MTP / fork / 新backend等の実験構成。
+
+[* Lane]
+	[* R0 Non-Tensor Reference]
+		必須。
+		single GPU:
+			split-mode none
+		multi GPU:
+			split-mode layer
+		Tensor split: off
+		MTP / speculative: off
+		比較の原点。
+	[* R1 Tensor Split]
+		対応時のみ。
+		R0と同一model / quant / KV / context / batchで比較。
+	[* R2 MTP / Speculative]
+		対応時のみ。
+		可能ならReference/Tensor × MTP off/onの2×2。
+		CPU sampling fallback等が起きた場合はログに残す。
+	[* R3 Runtime / Fork]
+		upstream llama.cpp / fork / vLLM / Ollama等。
+		weight形式やkernel条件が違う場合は純粋なruntime因果比較とはしない。
+
+[* PP/TG標準]
+	PP = Prompt Processing
+	TG = Token Generation
+
+	[* 梅]
+		PP: 128 / 512 / 2048 x3
+		TG: 32 / 128 x3
+		depth: d0 / d8K
+
+	[* 竹]
+		PP: 128 / 512 / 2048 / 8192 x5
+		TG: 32 / 128 / 512 x5
+		depth: d0 / d4K / d16K / d32K
+
+	[* 松]
+		PP: 64 / 128 / 256 / 512 / 1024 / 2048 / 4096 / 8192 x5
+		TG: 16 / 32 / 64 / 128 / 256 / 512 x5
+		depth: d0 / d4K / d16K / d32K
+		64Kを主張する場合だけd49K / d61K近傍も追加。
+
+[* 品質試験]
+	[Core pool]
+		7カテゴリ、合計230問。
+		table:category	count
+			arithmetic	30
+			math_word	40
+			logic	40
+			constraint	30
+			reading	30
+			common_sense	30
+			instruction	30
+
+	[梅試験]
+		Core 28問。
+		7カテゴリ×4。
+		Directのみ。
+	[竹試験]
+		Core 50問。
+		Direct / Reasoning-summary。
+		100応答。
+	[松試験]
+		Core 230問。
+		Direct / Reasoning-summary。
+		460応答。
+
+[* Reasoning-summary]
+	内部CoTそのものを評価したと主張しない。
+	モデルが外部に出した、検証可能な短い根拠要約とfinalを比較する。
+	[RFC: Rationale-Final Consistency]
+		rationale_summaryとfinalの整合率。
+	[CPC: Checkpoint Consistency]
+		設定した中間checkpointとの整合率。
+	分類例:
+		CC	根拠もfinalも正しい
+		CW	根拠は正しいがfinalが誤り
+		WC	根拠は誤るがfinalは正しい
+		WW	両方誤り
+	これは「内部思考が正しい」ことの証明ではない。
+
+[* Hard Sentinel]
+	少数の難問を全コース共通anchorとして置く。
+	[梅]
+		H01-H04
+	[竹]
+		H01-H08
+	[松]
+		H01-H12
+	コース内全問正解かつINVALID=0、INFRA=0で突破。
+	[梅・難問全通過]
+	[竹・難問全通過]
+	[松・難問全通過]
+	別run / 別日でも松12/12なら[松・再現達成]。
+
+[* Long Context]
+	[竹]
+		9ケース。
+		1K / 8K / 32K × begin / middle / end。
+	[松]
+		54ケース。
+		同じ3長さ×3位置を複数seedで反復。
+		64K optional 12件。
+	target_prompt_tokensは設計値。
+	正式結果では各model/API tokenizerが返すactual prompt_tokensを記録。
+	ctx-size=65536だけを理由に「64K検証済み」とはしない。
+
+[* Coding / Practical]
+	[竹]
+		Coding 6問。
+		API mixed 10件。
+	[松]
+		Coding 15問。
+		JA/EN parity 32件。
+		reliability mixed 60件。
+	コードは説明の見栄えではなくunit test通過を基本評価とする。
+	Repository Agentを評価する場合は、基礎Codingとは別試験とする。
+
+[* Serving / Reliability]
+	主な記録:
+		success/min
+		TTFT p50 / p95 / p99
+		E2E p50 / p95 / p99
+		empty final
+		OOM
+		crash
+		model switch
+		fallback
+		duplicate generation
+	[松]ではconcurrency 1 / 2 / 4を基本。
+	GPU使用率100%を目的にせず、「成功した仕事/時間」「成功した仕事/電力」を重視する。
+
+[* Cold / Warm]
+	Cold loadとwarm inferenceを分離。
+	モデルファイルのストレージ、page cache、NVMe/HDD差はcold loadへ影響する。
+	常駐後のTG tok/sと同じものとして扱わない。
+
+[* 比較時に固定するもの]
+	model weights / SHA
+	quant
+	chat template
+	runtime commit
+	GPU allocation
+	split mode
+	context
+	KV cache
+	batch / ubatch
+	seed
+	temperature / top_p
+	max_tokens
+	prompt
+	measurement repetitions
+	一つの比較で複数変数を同時に変更しない。
+
+[* 推奨出力]
+	1 request = 1 JSONL record
+	最低限:
+		run_id
+		case_id
+		model
+		model_sha
+		runtime
+		runtime_commit
+		GPU
+		lane
+		prompt_tokens
+		completion_tokens
+		TTFT
+		wall
+		PP/TG
+		raw_output
+		parsed_final
+		pass
+		failure_class
+		grader_version
+
+[* 監査]
+	自動FAILは最終ランキング前にsemantic auditする。
+	gold修正やgrader修正が発生したcaseは、修正前結果を上書きせずrevisionを残す。
+	dataset / script / graderにはSHA-256を付ける。
+	公開時はraw resultとfrozen resultを分ける。
+	試験セット自体の不備もベンチ結果として記録する。
+
+[* 松竹梅の使い分け]
+	新しいGPUを刺した
+	新しいモデルを落とした
+	新しい量子化を試した
+		-> [梅試験]
+
+	普段使いモデルを決めたい
+	non-Tensor / Tensor / MTPを比較したい
+	小型・最速・大型を選びたい
+		-> [竹試験]
+
+	闇ネットへ結果を公開したい
+	研究的な比較をしたい
+	大きなruntime変更を評価したい
+	再現性まで確認したい
+		-> [松試験]
+
+[* 関連]
+	[梅試験]
+	[竹試験]
+	[松試験]
+	[llm_master 既存ベンチマークまとめ]
+	[NVIDIA V100のローカルLLMの速度計測]
+	[Hard Sentinel]
+	[R0 Non-Tensor Reference]
+	[Long Context]
+	[Reasoning-summary]
+	[benchmark self-auditing]
+
+[* データパック]
+	[YLSB v0.3 松竹梅]
+	データURL: https://discord.com/channels/406357894427312148/1503087917579505757/1545840401267691590
+		Discord上の配布メッセージ。
+		テストデータ、テンプレート、manifestをまとめた配布先として扱う。
+		common/
+		ume/
+		take/
+		matsu/
+		manifest.json
+	各コースのテストデータとScrapBoxテンプレは別ファイル。
+[* Legacy Inverse Challenge]
+	v0.3追加。マイコンREなし。
+	[* LIC-S1 Sequence Algorithm Recovery]
+		入力: [answers_10001.txt]
+		問題: この数列から元のアルゴリズムを導出してください
+		観測: 1〜10001
+		採点: algorithm 35 / implementation 30 / observed 15 / unseen 15 / self-check 5
+	[* LIC-C1 Cipher Program Recovery]
+		入力: [message.txt]
+		問題文込み
+		採点: transform 25 / plaintext 30 / program extraction 20 / semantics 15 / self-check 10
+	[* Track]
+		[model_only] 標準。ネット検索・外部検索・別LLM・解析用ローカルコードなし
+		[tool_assisted] 任意。別集計
+	[* コース配置]
+		梅	標準なし / LIC-S1 optional bonus
+		竹	LIC-S1 + LIC-C1 各1回
+		松	LIC-S1 + LIC-C1 + 再現/監査
+	[* 固定anchor]
+		公開・共有済みなのでfresh未知問題性能の単独根拠にはしない。
+		canonical solution / hidden inputは公開パック外。
+

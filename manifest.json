@@ -1,0 +1,309 @@
+{
+  "benchmark": "YLSB",
+  "version": "0.3",
+  "edition": "松竹梅 + Legacy Inverse Challenge",
+  "created": "2026-09-06",
+  "courses": {
+    "ume": "梅/2h",
+    "take": "竹/half-day",
+    "matsu": "松/half-day x5"
+  },
+  "dataset_counts": {
+    "matsu/tests/coding_matsu_15.jsonl": 15,
+    "matsu/tests/core_matsu_230.jsonl": 230,
+    "matsu/tests/japanese_parity_32.jsonl": 32,
+    "matsu/tests/long_context_64k_optional_12.jsonl": 12,
+    "matsu/tests/long_context_matsu_54.jsonl": 54,
+    "matsu/tests/reliability_matsu_60.jsonl": 60,
+    "matsu/tests/sentinel_matsu_12.jsonl": 12,
+    "take/tests/api_mixed_take_10.jsonl": 10,
+    "take/tests/core_take_50.jsonl": 50,
+    "take/tests/long_context_take_9.jsonl": 9,
+    "take/tests/product_take_6.jsonl": 6,
+    "take/tests/sentinel_take_8.jsonl": 8,
+    "ume/tests/api_smoke_10.jsonl": 10,
+    "ume/tests/core_ume_28.jsonl": 28,
+    "ume/tests/sentinel_ume_4.jsonl": 4
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "df479fd34ee172d373133dded3e3a76313487354328f93f077f1203927ad3900",
+      "bytes": 903
+    },
+    {
+      "path": "STANDARD.md",
+      "sha256": "a5972a538043f9e37cdbb04edb2d1d9211f5b724b1ed2202eae8eab34ec1b99a",
+      "bytes": 5531
+    },
+    {
+      "path": "STANDARD_scrapbox.txt",
+      "sha256": "c05494d412b070b1d69a6a1fa79e8463d0a1c9dd7b0f98c721553ae180db69c2",
+      "bytes": 9600
+    },
+    {
+      "path": "common/alert_policy.json",
+      "sha256": "add179a2dec76516f6385b132738deb32ab84708a0a1b4e9fa865c27cb156611",
+      "bytes": 1465
+    },
+    {
+      "path": "common/failure_taxonomy.json",
+      "sha256": "92cdc0c6bf921993775e6a80b37c697b94f56bd395357216ca7cd69f8c35e49e",
+      "bytes": 437
+    },
+    {
+      "path": "common/grader_basic.py",
+      "sha256": "d235f77af3593d8da8f0e456980aa6cf4fdce3610bb6d4fb71246a05f20fc1cb",
+      "bytes": 541
+    },
+    {
+      "path": "common/legacy_inverse_challenge/LIC-C1_problem.txt",
+      "sha256": "c1c079a08a2f8515439d90f093299f93c9078eda9f8884b26f7582c2f8009166",
+      "bytes": 156
+    },
+    {
+      "path": "common/legacy_inverse_challenge/LIC-S1_problem.txt",
+      "sha256": "5bcc6016030ab0c83166b134198471540d8460115f2986e6711d1216f051a3e6",
+      "bytes": 206
+    },
+    {
+      "path": "common/legacy_inverse_challenge/README.md",
+      "sha256": "7e85d6ae5ee6d6ca6d8e2fac6ed96a47305216115eee261e2fa78f8e3dd61c1d",
+      "bytes": 1764
+    },
+    {
+      "path": "common/legacy_inverse_challenge/answers_10001.txt",
+      "sha256": "3141359898ecf49cddc26b0ccea7ec2c7659c6fb9990e98e9bd9b6be877af6a6",
+      "bytes": 94131
+    },
+    {
+      "path": "common/legacy_inverse_challenge/lic_manifest.json",
+      "sha256": "f22864a932acda7f09caf1b4a1142683a0bf4f1479bbb93c41ce1f5a9f85d8ce",
+      "bytes": 2273
+    },
+    {
+      "path": "common/legacy_inverse_challenge/message.txt",
+      "sha256": "02c81e683998114fabb19a707fd2e96013544fbbcc121624ba2495435a19e30f",
+      "bytes": 6630
+    },
+    {
+      "path": "common/legacy_inverse_challenge/scorecard_template.csv",
+      "sha256": "0308ba1b560d9f941d61bc2f5f3b1b46ce827e0d4f798bb1193437e8388fc1ae",
+      "bytes": 237
+    },
+    {
+      "path": "common/legacy_inverse_challenge/scorecard_template.json",
+      "sha256": "f010051c2cc12c7b2b68f9d76ff7252d34a15555758941017bf02853ebfe6474",
+      "bytes": 381
+    },
+    {
+      "path": "common/mode_prompts.json",
+      "sha256": "00ca06143905d4cdb7c9bc4bc405ca237a1f31637f6ea91760ba6242d3c0fe7b",
+      "bytes": 258
+    },
+    {
+      "path": "matsu/LIC.md",
+      "sha256": "472636f074bdfe4c9ffd531a76b7dba507ab956541b778d2f52ef29428ef69cb",
+      "bytes": 177
+    },
+    {
+      "path": "matsu/README.md",
+      "sha256": "4bb464271b304988c0a476a45661acd446baec5d3344a38cf3339ce4b4ecd057",
+      "bytes": 1515
+    },
+    {
+      "path": "matsu/profile.json",
+      "sha256": "e64b594f6e05c1e17f397b6f30d96503630af4453c1b37b64407c7269a57c602",
+      "bytes": 1007
+    },
+    {
+      "path": "matsu/scrapbox_template.txt",
+      "sha256": "424ad9bef85126502bacc3fb0df2690b75c53e476783a52aaa1fe693030b081e",
+      "bytes": 1739
+    },
+    {
+      "path": "matsu/scripts/build_long_context.py",
+      "sha256": "f5dd1c09eb431816ceaf23f4e15d13a4ae21c616e035782318eeb9cfd2170b9b",
+      "bytes": 1376
+    },
+    {
+      "path": "matsu/tests/coding_matsu_15.jsonl",
+      "sha256": "284d9e587bf3b39a268450251b6cfc91aefa594493368beecdf2829a1942506b",
+      "bytes": 6147
+    },
+    {
+      "path": "matsu/tests/core_matsu_230.jsonl",
+      "sha256": "58aa16e951285b923d03b824dff248e96717474805fd13aca47ca04fbe7488b2",
+      "bytes": 76857
+    },
+    {
+      "path": "matsu/tests/japanese_parity_32.jsonl",
+      "sha256": "c90746d1445a4e23c669244051e821b54a8a8c6821677e04310f49a7106718f4",
+      "bytes": 7052
+    },
+    {
+      "path": "matsu/tests/long_context_64k_optional_12.jsonl",
+      "sha256": "e0005fb1198ca51456c00b9d00b0f89518ec46ec4976f03a83a4150935ac90e9",
+      "bytes": 3744
+    },
+    {
+      "path": "matsu/tests/long_context_matsu_54.jsonl",
+      "sha256": "005e75582f845a125f65d0ebc190c890e028f26fddf2b6b300835b0c13219185",
+      "bytes": 23454
+    },
+    {
+      "path": "matsu/tests/reliability_matsu_60.jsonl",
+      "sha256": "c7c6ba85d119a42346bdaa629ad337c2f1302095ea6637089b22b6cac7080619",
+      "bytes": 8646
+    },
+    {
+      "path": "matsu/tests/sentinel_matsu_12.jsonl",
+      "sha256": "774fdf4733d71177c2a2c3c1c9370a6f177d7add931357b97529fee8771b23d4",
+      "bytes": 4822
+    },
+    {
+      "path": "take/LIC.md",
+      "sha256": "37a9da186e5fcf33983bed085c09bbe8446122f75c8199558cd803962be92b7b",
+      "bytes": 285
+    },
+    {
+      "path": "take/README.md",
+      "sha256": "1be8d4cfa5a79b2c1cd1fbadc5a87d0296403fc92eb9e5169c955c5cabb6f9a3",
+      "bytes": 1092
+    },
+    {
+      "path": "take/build_long_context.py",
+      "sha256": "f5dd1c09eb431816ceaf23f4e15d13a4ae21c616e035782318eeb9cfd2170b9b",
+      "bytes": 1376
+    },
+    {
+      "path": "take/profile.json",
+      "sha256": "6f008b97435cdd4dfa04809e5554ea4547d47ce828f6a0df03ceb18d3a04f136",
+      "bytes": 784
+    },
+    {
+      "path": "take/scrapbox_template.txt",
+      "sha256": "56204bd1447aa138d1b3ed6664c726c3a14a7296dd4b360cad7875829e89cfaa",
+      "bytes": 1280
+    },
+    {
+      "path": "take/tests/api_mixed_take_10.jsonl",
+      "sha256": "db7dd19622ff68935f9b6745d9680271f2403f6a261ea5abc6b26ba3feba56f7",
+      "bytes": 1262
+    },
+    {
+      "path": "take/tests/core_take_50.jsonl",
+      "sha256": "0fd36d86c141cd31146d3b0d168624390337065661c487ff378485c880a44bcb",
+      "bytes": 17022
+    },
+    {
+      "path": "take/tests/long_context_take_9.jsonl",
+      "sha256": "ce091a3adfe31aac69488cd7506b67b458881332e9e90d8745917c98ba109d89",
+      "bytes": 3909
+    },
+    {
+      "path": "take/tests/product_take_6.jsonl",
+      "sha256": "68892909288d841695120e2dc23d588457969c09a230a4bdd35a739295f27ff1",
+      "bytes": 2629
+    },
+    {
+      "path": "take/tests/sentinel_take_8.jsonl",
+      "sha256": "41d86d175a9588e777b5901f73732e3cc8b04d017b033c17b0903d0616f9e689",
+      "bytes": 3302
+    },
+    {
+      "path": "ume/README.md",
+      "sha256": "8c91897239edd9c22bc057ecbd462a04f2b39249fa470d161bd1ec40b3040ad6",
+      "bytes": 947
+    },
+    {
+      "path": "ume/profile.json",
+      "sha256": "2f0ffd0f02bdb86a3b9f5e2fa0f737554b99b4a4a242fb0b63cf6b1d2abb7dbc",
+      "bytes": 665
+    },
+    {
+      "path": "ume/scrapbox_template.txt",
+      "sha256": "67a822e1e79c4ba90bb6bb20ab9d0efb24e0728bf23efbde027006040ffe2ab4",
+      "bytes": 991
+    },
+    {
+      "path": "ume/tests/api_smoke_10.jsonl",
+      "sha256": "db7dd19622ff68935f9b6745d9680271f2403f6a261ea5abc6b26ba3feba56f7",
+      "bytes": 1262
+    },
+    {
+      "path": "ume/tests/core_ume_28.jsonl",
+      "sha256": "7ab11a3c2c785c059e5d2f833ce4fe19c61d76089dc18dcb953dc748ec27c270",
+      "bytes": 9578
+    },
+    {
+      "path": "ume/tests/sentinel_ume_4.jsonl",
+      "sha256": "1cea1d13bd71a318eeb49590c6c8c9fcd1b55395e981819fa1f0585d7073beae",
+      "bytes": 1567
+    }
+  ],
+  "distribution_url": "https://discord.com/channels/406357894427312148/1503087917579505757/1545840401267691590",
+  "microcontroller_re": false,
+  "legacy_inverse_challenge": {
+    "family": "Legacy Inverse Challenge",
+    "version": "LIC-1",
+    "public_anchor": true,
+    "fresh_capability_claim_allowed": false,
+    "standard_track": "model_only",
+    "standard_track_rules": {
+      "network": false,
+      "web_search": false,
+      "other_llm": false,
+      "local_code_execution": false,
+      "note": "ファイル読込・token counting等のハーネス処理は可。解析用Python/shellを使う場合はtool_assisted trackへ分離。"
+    },
+    "optional_track": "tool_assisted",
+    "solutions_in_public_pack": false,
+    "challenges": [
+      {
+        "id": "LIC-S1",
+        "name": "Sequence Algorithm Recovery",
+        "asset": "answers_10001.txt",
+        "prompt": "この数列から元のアルゴリズムを導出してください",
+        "observations": 10001,
+        "logical_lines": 10002,
+        "footer": "#count=10001\t#first=1\t#last=10001",
+        "sha256": "3141359898ecf49cddc26b0ccea7ec2c7659c6fb9990e98e9bd9b6be877af6a6",
+        "bytes": 94131,
+        "score_weights": {
+          "algorithm_identification": 35,
+          "reproducible_implementation": 30,
+          "observed_range_consistency": 15,
+          "unseen_input_consistency": 15,
+          "self_check_consistency": 5
+        },
+        "grading_notes": [
+          "観測範囲への単純補間だけでは満点にしない。",
+          "canonical algorithm / hidden inputは公開パック外で保持する。",
+          "hidden-input検証が無い実施はprovisionalと表示する。"
+        ]
+      },
+      {
+        "id": "LIC-C1",
+        "name": "Cipher Program Recovery",
+        "asset": "message.txt",
+        "prompt_source": "message.txt",
+        "logical_lines": 67,
+        "sha256": "02c81e683998114fabb19a707fd2e96013544fbbcc121624ba2495435a19e30f",
+        "bytes": 6630,
+        "score_weights": {
+          "transform_recovery": 25,
+          "plaintext_recovery": 30,
+          "embedded_program_extraction": 20,
+          "program_semantics": 15,
+          "self_check_consistency": 10
+        },
+        "grading_notes": [
+          "canonical plaintext / decoder / embedded programは公開パック外で保持する。",
+          "復号・program extraction・program semanticsを別々に採点する。",
+          "既存暗号方式名を推測するだけでは満点にしない。"
+        ]
+      }
+    ]
+  }
+}

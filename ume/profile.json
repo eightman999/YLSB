@@ -1,0 +1,40 @@
+{
+  "course": "梅",
+  "duration": "2h",
+  "pp": [
+    128,
+    512,
+    2048
+  ],
+  "tg": [
+    32,
+    128
+  ],
+  "repetitions": 3,
+  "depth": [
+    0,
+    8192
+  ],
+  "depth_pp": 512,
+  "depth_tg": 128,
+  "lanes": [
+    "R0"
+  ],
+  "cold_load_reps": 1,
+  "warm_api_requests": 5,
+  "quality": {
+    "core_file": "tests/core_ume_28.jsonl",
+    "modes": [
+      "direct"
+    ],
+    "sentinel_file": "tests/sentinel_ume_4.jsonl"
+  },
+  "version": "0.3",
+  "legacy_inverse_challenge": {
+    "required": false,
+    "optional_bonus": [
+      "LIC-S1"
+    ],
+    "reason": "2時間の足切りコースを維持するため標準所要時間には含めない。"
+  }
+}

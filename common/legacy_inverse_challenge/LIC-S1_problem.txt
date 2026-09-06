@@ -1,0 +1,7 @@
+Legacy Inverse Challenge LIC-S1 — Sequence Algorithm Recovery
+
+問題:
+この数列から元のアルゴリズムを導出してください
+
+入力ファイル: answers_10001.txt
+標準track: model_only

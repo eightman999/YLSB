@@ -1,0 +1,60 @@
+闇ネット Local LLM 標準試験 — 梅
+#LocalLLM #闇ネット #ベンチマーク #梅試験
+
+[* 概要]
+	所要: 約2時間
+	目的: 最小・最速で「測る意味がある構成」を選別
+	試験ID: [YLSB-UME]
+
+[* 構成]
+	model:
+	quant:
+	runtime/commit:
+	GPU:
+	RAM:
+	split:
+	Tensor: off
+	MTP: off
+	ctx:
+	KV:
+	seed:
+	max_tokens:
+
+[* 速度]
+	PP: 128 / 512 / 2048 x3
+	TG: 32 / 128 x3
+	depth: d0 / d8K
+	table:point	mean tok/s	sd	VRAM	備考
+		pp128
+		pp512
+		pp2048
+		tg32
+		tg128
+		tg128@d8K
+
+[* 品質]
+	[core_ume_28.jsonl] 28問 Direct
+	[sentinel_ume_4.jsonl] 4問
+	table:項目	正解	総数	率
+		Core		28
+		Hard Sentinel		4
+		non-empty		38
+
+[* Failure]
+	table:class	count	case
+		CAPABILITY
+		OUTPUT_BUDGET
+		PROTOCOL
+		INFRA
+		FIXTURE_INVALID
+
+[* 判定]
+	Smallest Meaningful:
+	Fastest Useful:
+	[梅・難問全通過]:
+	次に[竹試験]へ進めるか:
+
+[* Legacy Inverse Challenge]
+	標準: 実施しない
+	optional bonus: LIC-S1
+	bonusは梅本体の合否と別集計

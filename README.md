@@ -1,0 +1,19 @@
+# YLSB v0.3 — 闇ネット Local LLM 標準試験「松竹梅」
+
+このZIPは、ローカルLLMの標準試験を日本式に **梅 / 竹 / 松** の3段階へ分離した実行用データパックです。
+
+- **梅**: 2時間。新構成の足切り。
+- **竹**: 半日。日常採用判断。
+- **松**: 半日×5日。研究・公開比較・監査。
+
+各ディレクトリに `profile.json`、試験データ、ScrapBoxテンプレがあります。
+上位コースは下位Core/Sentinelのanchorを含むため、結果を継続比較できます。
+
+まず `STANDARD.md`、次に実施するコースの `README.md` を参照してください。
+
+## 配布先
+
+- Discord: https://discord.com/channels/406357894427312148/1503087917579505757/1545840401267691590
+
+## v0.3
+Legacy Inverse Challenge追加: LIC-S1 (`answers_10001.txt`) / LIC-C1 (`message.txt`)。マイコンREは含めない。

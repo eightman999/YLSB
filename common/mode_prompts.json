@@ -1,0 +1,4 @@
+{
+  "direct": "最終回答だけを返す。余計な説明はしない。",
+  "reasoning_summary": "内部の逐語的な思考過程ではなく、検証可能な短い根拠要約を rationale_summary に、最終回答を final に分けて返す。"
+}

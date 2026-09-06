@@ -1,0 +1,4 @@
+Legacy Inverse Challenge LIC-C1 — Cipher Program Recovery
+
+問題文と暗号本文は message.txt をそのまま入力する。
+標準track: model_only
