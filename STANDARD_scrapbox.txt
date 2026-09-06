@@ -288,8 +288,8 @@
 
 [* データパック]
 	[YLSB v0.3 松竹梅]
-	データURL: https://discord.com/channels/406357894427312148/1503087917579505757/1545840401267691590
-		Discord上の配布メッセージ。
+	データURL: https://github.com/eightman999/YLSB
+		GitHub上の配布リポジトリ。
 		テストデータ、テンプレート、manifestをまとめた配布先として扱う。
 		common/
 		ume/
@@ -318,4 +318,3 @@
 	[* 固定anchor]
 		公開・共有済みなのでfresh未知問題性能の単独根拠にはしない。
 		canonical solution / hidden inputは公開パック外。
-

@@ -28,8 +28,8 @@
   "files": [
     {
       "path": "README.md",
-      "sha256": "64872ef149fb8f75c1339471c480483527a91a77cfed1640e63880157f186821",
-      "bytes": 1340
+      "sha256": "4c295b7209c345027129684051430baa43cced644584cfa7ab3ec044a2c6f2a2",
+      "bytes": 7265
     },
     {
       "path": "STANDARD.md",
@@ -38,8 +38,8 @@
     },
     {
       "path": "STANDARD_scrapbox.txt",
-      "sha256": "c05494d412b070b1d69a6a1fa79e8463d0a1c9dd7b0f98c721553ae180db69c2",
-      "bytes": 9600
+      "sha256": "75c31620097e1bb4b3e02b6f0b008efccd8fd83da1dd89048d5f52f528f96590",
+      "bytes": 9546
     },
     {
       "path": "common/alert_policy.json",
@@ -242,7 +242,7 @@
       "bytes": 1567
     }
   ],
-  "distribution_url": "https://discord.com/channels/406357894427312148/1503087917579505757/1545840401267691590",
+  "distribution_url": "https://github.com/eightman999/YLSB",
   "microcontroller_re": false,
   "legacy_inverse_challenge": {
     "family": "Legacy Inverse Challenge",
