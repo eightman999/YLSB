@@ -11,6 +11,13 @@
 
 まず `STANDARD.md`、次に実施するコースの `README.md` を参照してください。
 
+## Scrapbox要項
+
+- [総合要項 v0.3 — 松竹梅版](https://scrapbox.io/Geek-SpaceBox/闇ネット_Local_LLM_標準試験要項_v0.3_—_松竹梅版)
+- [梅試験](https://scrapbox.io/Geek-SpaceBox/闇ネット_Local_LLM_標準試験_—_梅)
+- [竹試験](https://scrapbox.io/Geek-SpaceBox/闇ネット_Local_LLM_標準試験_—_竹)
+- [松試験](https://scrapbox.io/Geek-SpaceBox/闇ネット_Local_LLM_標準試験_—_松)
+
 ## 配布先
 
 - Discord: https://discord.com/channels/406357894427312148/1503087917579505757/1545840401267691590
