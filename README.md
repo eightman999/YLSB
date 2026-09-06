@@ -18,9 +18,5 @@
 - [竹試験](https://scrapbox.io/Geek-SpaceBox/闇ネット_Local_LLM_標準試験_—_竹)
 - [松試験](https://scrapbox.io/Geek-SpaceBox/闇ネット_Local_LLM_標準試験_—_松)
 
-## 配布先
-
-- Discord: https://discord.com/channels/406357894427312148/1503087917579505757/1545840401267691590
-
 ## v0.3
 Legacy Inverse Challenge追加: LIC-S1 (`answers_10001.txt`) / LIC-C1 (`message.txt`)。マイコンREは含めない。
