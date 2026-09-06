@@ -15,6 +15,8 @@ Hard Sentinelも梅4問→竹8問→松12問の累積anchorとする。
 
 ## 2. 原則
 
+明示的に「任意」「optional」「対応時」と定義した試験要素だけが省略可能である。それ以外の測定・記録・検証は必須とする。未対応項目は省略せず、`NOT_APPLICABLE`と具体的な理由を記録する。
+
 - PPとTGを分離する。
 - `llama-bench` と実API TTFT/E2Eを混ぜない。
 - R0 非Tensor Referenceを必須とし、Tensor/MTPは必ずR0との対照にする。
@@ -84,7 +86,7 @@ single GPUはsplit-mode none、multi GPUはlayer。MTP/speculative/Tensor split�
 その他の条件をR0と同じにして比較。
 
 ### R2 MTP / Speculative【対応時】
-Reference/Tensor × MTP off/on の2×2を可能な範囲で比較。CPU sampling fallback等は明記。
+R2を実施する場合、対応するReference/Tensor × MTP off/onの2×2を必須とする。実行不能なセルは`NOT_APPLICABLE`と理由を記録する。CPU sampling fallback等は必ず明記する。
 
 ### R3 Runtime/Fork【任意】
 upstream llama.cpp / fork / vLLM / Ollama等。weight形式が違う場合は純粋なruntime因果比較としない。

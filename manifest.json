@@ -28,18 +28,18 @@
   "files": [
     {
       "path": "README.md",
-      "sha256": "f7e8879c634c69a1a3745a92596be2e10e02e82a962c084a5b3714e982b01383",
-      "bytes": 9946
+      "sha256": "ac5775f4752a471e12d581b57da5e13be2c7c604c3c3fb695fa94dcf56835e0a",
+      "bytes": 10290
     },
     {
       "path": "STANDARD.md",
-      "sha256": "151b01592c6820aebf024be1580786f5a7423ffd13b553cd4f21b4162dd5bde5",
-      "bytes": 7763
+      "sha256": "b6ab19ba263e0514cf7d053ec013ffbeba730c97ef449a82e32527d5b902e6fb",
+      "bytes": 8133
     },
     {
       "path": "STANDARD_scrapbox.txt",
-      "sha256": "8e82808bc8571f4b28e8e5bceec86cbd17d012e75c989ec8aa398188b8cb6c33",
-      "bytes": 10932
+      "sha256": "4b48664182177f94bb150a4a3b3a0c1dcc281d6fde2d0d2075a76e8884bbd721",
+      "bytes": 11293
     },
     {
       "path": "common/alert_policy.json",

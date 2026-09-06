@@ -50,7 +50,9 @@ YLSBは、ローカルLLMのモデル単体ではなく、`model / quant / runti
 - **R2 MTP / Speculative（対応時）**: R0などとon/offを対照
 - **R3 Runtime / Fork（任意）**: upstream、fork、vLLM、Ollamaなどを比較
 
-高速化の効果を主張するときは、同じモデル・quant・KV・context・batchのR0と対にし、原則として一度に1変数だけ変更します。
+明示的に「任意」「optional」「対応時」と記載した試験要素だけが省略可能です。それ以外の測定、記録、検証は必須です。未対応項目は黙って省略せず、`NOT_APPLICABLE`と理由を記録します。
+
+高速化の効果を主張するときは、同じモデル・quant・KV・context・batchのR0と対にし、一度に1変数だけ変更しなければなりません。複数変数を同時に変更したrunは因果比較に使用できません。
 
 ## AI・runner向け必須記録契約
 

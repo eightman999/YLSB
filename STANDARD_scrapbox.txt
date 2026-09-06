@@ -26,6 +26,9 @@
 	途中から上位試験へ進んでもanchorを失わない。
 
 [* 基本原則]
+	明示的に任意 / optional / 対応時と定義した試験要素だけが省略可能。
+	それ以外の測定 / 記録 / 検証は必須。
+	未対応項目は省略せず、[NOT_APPLICABLE]と具体的な理由を記録する。
 	PPとTGは分離して測る。
 	[llama-bench] のtok/sと、実APIのTTFT/E2Eは別指標。
 	[R0 Non-Tensor Reference]を必須とする。
@@ -117,8 +120,9 @@
 		R0と同一model / quant / KV / context / batchで比較。
 	[* R2 MTP / Speculative]
 		対応時のみ。
-		可能ならReference/Tensor × MTP off/onの2×2。
-		CPU sampling fallback等が起きた場合はログに残す。
+		実施する場合は対応するReference/Tensor × MTP off/onの2×2を必須とする。
+		実行不能セルは[NOT_APPLICABLE]と理由を記録する。
+		CPU sampling fallback等が起きた場合は必ずログに残す。
 	[* R3 Runtime / Fork]
 		upstream llama.cpp / fork / vLLM / Ollama等。
 		weight形式やkernel条件が違う場合は純粋なruntime因果比較とはしない。
@@ -255,9 +259,9 @@
 	measurement repetitions
 	一つの比較で複数変数を同時に変更しない。
 
-[* 推奨出力]
+[* 必須出力]
 	1 request = 1 JSONL record
-	最低限:
+	必須フィールド:
 		run_id
 		case_id
 		model
