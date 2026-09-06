@@ -1,0 +1,243 @@
+{
+  "runtime": {
+    "binary": "/home/eightman/dev/tools/llama.cpp/build/bin/llama-server",
+    "version_string": "0.3.0-dev (build 1, commit 5ea1b12)",
+    "llama_cpp_commit": "5ea1b124e7dfcdb80d7291be188efc7d0b485d66",
+    "llama_cpp_commit_short": "5ea1b12",
+    "built_with": "GNU 13.4.0 for Linux x86_64",
+    "system_fingerprint_example": "b1-5ea1b12"
+  },
+  "gpu": [
+    {
+      "index": 0,
+      "name": "NVIDIA GeForce RTX 3060",
+      "vram_mib": 12288,
+      "uuid": "GPU-1d6afaad-67b7-b965-46c7-efe6c9c395f3"
+    },
+    {
+      "index": 1,
+      "name": "Tesla P100-PCIE-16GB",
+      "vram_mib": 16384,
+      "uuid": "GPU-d11b6f7f-002d-b252-1921-149ed2d84f15"
+    }
+  ],
+  "gpu_count": 2,
+  "driver_version": "580.173.02",
+  "ram": {
+    "memtotal_kb": 32036492,
+    "memtotal_giB_approx": 30.56,
+    "swap_giB": 8.0
+  },
+  "os": {
+    "uname": "Linux master 7.0.0-30-generic #30-Ubuntu SMP PREEMPT_DYNAMIC Fri Jul 31 18:22:54 UTC 2026 x86_64 GNU/Linux",
+    "pretty_name": "Ubuntu 26.04 LTS",
+    "version_id": "26.04"
+  },
+  "cuda_toolkit": {
+    "nvcc": "12.4.131",
+    "note": "build-time toolkit; runtime uses driver 580"
+  },
+  "llama_master_defaults": {
+    "n-gpu-layers": 999,
+    "split-mode": "layer",
+    "parallel": 1,
+    "jinja": true,
+    "fit": "on"
+  },
+  "runtime_cli_defaults_not_overridden": {
+    "batch_size": 2048,
+    "ubatch_size": 512,
+    "flash_attn": "auto",
+    "cache_type_k": "f16",
+    "cache_type_v": "f16",
+    "kv_offload": "enabled (default)",
+    "seed_server_default": -1,
+    "seed_props_uint32": 4294967295
+  },
+  "request_defaults_runner": {
+    "temperature": 0.0,
+    "seed_in_request_body": null,
+    "seed_note": "runner does not send seed; server default -1 (random) applies unless overridden per-request",
+    "max_tokens_by_section": {
+      "core": 256,
+      "sentinel": 1024,
+      "api_smoke": 64,
+      "pp": 1,
+      "tg": "target_n"
+    },
+    "thinking": {
+      "chat_template_kwargs.enable_thinking": false,
+      "reasoning_effort": "none"
+    }
+  },
+  "fixtures_sha256": {
+    "ume/tests/core_ume_28.jsonl": "7ab11a3c2c785c059e5d2f833ce4fe19c61d76089dc18dcb953dc748ec27c270",
+    "ume/tests/sentinel_ume_4.jsonl": "1cea1d13bd71a318eeb49590c6c8c9fcd1b55395e981819fa1f0585d7073beae",
+    "ume/tests/api_smoke_10.jsonl": "db7dd19622ff68935f9b6745d9680271f2403f6a261ea5abc6b26ba3feba56f7"
+  },
+  "grader_sha256": {
+    "common/grader_basic.py": "d235f77af3593d8da8f0e456980aa6cf4fdce3610bb6d4fb71246a05f20fc1cb"
+  },
+  "models_sha256": {
+    "qwen3-0.6b": {
+      "path": "/home/eightman/gguf-nvme/qwen3-0.6b/Qwen3-0.6B-Q8_0.gguf",
+      "sha256": "9465e63a22add5354d9bb4b99e90117043c7124007664907259bd16d043bb031",
+      "ctx_size": 32768,
+      "quant": "Q8_0"
+    },
+    "qwen3-4b": {
+      "path": "/home/eightman/gguf-nvme/qwen3-4b/qwen3-4b-q4_K_M.gguf",
+      "sha256": "bbfa887855d5566c22d55c1814cb6e666fa176e74267e0ced32c35207b5d0242",
+      "ctx_size": 32768,
+      "quant": "Q4_K_M"
+    },
+    "gemma-4-e4b-it": {
+      "path": "/home/eightman/gguf-nvme/gemma-4-e4b-it/gemma-4-E4B-it-Q4_K_M.gguf",
+      "sha256": "0ffb122c8b6921f13cbc34186e052524d0b5803b17f4867b7197a561400b3770",
+      "ctx_size": 32768,
+      "quant": "Q4_K_M"
+    },
+    "glm-4.7-flash": {
+      "path": "/home/eightman/gguf-nvme/glm-4.7-flash/GLM-4.7-Flash-Q4_K_M.gguf",
+      "sha256": "29837ed2c0fc5f51981adf8ac8083fcf80743c598381f13e9f06cbad0498b174",
+      "ctx_size": 65536,
+      "quant": "Q4_K_M"
+    },
+    "nemotron-3.5-lightning-30b-a3b": {
+      "path": "/home/eightman/gguf-nvme/nemotron-3.5-lightning-30b-a3b/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-Q4_0.gguf",
+      "sha256": "61f87e75974e4b535dcdf9aad056541a9514f1dfa4538b463b081d19b7a00e3c",
+      "ctx_size": 65536,
+      "quant": "Q4_0"
+    },
+    "gpt-oss-20b": {
+      "path": "/home/eightman/gguf-nvme/gpt-oss-20b/gpt-oss-20b-MXFP4.gguf",
+      "sha256": "27cd6c432c7672cb812a92f611cf3ba7bbc35928262bb1e1253ff4ee6ae35901",
+      "ctx_size": 65536,
+      "quant": "MXFP4"
+    }
+  },
+  "chat_template_sha256_known": {
+    "qwen3-0.6b": {
+      "sha256": "57f1fd00f0013a2be96aa79b857391f27e23df5b5f847072b524c897e24d0361",
+      "len": 4100,
+      "source": "/props"
+    },
+    "qwen3-4b": {
+      "sha256": "c979e0e71a3e21b8f208e6ab120d5cb29327885f29d2a8b18fda67a723798e18",
+      "len": 4051,
+      "source": "/props"
+    },
+    "gemma-4-e4b-it": {
+      "sha256": "603a42db292c25278e9b23d94c7abbe77453f13e26a053c43c5c2f900b4136f7",
+      "len": 18566,
+      "source": "/props"
+    },
+    "glm-4.7-flash": {
+      "sha256": "d63ad536c3c81880043e22ec7fd08db42b4d8fb7c89c7138bc562bfa25281375",
+      "len": 3120,
+      "source": "/props"
+    },
+    "nemotron-3.5-lightning-30b-a3b": {
+      "sha256": "58933db77d3099b4f78c55a38347a72e1ea05b97d6bd8f38775303dc0194e0a9",
+      "len": 9867,
+      "source": "/props"
+    },
+    "gpt-oss-20b": {
+      "sha256": "b2215de6da8ba369957eece8c5aa18f4af94f6c4d311d85e691373a421d80e89",
+      "len": 16616,
+      "source": "/props"
+    }
+  },
+  "vram_during_original_pp_tg": "オリジナル梅runでは未サンプリング。post-hoc 再ロード時の nvidia-smi を vram_pp_tg_posthoc に記録。",
+  "generated_jst": "2026-09-06T23:56:34.800780+09:00",
+  "vram_posthoc_pp_sample": {
+    "note": "post-hoc after all ume finished; short /v1/completions PP (~1405–1408 prompt tokens, max_tokens=1); NOT original-run VRAM",
+    "sampled_jst": "2026-09-06T23:58:48.686290+09:00",
+    "gpus": {
+      "0": "NVIDIA GeForce RTX 3060 12288 MiB",
+      "1": "Tesla P100-PCIE-16GB 16384 MiB"
+    },
+    "by_model": {
+      "qwen3-0.6b": {
+        "after_load_gpu0_MiB": 2204,
+        "after_load_gpu1_MiB": 2768,
+        "pp_peak_gpu0_MiB": 2206,
+        "pp_peak_gpu1_MiB": 2794,
+        "prompt_n": 1407
+      },
+      "qwen3-4b": {
+        "after_load_gpu0_MiB": 3364,
+        "after_load_gpu1_MiB": 4528,
+        "pp_peak_gpu0_MiB": 3368,
+        "pp_peak_gpu1_MiB": 4600,
+        "prompt_n": 1407
+      },
+      "gemma-4-e4b-it": {
+        "after_load_gpu0_MiB": 2010,
+        "after_load_gpu1_MiB": 2484,
+        "pp_peak_gpu0_MiB": 2032,
+        "pp_peak_gpu1_MiB": 2560,
+        "prompt_n": 1408
+      },
+      "glm-4.7-flash": {
+        "after_load_gpu0_MiB": 9444,
+        "after_load_gpu1_MiB": 12380,
+        "pp_peak_gpu0_MiB": 9464,
+        "pp_peak_gpu1_MiB": 12434,
+        "prompt_n": 1405
+      },
+      "nemotron-3.5-lightning-30b-a3b": {
+        "after_load_gpu0_MiB": 8260,
+        "after_load_gpu1_MiB": 10980,
+        "pp_peak_gpu0_MiB": 8302,
+        "pp_peak_gpu1_MiB": 11058,
+        "prompt_n": 1407
+      },
+      "gpt-oss-20b": {
+        "after_load_gpu0_MiB": 5940,
+        "after_load_gpu1_MiB": 7764,
+        "pp_peak_gpu0_MiB": 5960,
+        "pp_peak_gpu1_MiB": 7806,
+        "prompt_n": 1405
+      }
+    }
+  },
+  "updated_jst": "2026-09-06T23:58:48.686315+09:00",
+  "vram_pp_tg_posthoc": {
+    "qwen3-0.6b": {
+      "gpu0_mib": 2206,
+      "gpu1_mib": 2794,
+      "note": "post-hoc load+PP sample 2026-09-06; original ume run未サンプリング"
+    },
+    "qwen3-4b": {
+      "gpu0_mib": 3368,
+      "gpu1_mib": 4600,
+      "loaded": "3364/4588",
+      "note": "post-hoc PP sample"
+    },
+    "gemma-4-e4b-it": {
+      "gpu0_mib": 2032,
+      "gpu1_mib": 2560,
+      "loaded": "2010/2484",
+      "note": "post-hoc PP sample"
+    },
+    "glm-4.7-flash": {
+      "gpu0_mib": 9466,
+      "gpu1_mib": 12434,
+      "loaded": "9444/12394",
+      "note": "post-hoc PP sample"
+    },
+    "nemotron-3.5-lightning-30b-a3b": {
+      "gpu0_mib": 8302,
+      "gpu1_mib": 11058,
+      "loaded": "8260/10994",
+      "note": "post-hoc PP sample"
+    },
+    "gpt-oss-20b": {
+      "gpu0_mib": 5960,
+      "gpu1_mib": 7806,
+      "loaded": "5954/7800",
+      "note": "post-hoc PP sample"
+    }
+  }
+}

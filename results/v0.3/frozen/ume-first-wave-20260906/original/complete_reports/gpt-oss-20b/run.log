@@ -1,0 +1,76 @@
+=== YLSB v0.3 UME start model=gpt-oss-20b api=http://100.74.160.53:8080 out=/workspace/ylsb_v0.3_run/ume_gpt-oss-20b ===
+health status=200 body={'status': 'ok'} err=None
+[cold_load] cold_wall_ms=17795.6 answer='' ok=True
+warm_api_requests done
+[core 1/28] CORE-ARITHMETIC-001 PASS wall=3081.1ms ans='57'
+[core 2/28] CORE-ARITHMETIC-002 PASS wall=2886.0ms ans='84'
+[core 3/28] CORE-ARITHMETIC-003 PASS wall=1879.8ms ans='117'
+[core 4/28] CORE-ARITHMETIC-004 PASS wall=1566.6ms ans='156'
+[core 5/28] CORE-MATH_WORD-001 PASS wall=1624.4ms ans='440'
+[core 6/28] CORE-MATH_WORD-002 PASS wall=1945.7ms ans='180'
+[core 7/28] CORE-MATH_WORD-003 PASS wall=1901.5ms ans='40'
+[core 8/28] CORE-MATH_WORD-004 PASS wall=3275.7ms ans='343'
+[core 9/28] CORE-LOGIC-001 PASS wall=2076.7ms ans='TRUE'
+[core 10/28] CORE-LOGIC-002 PASS wall=2878.8ms ans='25'
+[core 11/28] CORE-LOGIC-003 PASS wall=1837.5ms ans='いいえ'
+[core 12/28] CORE-LOGIC-004 PASS wall=2627.2ms ans='0'
+[core 13/28] CORE-CONSTRAINT-001 CAPABILITY wall=4406.4ms ans=''
+[core 14/28] CORE-CONSTRAINT-002 CAPABILITY wall=4317.1ms ans=''
+[core 15/28] CORE-CONSTRAINT-003 CAPABILITY wall=4142.5ms ans=''
+[core 16/28] CORE-CONSTRAINT-004 CAPABILITY wall=4284.9ms ans=''
+[core 17/28] CORE-READING-001 PASS wall=4595.7ms ans='アキ'
+[core 18/28] CORE-READING-002 CAPABILITY wall=4423.7ms ans=''
+[core 19/28] CORE-READING-003 CAPABILITY wall=4501.2ms ans=''
+[core 20/28] CORE-READING-004 PASS wall=3024.9ms ans='59'
+[core 21/28] CORE-COMMON_SENSE-001 PASS wall=3514.1ms ans='A'
+[core 22/28] CORE-COMMON_SENSE-002 PASS wall=4139.5ms ans='A'
+[core 23/28] CORE-COMMON_SENSE-003 PASS wall=3027.5ms ans='A'
+[core 24/28] CORE-COMMON_SENSE-004 PASS wall=4213.9ms ans='A'
+[core 25/28] CORE-INSTRUCTION-001 PASS wall=2167.3ms ans='[10, 16, 19, 23, 29, 39]'
+[core 26/28] CORE-INSTRUCTION-002 PASS wall=2364.1ms ans='{"even":[2,2],"count":2}'
+[core 27/28] CORE-INSTRUCTION-003 PASS wall=1495.7ms ans='ACE'
+[core 28/28] CORE-INSTRUCTION-004 PASS wall=2374.6ms ans='4,2,6,1,7'
+[sentinel 1/4] H01 PASS wall=7041.4ms ans='362'
+[sentinel 2/4] H02 PASS wall=8835.5ms ans='AEBDC'
+[sentinel 3/4] H03 CAPABILITY wall=6870.5ms ans='10:A->C->B->D->E'
+[sentinel 4/4] H04 PASS wall=7231.6ms ans='75'
+[api_smoke 1/10] REL-001 CAPABILITY wall=1821.8ms ans=''
+[api_smoke 2/10] REL-002 CAPABILITY wall=1551.7ms ans=''
+[api_smoke 3/10] REL-003 CAPABILITY wall=1549.1ms ans=''
+[api_smoke 4/10] REL-004 CAPABILITY wall=1586.2ms ans=''
+[api_smoke 5/10] REL-005 CAPABILITY wall=1568.0ms ans=''
+[api_smoke 6/10] REL-006 CAPABILITY wall=1645.9ms ans=''
+[api_smoke 7/10] REL-007 CAPABILITY wall=1516.6ms ans=''
+[api_smoke 8/10] REL-008 CAPABILITY wall=1602.2ms ans=''
+[api_smoke 9/10] REL-009 CAPABILITY wall=1717.5ms ans=''
+[api_smoke 10/10] REL-010 CAPABILITY wall=1577.2ms ans=''
+[pp 128 rep1] wall=1069.2ms tps=376.242 pt=165 note=calibrated_cpt=5.510_hit_rep1_from_prompt_ms processed=165 cache_n=0 ok=True
+[pp 128 rep2] wall=1052.7ms tps=374.254 pt=164 note=calibrated_cpt=5.510_hit_rep1_from_prompt_ms processed=165 cache_n=0_from_prompt_ms processed=164 cache_n=0 ok=True
+[pp 128 rep3] wall=1049.3ms tps=371.619 pt=165 note=calibrated_cpt=5.510_hit_rep1_from_prompt_ms processed=165 cache_n=0_from_prompt_ms processed=164 cache_n=0_from_prompt_ms processed=165 cache_n=0 ok=True
+[pp 512 rep1] wall=1567.0ms tps=631.689 pt=548 note=calibrated_cpt=5.510_hit_rep1_from_prompt_ms processed=548 cache_n=0 ok=True
+[pp 512 rep2] wall=1549.4ms tps=640.864 pt=548 note=calibrated_cpt=5.510_hit_rep1_from_prompt_ms processed=548 cache_n=0_from_prompt_ms processed=548 cache_n=0 ok=True
+[pp 512 rep3] wall=1634.1ms tps=587.478 pt=550 note=calibrated_cpt=5.510_hit_rep1_from_prompt_ms processed=548 cache_n=0_from_prompt_ms processed=548 cache_n=0_from_prompt_ms processed=550 cache_n=0 ok=True
+[pp 2048 rep1] wall=3619.0ms tps=811.528 pt=2087 note=calibrated_cpt=5.510_hit_rep1_from_prompt_ms processed=2087 cache_n=0 ok=True
+[pp 2048 rep2] wall=3466.9ms tps=813.737 pt=2086 note=calibrated_cpt=5.510_hit_rep1_from_prompt_ms processed=2087 cache_n=0_from_prompt_ms processed=2086 cache_n=0 ok=True
+[pp 2048 rep3] wall=3547.8ms tps=819.927 pt=2086 note=calibrated_cpt=5.510_hit_rep1_from_prompt_ms processed=2087 cache_n=0_from_prompt_ms processed=2086 cache_n=0_from_prompt_ms processed=2086 cache_n=0 ok=True
+[tg 32 rep1] wall=1403.9ms tps=76.331 ct=32 ok=True
+[tg 32 rep2] wall=1504.4ms tps=76.181 ct=32 ok=True
+[tg 32 rep3] wall=1298.7ms tps=76.58 ct=32 ok=True
+[tg 128 rep1] wall=2658.0ms tps=76.807 ct=128 ok=True
+[tg 128 rep2] wall=2630.4ms tps=76.707 ct=128 ok=True
+[tg 128 rep3] wall=2801.1ms tps=76.686 ct=128 ok=True
+[depth d0] pt=528 ct=128 wall=3240.0ms pp_tps=644.7193456098641 tg_tps=76.76754244126829 ok=True
+[depth d8K] pt=8210 ct=128 wall=12068.6ms pp_tps=916.8891881901098 tg_tps=73.82128622256478 ok=True
+=== DONE ===
+{
+  "total_wall_s": 242.276,
+  "core": "22/28",
+  "sentinel": "3/4",
+  "api": "0/10",
+  "gates": {
+    "smallest_meaningful": false,
+    "fastest_useful": false,
+    "ume_full_clear": false
+  },
+  "cold_wall_ms": 17795.6
+}

@@ -1,0 +1,2795 @@
+{
+  "model": "qwen3-0.6b",
+  "ok": true,
+  "api": "http://100.74.160.53:8080",
+  "started_or_finished_jst": "2026-09-07T00:05:45.092957+09:00",
+  "idle_vram": {
+    "ts_jst": "2026-09-07T00:05:08.352342+09:00",
+    "gpus": [
+      {
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 3060",
+        "mem_used_MiB": 43,
+        "mem_total_MiB": 12288,
+        "util_gpu": 0
+      },
+      {
+        "index": 1,
+        "name": "Tesla P100-PCIE-16GB",
+        "mem_used_MiB": 6,
+        "mem_total_MiB": 16384,
+        "util_gpu": 0
+      }
+    ],
+    "gpu0_MiB": 43,
+    "gpu1_MiB": 6
+  },
+  "load_info": {
+    "ok": true,
+    "load_wall_s": 1.3,
+    "warmup_resp": {
+      "ok": true,
+      "wall_ms": 1293.8,
+      "infra_error": null,
+      "prompt_tokens": 1
+    },
+    "vram_after_load": {
+      "ts_jst": "2026-09-07T00:05:09.698958+09:00",
+      "gpus": [
+        {
+          "index": 0,
+          "name": "NVIDIA GeForce RTX 3060",
+          "mem_used_MiB": 2204,
+          "mem_total_MiB": 12288,
+          "util_gpu": 20
+        },
+        {
+          "index": 1,
+          "name": "Tesla P100-PCIE-16GB",
+          "mem_used_MiB": 2768,
+          "mem_total_MiB": 16384,
+          "util_gpu": 41
+        }
+      ],
+      "gpu0_MiB": 2204,
+      "gpu1_MiB": 2768
+    }
+  },
+  "vram_after_load": {
+    "ts_jst": "2026-09-07T00:05:10.751189+09:00",
+    "gpus": [
+      {
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 3060",
+        "mem_used_MiB": 2204,
+        "mem_total_MiB": 12288,
+        "util_gpu": 0
+      },
+      {
+        "index": 1,
+        "name": "Tesla P100-PCIE-16GB",
+        "mem_used_MiB": 2768,
+        "mem_total_MiB": 16384,
+        "util_gpu": 0
+      }
+    ],
+    "gpu0_MiB": 2204,
+    "gpu1_MiB": 2768
+  },
+  "pp_calibration": {
+    "128": {
+      "calib_pt": 131,
+      "note": "calibrated_cpt=3.420_hit_rep3_with_prefix_pt=131"
+    },
+    "512": {
+      "calib_pt": 518,
+      "note": "calibrated_cpt=3.420_hit_rep1_with_prefix_pt=518"
+    },
+    "2048": {
+      "calib_pt": 2080,
+      "note": "calibrated_cpt=3.420_hit_rep0_with_prefix_pt=2080"
+    }
+  },
+  "tg_calibration": {
+    "calib_pt": 65,
+    "note": "calibrated_cpt=3.420_hit_rep7_with_prefix_pt=65"
+  },
+  "pp_summary": {
+    "128": {
+      "reps": 3,
+      "cache_n_values": [
+        1,
+        11,
+        11
+      ],
+      "tps_mean": 7709.72,
+      "tps_median": 7780.329,
+      "tps_stdev": 186.649,
+      "wall_ms_mean": 119.0,
+      "wall_ms_median": 135.6,
+      "wall_ms_stdev": 39.9,
+      "vram_peak_across_reps": {
+        "gpu0_MiB_max": 2206,
+        "gpu1_MiB_max": 2804
+      },
+      "definitive": {
+        "method": "no cache_n==0; first rep fallback",
+        "cache_n_zero_count": 0,
+        "row": {
+          "kind": "pp",
+          "target": 128,
+          "rep": 1,
+          "ok": true,
+          "infra_error": null,
+          "wall_ms": 73.5,
+          "prompt_tokens_usage": 437,
+          "prompt_n": 436,
+          "cache_n": 1,
+          "prompt_ms": 55.536,
+          "prompt_per_second": 7850.763468740996,
+          "tps": 7850.763,
+          "tps_source": "prompt_ms",
+          "timings": {
+            "cache_n": 1,
+            "prompt_n": 436,
+            "prompt_ms": 55.536,
+            "prompt_per_token_ms": 0.12737614678899084,
+            "prompt_per_second": 7850.763468740996,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "predicted_per_token_ms": 0.0,
+            "predicted_per_second": 0.0
+          },
+          "vram_before": {
+            "ts_jst": "2026-09-07T00:05:12.257084+09:00",
+            "gpus": [
+              {
+                "index": 0,
+                "name": "NVIDIA GeForce RTX 3060",
+                "mem_used_MiB": 2206,
+                "mem_total_MiB": 12288,
+                "util_gpu": 12
+              },
+              {
+                "index": 1,
+                "name": "Tesla P100-PCIE-16GB",
+                "mem_used_MiB": 2794,
+                "mem_total_MiB": 16384,
+                "util_gpu": 47
+              }
+            ],
+            "gpu0_MiB": 2206,
+            "gpu1_MiB": 2794
+          },
+          "vram_during": {
+            "n_samples": 1,
+            "interval_s": 0.05,
+            "gpu0_MiB_min": 2206,
+            "gpu0_MiB_max": 2206,
+            "gpu0_MiB_mean": 2206,
+            "gpu1_MiB_min": 2794,
+            "gpu1_MiB_max": 2794,
+            "gpu1_MiB_mean": 2794,
+            "first": {
+              "ts_jst": "2026-09-07T00:05:12.301589+09:00",
+              "gpus": [
+                {
+                  "index": 0,
+                  "name": "NVIDIA GeForce RTX 3060",
+                  "mem_used_MiB": 2206,
+                  "mem_total_MiB": 12288,
+                  "util_gpu": 8
+                },
+                {
+                  "index": 1,
+                  "name": "Tesla P100-PCIE-16GB",
+                  "mem_used_MiB": 2794,
+                  "mem_total_MiB": 16384,
+                  "util_gpu": 47
+                }
+              ],
+              "gpu0_MiB": 2206,
+              "gpu1_MiB": 2794
+            },
+            "last": {
+              "ts_jst": "2026-09-07T00:05:12.301589+09:00",
+              "gpus": [
+                {
+                  "index": 0,
+                  "name": "NVIDIA GeForce RTX 3060",
+                  "mem_used_MiB": 2206,
+                  "mem_total_MiB": 12288,
+                  "util_gpu": 8
+                },
+                {
+                  "index": 1,
+                  "name": "Tesla P100-PCIE-16GB",
+                  "mem_used_MiB": 2794,
+                  "mem_total_MiB": 16384,
+                  "util_gpu": 47
+                }
+              ],
+              "gpu0_MiB": 2206,
+              "gpu1_MiB": 2794
+            },
+            "peak_sample": {
+              "ts_jst": "2026-09-07T00:05:12.301589+09:00",
+              "gpus": [
+                {
+                  "index": 0,
+                  "name": "NVIDIA GeForce RTX 3060",
+                  "mem_used_MiB": 2206,
+                  "mem_total_MiB": 12288,
+                  "util_gpu": 8
+                },
+                {
+                  "index": 1,
+                  "name": "Tesla P100-PCIE-16GB",
+                  "mem_used_MiB": 2794,
+                  "mem_total_MiB": 16384,
+                  "util_gpu": 47
+                }
+              ],
+              "gpu0_MiB": 2206,
+              "gpu1_MiB": 2794
+            }
+          },
+          "vram_after": {
+            "ts_jst": "2026-09-07T00:05:12.394582+09:00",
+            "gpus": [
+              {
+                "index": 0,
+                "name": "NVIDIA GeForce RTX 3060",
+                "mem_used_MiB": 2206,
+                "mem_total_MiB": 12288,
+                "util_gpu": 13
+              },
+              {
+                "index": 1,
+                "name": "Tesla P100-PCIE-16GB",
+                "mem_used_MiB": 2794,
+                "mem_total_MiB": 16384,
+                "util_gpu": 47
+              }
+            ],
+            "gpu0_MiB": 2206,
+            "gpu1_MiB": 2794
+          },
+          "ts_jst": "2026-09-07T00:05:12.394651+09:00",
+          "attempt": 1
+        }
+      }
+    },
+    "512": {
+      "reps": 3,
+      "cache_n_values": [
+        6,
+        11,
+        11
+      ],
+      "tps_mean": 8104.081,
+      "tps_median": 8135.925,
+      "tps_stdev": 83.976,
+      "wall_ms_mean": 233.2,
+      "wall_ms_median": 252.1,
+      "wall_ms_stdev": 35.5,
+      "vram_peak_across_reps": {
+        "gpu0_MiB_max": 2206,
+        "gpu1_MiB_max": 2804
+      },
+      "definitive": {
+        "method": "no cache_n==0; first rep fallback",
+        "cache_n_zero_count": 0,
+        "row": {
+          "kind": "pp",
+          "target": 512,
+          "rep": 1,
+          "ok": true,
+          "infra_error": null,
+          "wall_ms": 192.2,
+          "prompt_tokens_usage": 825,
+          "prompt_n": 819,
+          "cache_n": 6,
+          "prompt_ms": 102.262,
+          "prompt_per_second": 8008.84003833291,
+          "tps": 8008.84,
+          "tps_source": "prompt_ms",
+          "timings": {
+            "cache_n": 6,
+            "prompt_n": 819,
+            "prompt_ms": 102.262,
+            "prompt_per_token_ms": 0.12486202686202687,
+            "prompt_per_second": 8008.84003833291,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "predicted_per_token_ms": 0.0,
+            "predicted_per_second": 0.0
+          },
+          "vram_before": {
+            "ts_jst": "2026-09-07T00:05:18.901264+09:00",
+            "gpus": [
+              {
+                "index": 0,
+                "name": "NVIDIA GeForce RTX 3060",
+                "mem_used_MiB": 2206,
+                "mem_total_MiB": 12288,
+                "util_gpu": 0
+              },
+              {
+                "index": 1,
+                "name": "Tesla P100-PCIE-16GB",
+                "mem_used_MiB": 2804,
+                "mem_total_MiB": 16384,
+                "util_gpu": 0
+              }
+            ],
+            "gpu0_MiB": 2206,
+            "gpu1_MiB": 2804
+          },
+          "vram_during": {
+            "n_samples": 3,
+            "interval_s": 0.05,
+            "gpu0_MiB_min": 2206,
+            "gpu0_MiB_max": 2206,
+            "gpu0_MiB_mean": 2206,
+            "gpu1_MiB_min": 2804,
+            "gpu1_MiB_max": 2804,
+            "gpu1_MiB_mean": 2804,
+            "first": {
+              "ts_jst": "2026-09-07T00:05:18.950042+09:00",
+              "gpus": [
+                {
+                  "index": 0,
+                  "name": "NVIDIA GeForce RTX 3060",
+                  "mem_used_MiB": 2206,
+                  "mem_total_MiB": 12288,
+                  "util_gpu": 0
+                },
+                {
+                  "index": 1,
+                  "name": "Tesla P100-PCIE-16GB",
+                  "mem_used_MiB": 2804,
+                  "mem_total_MiB": 16384,
+                  "util_gpu": 0
+                }
+              ],
+              "gpu0_MiB": 2206,
+              "gpu1_MiB": 2804
+            },
+            "last": {
+              "ts_jst": "2026-09-07T00:05:19.124940+09:00",
+              "gpus": [
+                {
+                  "index": 0,
+                  "name": "NVIDIA GeForce RTX 3060",
+                  "mem_used_MiB": 2206,
+                  "mem_total_MiB": 12288,
+                  "util_gpu": 30
+                },
+                {
+                  "index": 1,
+                  "name": "Tesla P100-PCIE-16GB",
+                  "mem_used_MiB": 2804,
+                  "mem_total_MiB": 16384,
+                  "util_gpu": 39
+                }
+              ],
+              "gpu0_MiB": 2206,
+              "gpu1_MiB": 2804
+            },
+            "peak_sample": {
+              "ts_jst": "2026-09-07T00:05:18.950042+09:00",
+              "gpus": [
+                {
+                  "index": 0,
+                  "name": "NVIDIA GeForce RTX 3060",
+                  "mem_used_MiB": 2206,
+                  "mem_total_MiB": 12288,
+                  "util_gpu": 0
+                },
+                {
+                  "index": 1,
+                  "name": "Tesla P100-PCIE-16GB",
+                  "mem_used_MiB": 2804,
+                  "mem_total_MiB": 16384,
+                  "util_gpu": 0
+                }
+              ],
+              "gpu0_MiB": 2206,
+              "gpu1_MiB": 2804
+            }
+          },
+          "vram_after": {
+            "ts_jst": "2026-09-07T00:05:19.173929+09:00",
+            "gpus": [
+              {
+                "index": 0,
+                "name": "NVIDIA GeForce RTX 3060",
+                "mem_used_MiB": 2206,
+                "mem_total_MiB": 12288,
+                "util_gpu": 0
+              },
+              {
+                "index": 1,
+                "name": "Tesla P100-PCIE-16GB",
+                "mem_used_MiB": 2804,
+                "mem_total_MiB": 16384,
+                "util_gpu": 39
+              }
+            ],
+            "gpu0_MiB": 2206,
+            "gpu1_MiB": 2804
+          },
+          "ts_jst": "2026-09-07T00:05:19.173999+09:00",
+          "attempt": 1
+        }
+      }
+    },
+    "2048": {
+      "reps": 3,
+      "cache_n_values": [
+        6,
+        12,
+        12
+      ],
+      "tps_mean": 8043.195,
+      "tps_median": 8175.568,
+      "tps_stdev": 253.078,
+      "wall_ms_mean": 533.1,
+      "wall_ms_median": 561.7,
+      "wall_ms_stdev": 66.5,
+      "vram_peak_across_reps": {
+        "gpu0_MiB_max": 2206,
+        "gpu1_MiB_max": 2804
+      },
+      "definitive": {
+        "method": "no cache_n==0; first rep fallback",
+        "cache_n_zero_count": 0,
+        "row": {
+          "kind": "pp",
+          "target": 2048,
+          "rep": 1,
+          "ok": true,
+          "infra_error": null,
+          "wall_ms": 457.1,
+          "prompt_tokens_usage": 2389,
+          "prompt_n": 2383,
+          "cache_n": 6,
+          "prompt_ms": 307.429,
+          "prompt_per_second": 7751.383246212947,
+          "tps": 7751.383,
+          "tps_source": "prompt_ms",
+          "timings": {
+            "cache_n": 6,
+            "prompt_n": 2383,
+            "prompt_ms": 307.429,
+            "prompt_per_token_ms": 0.12900923206042803,
+            "prompt_per_second": 7751.383246212947,
+            "predicted_n": 1,
+            "predicted_ms": 0.001,
+            "predicted_per_token_ms": 0.0,
+            "predicted_per_second": 0.0
+          },
+          "vram_before": {
+            "ts_jst": "2026-09-07T00:05:27.340221+09:00",
+            "gpus": [
+              {
+                "index": 0,
+                "name": "NVIDIA GeForce RTX 3060",
+                "mem_used_MiB": 2206,
+                "mem_total_MiB": 12288,
+                "util_gpu": 0
+              },
+              {
+                "index": 1,
+                "name": "Tesla P100-PCIE-16GB",
+                "mem_used_MiB": 2804,
+                "mem_total_MiB": 16384,
+                "util_gpu": 0
+              }
+            ],
+            "gpu0_MiB": 2206,
+            "gpu1_MiB": 2804
+          },
+          "vram_during": {
+            "n_samples": 6,
+            "interval_s": 0.05,
+            "gpu0_MiB_min": 2206,
+            "gpu0_MiB_max": 2206,
+            "gpu0_MiB_mean": 2206,
+            "gpu1_MiB_min": 2804,
+            "gpu1_MiB_max": 2804,
+            "gpu1_MiB_mean": 2804,
+            "first": {
+              "ts_jst": "2026-09-07T00:05:27.384770+09:00",
+              "gpus": [
+                {
+                  "index": 0,
+                  "name": "NVIDIA GeForce RTX 3060",
+                  "mem_used_MiB": 2206,
+                  "mem_total_MiB": 12288,
+                  "util_gpu": 0
+                },
+                {
+                  "index": 1,
+                  "name": "Tesla P100-PCIE-16GB",
+                  "mem_used_MiB": 2804,
+                  "mem_total_MiB": 16384,
+                  "util_gpu": 0
+                }
+              ],
+              "gpu0_MiB": 2206,
+              "gpu1_MiB": 2804
+            },
+            "last": {
+              "ts_jst": "2026-09-07T00:05:27.829195+09:00",
+              "gpus": [
+                {
+                  "index": 0,
+                  "name": "NVIDIA GeForce RTX 3060",
+                  "mem_used_MiB": 2206,
+                  "mem_total_MiB": 12288,
+                  "util_gpu": 14
+                },
+                {
+                  "index": 1,
+                  "name": "Tesla P100-PCIE-16GB",
+                  "mem_used_MiB": 2804,
+                  "mem_total_MiB": 16384,
+                  "util_gpu": 98
+                }
+              ],
+              "gpu0_MiB": 2206,
+              "gpu1_MiB": 2804
+            },
+            "peak_sample": {
+              "ts_jst": "2026-09-07T00:05:27.384770+09:00",
+              "gpus": [
+                {
+                  "index": 0,
+                  "name": "NVIDIA GeForce RTX 3060",
+                  "mem_used_MiB": 2206,
+                  "mem_total_MiB": 12288,
+                  "util_gpu": 0
+                },
+                {
+                  "index": 1,
+                  "name": "Tesla P100-PCIE-16GB",
+                  "mem_used_MiB": 2804,
+                  "mem_total_MiB": 16384,
+                  "util_gpu": 0
+                }
+              ],
+              "gpu0_MiB": 2206,
+              "gpu1_MiB": 2804
+            }
+          },
+          "vram_after": {
+            "ts_jst": "2026-09-07T00:05:27.862418+09:00",
+            "gpus": [
+              {
+                "index": 0,
+                "name": "NVIDIA GeForce RTX 3060",
+                "mem_used_MiB": 2206,
+                "mem_total_MiB": 12288,
+                "util_gpu": 0
+              },
+              {
+                "index": 1,
+                "name": "Tesla P100-PCIE-16GB",
+                "mem_used_MiB": 2804,
+                "mem_total_MiB": 16384,
+                "util_gpu": 98
+              }
+            ],
+            "gpu0_MiB": 2206,
+            "gpu1_MiB": 2804
+          },
+          "ts_jst": "2026-09-07T00:05:27.862473+09:00",
+          "attempt": 1
+        }
+      }
+    }
+  },
+  "tg_summary": {
+    "32": {
+      "reps": 3,
+      "cache_n_values": [
+        3,
+        11,
+        11
+      ],
+      "tg_tokens_actual": [
+        32,
+        32,
+        32
+      ],
+      "tps_mean": 200.26,
+      "tps_median": 200.035,
+      "tps_stdev": 3.551,
+      "wall_ms_mean": 339.0,
+      "wall_ms_median": 277.5,
+      "wall_ms_stdev": 108.3,
+      "vram_peak_across_reps": {
+        "gpu0_MiB_max": 2206,
+        "gpu1_MiB_max": 2804
+      }
+    },
+    "128": {
+      "reps": 3,
+      "cache_n_values": [
+        7,
+        12,
+        12
+      ],
+      "tg_tokens_actual": [
+        128,
+        128,
+        128
+      ],
+      "tps_mean": 208.976,
+      "tps_median": 208.812,
+      "tps_stdev": 0.81,
+      "wall_ms_mean": 750.3,
+      "wall_ms_median": 750.0,
+      "wall_ms_stdev": 9.1,
+      "vram_peak_across_reps": {
+        "gpu0_MiB_max": 2206,
+        "gpu1_MiB_max": 2804
+      }
+    }
+  },
+  "rows": [
+    {
+      "kind": "pp",
+      "target": 128,
+      "rep": 1,
+      "ok": true,
+      "infra_error": null,
+      "wall_ms": 73.5,
+      "prompt_tokens_usage": 437,
+      "prompt_n": 436,
+      "cache_n": 1,
+      "prompt_ms": 55.536,
+      "prompt_per_second": 7850.763468740996,
+      "tps": 7850.763,
+      "tps_source": "prompt_ms",
+      "timings": {
+        "cache_n": 1,
+        "prompt_n": 436,
+        "prompt_ms": 55.536,
+        "prompt_per_token_ms": 0.12737614678899084,
+        "prompt_per_second": 7850.763468740996,
+        "predicted_n": 1,
+        "predicted_ms": 0.001,
+        "predicted_per_token_ms": 0.0,
+        "predicted_per_second": 0.0
+      },
+      "vram_before": {
+        "ts_jst": "2026-09-07T00:05:12.257084+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 12
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2794,
+            "mem_total_MiB": 16384,
+            "util_gpu": 47
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2794
+      },
+      "vram_during": {
+        "n_samples": 1,
+        "interval_s": 0.05,
+        "gpu0_MiB_min": 2206,
+        "gpu0_MiB_max": 2206,
+        "gpu0_MiB_mean": 2206,
+        "gpu1_MiB_min": 2794,
+        "gpu1_MiB_max": 2794,
+        "gpu1_MiB_mean": 2794,
+        "first": {
+          "ts_jst": "2026-09-07T00:05:12.301589+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 8
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2794,
+              "mem_total_MiB": 16384,
+              "util_gpu": 47
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2794
+        },
+        "last": {
+          "ts_jst": "2026-09-07T00:05:12.301589+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 8
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2794,
+              "mem_total_MiB": 16384,
+              "util_gpu": 47
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2794
+        },
+        "peak_sample": {
+          "ts_jst": "2026-09-07T00:05:12.301589+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 8
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2794,
+              "mem_total_MiB": 16384,
+              "util_gpu": 47
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2794
+        }
+      },
+      "vram_after": {
+        "ts_jst": "2026-09-07T00:05:12.394582+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 13
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2794,
+            "mem_total_MiB": 16384,
+            "util_gpu": 47
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2794
+      },
+      "ts_jst": "2026-09-07T00:05:12.394651+09:00",
+      "attempt": 1
+    },
+    {
+      "kind": "pp",
+      "target": 128,
+      "rep": 2,
+      "ok": true,
+      "infra_error": null,
+      "wall_ms": 147.9,
+      "prompt_tokens_usage": 438,
+      "prompt_n": 427,
+      "cache_n": 11,
+      "prompt_ms": 56.948,
+      "prompt_per_second": 7498.068413289317,
+      "tps": 7498.068,
+      "tps_source": "prompt_ms",
+      "timings": {
+        "cache_n": 11,
+        "prompt_n": 427,
+        "prompt_ms": 56.948,
+        "prompt_per_token_ms": 0.13336768149882905,
+        "prompt_per_second": 7498.068413289317,
+        "predicted_n": 1,
+        "predicted_ms": 0.001,
+        "predicted_per_token_ms": 0.0,
+        "predicted_per_second": 0.0
+      },
+      "vram_before": {
+        "ts_jst": "2026-09-07T00:05:14.388025+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 0
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 0
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "vram_during": {
+        "n_samples": 2,
+        "interval_s": 0.05,
+        "gpu0_MiB_min": 2206,
+        "gpu0_MiB_max": 2206,
+        "gpu0_MiB_mean": 2206,
+        "gpu1_MiB_min": 2804,
+        "gpu1_MiB_max": 2804,
+        "gpu1_MiB_mean": 2804,
+        "first": {
+          "ts_jst": "2026-09-07T00:05:14.433540+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "last": {
+          "ts_jst": "2026-09-07T00:05:14.530782+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "peak_sample": {
+          "ts_jst": "2026-09-07T00:05:14.433540+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        }
+      },
+      "vram_after": {
+        "ts_jst": "2026-09-07T00:05:14.604956+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 14
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 27
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "ts_jst": "2026-09-07T00:05:14.605028+09:00",
+      "attempt": 1
+    },
+    {
+      "kind": "pp",
+      "target": 128,
+      "rep": 3,
+      "ok": true,
+      "infra_error": null,
+      "wall_ms": 135.6,
+      "prompt_tokens_usage": 438,
+      "prompt_n": 427,
+      "cache_n": 11,
+      "prompt_ms": 54.882,
+      "prompt_per_second": 7780.328705222113,
+      "tps": 7780.329,
+      "tps_source": "prompt_ms",
+      "timings": {
+        "cache_n": 11,
+        "prompt_n": 427,
+        "prompt_ms": 54.882,
+        "prompt_per_token_ms": 0.12852927400468384,
+        "prompt_per_second": 7780.328705222113,
+        "predicted_n": 1,
+        "predicted_ms": 0.001,
+        "predicted_per_token_ms": 0.0,
+        "predicted_per_second": 0.0
+      },
+      "vram_before": {
+        "ts_jst": "2026-09-07T00:05:16.607481+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 0
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 0
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "vram_during": {
+        "n_samples": 2,
+        "interval_s": 0.05,
+        "gpu0_MiB_min": 2206,
+        "gpu0_MiB_max": 2206,
+        "gpu0_MiB_mean": 2206,
+        "gpu1_MiB_min": 2804,
+        "gpu1_MiB_max": 2804,
+        "gpu1_MiB_mean": 2804,
+        "first": {
+          "ts_jst": "2026-09-07T00:05:16.652666+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "last": {
+          "ts_jst": "2026-09-07T00:05:16.747319+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "peak_sample": {
+          "ts_jst": "2026-09-07T00:05:16.652666+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        }
+      },
+      "vram_after": {
+        "ts_jst": "2026-09-07T00:05:16.813527+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 14
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 20
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "ts_jst": "2026-09-07T00:05:16.813603+09:00",
+      "attempt": 1
+    },
+    {
+      "kind": "pp",
+      "target": 512,
+      "rep": 1,
+      "ok": true,
+      "infra_error": null,
+      "wall_ms": 192.2,
+      "prompt_tokens_usage": 825,
+      "prompt_n": 819,
+      "cache_n": 6,
+      "prompt_ms": 102.262,
+      "prompt_per_second": 8008.84003833291,
+      "tps": 8008.84,
+      "tps_source": "prompt_ms",
+      "timings": {
+        "cache_n": 6,
+        "prompt_n": 819,
+        "prompt_ms": 102.262,
+        "prompt_per_token_ms": 0.12486202686202687,
+        "prompt_per_second": 8008.84003833291,
+        "predicted_n": 1,
+        "predicted_ms": 0.001,
+        "predicted_per_token_ms": 0.0,
+        "predicted_per_second": 0.0
+      },
+      "vram_before": {
+        "ts_jst": "2026-09-07T00:05:18.901264+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 0
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 0
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "vram_during": {
+        "n_samples": 3,
+        "interval_s": 0.05,
+        "gpu0_MiB_min": 2206,
+        "gpu0_MiB_max": 2206,
+        "gpu0_MiB_mean": 2206,
+        "gpu1_MiB_min": 2804,
+        "gpu1_MiB_max": 2804,
+        "gpu1_MiB_mean": 2804,
+        "first": {
+          "ts_jst": "2026-09-07T00:05:18.950042+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "last": {
+          "ts_jst": "2026-09-07T00:05:19.124940+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 30
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 39
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "peak_sample": {
+          "ts_jst": "2026-09-07T00:05:18.950042+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        }
+      },
+      "vram_after": {
+        "ts_jst": "2026-09-07T00:05:19.173929+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 0
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 39
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "ts_jst": "2026-09-07T00:05:19.173999+09:00",
+      "attempt": 1
+    },
+    {
+      "kind": "pp",
+      "target": 512,
+      "rep": 2,
+      "ok": true,
+      "infra_error": null,
+      "wall_ms": 252.1,
+      "prompt_tokens_usage": 826,
+      "prompt_n": 815,
+      "cache_n": 11,
+      "prompt_ms": 99.786,
+      "prompt_per_second": 8167.478403784098,
+      "tps": 8167.478,
+      "tps_source": "prompt_ms",
+      "timings": {
+        "cache_n": 11,
+        "prompt_n": 815,
+        "prompt_ms": 99.786,
+        "prompt_per_token_ms": 0.12243680981595093,
+        "prompt_per_second": 8167.478403784098,
+        "predicted_n": 1,
+        "predicted_ms": 0.001,
+        "predicted_per_token_ms": 0.0,
+        "predicted_per_second": 0.0
+      },
+      "vram_before": {
+        "ts_jst": "2026-09-07T00:05:21.664598+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 0
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 0
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "vram_during": {
+        "n_samples": 4,
+        "interval_s": 0.05,
+        "gpu0_MiB_min": 2206,
+        "gpu0_MiB_max": 2206,
+        "gpu0_MiB_mean": 2206,
+        "gpu1_MiB_min": 2804,
+        "gpu1_MiB_max": 2804,
+        "gpu1_MiB_mean": 2804,
+        "first": {
+          "ts_jst": "2026-09-07T00:05:21.710222+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "last": {
+          "ts_jst": "2026-09-07T00:05:21.954456+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 16
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 52
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "peak_sample": {
+          "ts_jst": "2026-09-07T00:05:21.710222+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        }
+      },
+      "vram_after": {
+        "ts_jst": "2026-09-07T00:05:21.996735+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 14
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 52
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "ts_jst": "2026-09-07T00:05:21.997355+09:00",
+      "attempt": 1
+    },
+    {
+      "kind": "pp",
+      "target": 512,
+      "rep": 3,
+      "ok": true,
+      "infra_error": null,
+      "wall_ms": 255.3,
+      "prompt_tokens_usage": 826,
+      "prompt_n": 815,
+      "cache_n": 11,
+      "prompt_ms": 100.173,
+      "prompt_per_second": 8135.924850009484,
+      "tps": 8135.925,
+      "tps_source": "prompt_ms",
+      "timings": {
+        "cache_n": 11,
+        "prompt_n": 815,
+        "prompt_ms": 100.173,
+        "prompt_per_token_ms": 0.1229116564417178,
+        "prompt_per_second": 8135.924850009484,
+        "predicted_n": 1,
+        "predicted_ms": 0.001,
+        "predicted_per_token_ms": 0.0,
+        "predicted_per_second": 0.0
+      },
+      "vram_before": {
+        "ts_jst": "2026-09-07T00:05:24.551876+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 0
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 0
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "vram_during": {
+        "n_samples": 4,
+        "interval_s": 0.05,
+        "gpu0_MiB_min": 2206,
+        "gpu0_MiB_max": 2206,
+        "gpu0_MiB_mean": 2206,
+        "gpu1_MiB_min": 2804,
+        "gpu1_MiB_max": 2804,
+        "gpu1_MiB_mean": 2804,
+        "first": {
+          "ts_jst": "2026-09-07T00:05:24.597223+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "last": {
+          "ts_jst": "2026-09-07T00:05:24.844390+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 28
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 26
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "peak_sample": {
+          "ts_jst": "2026-09-07T00:05:24.597223+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        }
+      },
+      "vram_after": {
+        "ts_jst": "2026-09-07T00:05:24.888732+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 1
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 26
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "ts_jst": "2026-09-07T00:05:24.888797+09:00",
+      "attempt": 1
+    },
+    {
+      "kind": "pp",
+      "target": 2048,
+      "rep": 1,
+      "ok": true,
+      "infra_error": null,
+      "wall_ms": 457.1,
+      "prompt_tokens_usage": 2389,
+      "prompt_n": 2383,
+      "cache_n": 6,
+      "prompt_ms": 307.429,
+      "prompt_per_second": 7751.383246212947,
+      "tps": 7751.383,
+      "tps_source": "prompt_ms",
+      "timings": {
+        "cache_n": 6,
+        "prompt_n": 2383,
+        "prompt_ms": 307.429,
+        "prompt_per_token_ms": 0.12900923206042803,
+        "prompt_per_second": 7751.383246212947,
+        "predicted_n": 1,
+        "predicted_ms": 0.001,
+        "predicted_per_token_ms": 0.0,
+        "predicted_per_second": 0.0
+      },
+      "vram_before": {
+        "ts_jst": "2026-09-07T00:05:27.340221+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 0
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 0
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "vram_during": {
+        "n_samples": 6,
+        "interval_s": 0.05,
+        "gpu0_MiB_min": 2206,
+        "gpu0_MiB_max": 2206,
+        "gpu0_MiB_mean": 2206,
+        "gpu1_MiB_min": 2804,
+        "gpu1_MiB_max": 2804,
+        "gpu1_MiB_mean": 2804,
+        "first": {
+          "ts_jst": "2026-09-07T00:05:27.384770+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "last": {
+          "ts_jst": "2026-09-07T00:05:27.829195+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 14
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 98
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "peak_sample": {
+          "ts_jst": "2026-09-07T00:05:27.384770+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        }
+      },
+      "vram_after": {
+        "ts_jst": "2026-09-07T00:05:27.862418+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 0
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 98
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "ts_jst": "2026-09-07T00:05:27.862473+09:00",
+      "attempt": 1
+    },
+    {
+      "kind": "pp",
+      "target": 2048,
+      "rep": 2,
+      "ok": true,
+      "infra_error": null,
+      "wall_ms": 580.6,
+      "prompt_tokens_usage": 2389,
+      "prompt_n": 2377,
+      "cache_n": 12,
+      "prompt_ms": 289.785,
+      "prompt_per_second": 8202.632986524492,
+      "tps": 8202.633,
+      "tps_source": "prompt_ms",
+      "timings": {
+        "cache_n": 12,
+        "prompt_n": 2377,
+        "prompt_ms": 289.785,
+        "prompt_per_token_ms": 0.12191207404291124,
+        "prompt_per_second": 8202.632986524492,
+        "predicted_n": 1,
+        "predicted_ms": 0.001,
+        "predicted_per_token_ms": 0.0,
+        "predicted_per_second": 0.0
+      },
+      "vram_before": {
+        "ts_jst": "2026-09-07T00:05:31.491749+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 0
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 0
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "vram_during": {
+        "n_samples": 8,
+        "interval_s": 0.05,
+        "gpu0_MiB_min": 2206,
+        "gpu0_MiB_max": 2206,
+        "gpu0_MiB_mean": 2206,
+        "gpu1_MiB_min": 2804,
+        "gpu1_MiB_max": 2804,
+        "gpu1_MiB_mean": 2804,
+        "first": {
+          "ts_jst": "2026-09-07T00:05:31.536787+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "last": {
+          "ts_jst": "2026-09-07T00:05:32.082235+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 91
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "peak_sample": {
+          "ts_jst": "2026-09-07T00:05:31.536787+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        }
+      },
+      "vram_after": {
+        "ts_jst": "2026-09-07T00:05:32.123047+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 0
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 91
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "ts_jst": "2026-09-07T00:05:32.123103+09:00",
+      "attempt": 1
+    },
+    {
+      "kind": "pp",
+      "target": 2048,
+      "rep": 3,
+      "ok": true,
+      "infra_error": null,
+      "wall_ms": 561.7,
+      "prompt_tokens_usage": 2388,
+      "prompt_n": 2376,
+      "cache_n": 12,
+      "prompt_ms": 290.622,
+      "prompt_per_second": 8175.568263930466,
+      "tps": 8175.568,
+      "tps_source": "prompt_ms",
+      "timings": {
+        "cache_n": 12,
+        "prompt_n": 2376,
+        "prompt_ms": 290.622,
+        "prompt_per_token_ms": 0.12231565656565657,
+        "prompt_per_second": 8175.568263930466,
+        "predicted_n": 1,
+        "predicted_ms": 0.001,
+        "predicted_per_token_ms": 0.0,
+        "predicted_per_second": 0.0
+      },
+      "vram_before": {
+        "ts_jst": "2026-09-07T00:05:35.800620+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 0
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 0
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "vram_during": {
+        "n_samples": 8,
+        "interval_s": 0.05,
+        "gpu0_MiB_min": 2206,
+        "gpu0_MiB_max": 2206,
+        "gpu0_MiB_mean": 2206,
+        "gpu1_MiB_min": 2804,
+        "gpu1_MiB_max": 2804,
+        "gpu1_MiB_mean": 2804,
+        "first": {
+          "ts_jst": "2026-09-07T00:05:35.846647+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "last": {
+          "ts_jst": "2026-09-07T00:05:36.394074+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 98
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "peak_sample": {
+          "ts_jst": "2026-09-07T00:05:35.846647+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        }
+      },
+      "vram_after": {
+        "ts_jst": "2026-09-07T00:05:36.427323+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 0
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 98
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "ts_jst": "2026-09-07T00:05:36.427648+09:00",
+      "attempt": 1
+    },
+    {
+      "kind": "tg",
+      "target": 32,
+      "rep": 1,
+      "ok": true,
+      "infra_error": null,
+      "wall_ms": 464.1,
+      "tg_tokens_actual": 32,
+      "prompt_tokens_usage": 371,
+      "prompt_n": 368,
+      "cache_n": 3,
+      "predicted_ms": 157.499,
+      "predicted_per_second": 196.8266465183906,
+      "tps": 196.827,
+      "tps_source": "predicted_per_second",
+      "timings": {
+        "cache_n": 3,
+        "prompt_n": 368,
+        "prompt_ms": 48.904,
+        "prompt_per_token_ms": 0.1328913043478261,
+        "prompt_per_second": 7524.946834614754,
+        "predicted_n": 32,
+        "predicted_ms": 157.499,
+        "predicted_per_token_ms": 5.0806129032258065,
+        "predicted_per_second": 196.8266465183906
+      },
+      "vram_before": {
+        "ts_jst": "2026-09-07T00:05:40.089502+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 0
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 0
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "vram_during": {
+        "n_samples": 6,
+        "interval_s": 0.05,
+        "gpu0_MiB_min": 2206,
+        "gpu0_MiB_max": 2206,
+        "gpu0_MiB_mean": 2206,
+        "gpu1_MiB_min": 2804,
+        "gpu1_MiB_max": 2804,
+        "gpu1_MiB_mean": 2804,
+        "first": {
+          "ts_jst": "2026-09-07T00:05:40.135367+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "last": {
+          "ts_jst": "2026-09-07T00:05:40.525621+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 18
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 67
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "peak_sample": {
+          "ts_jst": "2026-09-07T00:05:40.135367+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        }
+      },
+      "vram_after": {
+        "ts_jst": "2026-09-07T00:05:40.606399+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 25
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 67
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "ts_jst": "2026-09-07T00:05:40.606664+09:00"
+    },
+    {
+      "kind": "tg",
+      "target": 32,
+      "rep": 2,
+      "ok": true,
+      "infra_error": null,
+      "wall_ms": 275.4,
+      "tg_tokens_actual": 32,
+      "prompt_tokens_usage": 371,
+      "prompt_n": 360,
+      "cache_n": 11,
+      "predicted_ms": 152.022,
+      "predicted_per_second": 203.91785399481654,
+      "tps": 203.918,
+      "tps_source": "predicted_per_second",
+      "timings": {
+        "cache_n": 11,
+        "prompt_n": 360,
+        "prompt_ms": 51.31,
+        "prompt_per_token_ms": 0.14252777777777778,
+        "prompt_per_second": 7016.176183979731,
+        "predicted_n": 32,
+        "predicted_ms": 152.022,
+        "predicted_per_token_ms": 4.903935483870968,
+        "predicted_per_second": 203.91785399481654
+      },
+      "vram_before": {
+        "ts_jst": "2026-09-07T00:05:40.853100+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 0
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 0
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "vram_during": {
+        "n_samples": 4,
+        "interval_s": 0.05,
+        "gpu0_MiB_min": 2206,
+        "gpu0_MiB_max": 2206,
+        "gpu0_MiB_mean": 2206,
+        "gpu1_MiB_min": 2804,
+        "gpu1_MiB_max": 2804,
+        "gpu1_MiB_mean": 2804,
+        "first": {
+          "ts_jst": "2026-09-07T00:05:40.901152+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "last": {
+          "ts_jst": "2026-09-07T00:05:41.146376+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 24
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 23
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "peak_sample": {
+          "ts_jst": "2026-09-07T00:05:40.901152+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        }
+      },
+      "vram_after": {
+        "ts_jst": "2026-09-07T00:05:41.180164+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 25
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 60
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "ts_jst": "2026-09-07T00:05:41.180220+09:00"
+    },
+    {
+      "kind": "tg",
+      "target": 32,
+      "rep": 3,
+      "ok": true,
+      "infra_error": null,
+      "wall_ms": 277.5,
+      "tg_tokens_actual": 32,
+      "prompt_tokens_usage": 371,
+      "prompt_n": 360,
+      "cache_n": 11,
+      "predicted_ms": 154.973,
+      "predicted_per_second": 200.0348447794132,
+      "tps": 200.035,
+      "tps_source": "predicted_per_second",
+      "timings": {
+        "cache_n": 11,
+        "prompt_n": 360,
+        "prompt_ms": 51.83,
+        "prompt_per_token_ms": 0.14397222222222222,
+        "prompt_per_second": 6945.784294809956,
+        "predicted_n": 32,
+        "predicted_ms": 154.973,
+        "predicted_per_token_ms": 4.999129032258065,
+        "predicted_per_second": 200.0348447794132
+      },
+      "vram_before": {
+        "ts_jst": "2026-09-07T00:05:41.426369+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 0
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 0
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "vram_during": {
+        "n_samples": 4,
+        "interval_s": 0.05,
+        "gpu0_MiB_min": 2206,
+        "gpu0_MiB_max": 2206,
+        "gpu0_MiB_mean": 2206,
+        "gpu1_MiB_min": 2804,
+        "gpu1_MiB_max": 2804,
+        "gpu1_MiB_mean": 2804,
+        "first": {
+          "ts_jst": "2026-09-07T00:05:41.471368+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "last": {
+          "ts_jst": "2026-09-07T00:05:41.720290+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 20
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 59
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "peak_sample": {
+          "ts_jst": "2026-09-07T00:05:41.471368+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        }
+      },
+      "vram_after": {
+        "ts_jst": "2026-09-07T00:05:41.756542+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 20
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 59
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "ts_jst": "2026-09-07T00:05:41.756722+09:00"
+    },
+    {
+      "kind": "tg",
+      "target": 128,
+      "rep": 1,
+      "ok": true,
+      "infra_error": null,
+      "wall_ms": 741.3,
+      "tg_tokens_actual": 128,
+      "prompt_tokens_usage": 373,
+      "prompt_n": 366,
+      "cache_n": 7,
+      "predicted_ms": 608.203,
+      "predicted_per_second": 208.81186051367717,
+      "tps": 208.812,
+      "tps_source": "predicted_per_second",
+      "timings": {
+        "cache_n": 7,
+        "prompt_n": 366,
+        "prompt_ms": 51.897,
+        "prompt_per_token_ms": 0.1417950819672131,
+        "prompt_per_second": 7052.4307763454535,
+        "predicted_n": 128,
+        "predicted_ms": 608.203,
+        "predicted_per_token_ms": 4.789,
+        "predicted_per_second": 208.81186051367717
+      },
+      "vram_before": {
+        "ts_jst": "2026-09-07T00:05:42.000179+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 0
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 24
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "vram_during": {
+        "n_samples": 10,
+        "interval_s": 0.05,
+        "gpu0_MiB_min": 2206,
+        "gpu0_MiB_max": 2206,
+        "gpu0_MiB_mean": 2206,
+        "gpu1_MiB_min": 2804,
+        "gpu1_MiB_max": 2804,
+        "gpu1_MiB_mean": 2804,
+        "first": {
+          "ts_jst": "2026-09-07T00:05:42.045410+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "last": {
+          "ts_jst": "2026-09-07T00:05:42.736665+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 27
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 66
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "peak_sample": {
+          "ts_jst": "2026-09-07T00:05:42.045410+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        }
+      },
+      "vram_after": {
+        "ts_jst": "2026-09-07T00:05:42.790835+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 27
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 66
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "ts_jst": "2026-09-07T00:05:42.790874+09:00"
+    },
+    {
+      "kind": "tg",
+      "target": 128,
+      "rep": 2,
+      "ok": true,
+      "infra_error": null,
+      "wall_ms": 750.0,
+      "tg_tokens_actual": 128,
+      "prompt_tokens_usage": 374,
+      "prompt_n": 362,
+      "cache_n": 12,
+      "predicted_ms": 605.181,
+      "predicted_per_second": 209.85457243370163,
+      "tps": 209.855,
+      "tps_source": "predicted_per_second",
+      "timings": {
+        "cache_n": 12,
+        "prompt_n": 362,
+        "prompt_ms": 51.796,
+        "prompt_per_token_ms": 0.14308287292817679,
+        "prompt_per_second": 6988.956676191212,
+        "predicted_n": 128,
+        "predicted_ms": 605.181,
+        "predicted_per_token_ms": 4.7652047244094495,
+        "predicted_per_second": 209.85457243370163
+      },
+      "vram_before": {
+        "ts_jst": "2026-09-07T00:05:43.034806+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 0
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 0
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "vram_during": {
+        "n_samples": 10,
+        "interval_s": 0.05,
+        "gpu0_MiB_min": 2206,
+        "gpu0_MiB_max": 2206,
+        "gpu0_MiB_mean": 2206,
+        "gpu1_MiB_min": 2804,
+        "gpu1_MiB_max": 2804,
+        "gpu1_MiB_mean": 2804,
+        "first": {
+          "ts_jst": "2026-09-07T00:05:43.081677+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "last": {
+          "ts_jst": "2026-09-07T00:05:43.768213+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 27
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 67
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "peak_sample": {
+          "ts_jst": "2026-09-07T00:05:43.081677+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        }
+      },
+      "vram_after": {
+        "ts_jst": "2026-09-07T00:05:43.836781+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 27
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 67
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "ts_jst": "2026-09-07T00:05:43.836835+09:00"
+    },
+    {
+      "kind": "tg",
+      "target": 128,
+      "rep": 3,
+      "ok": true,
+      "infra_error": null,
+      "wall_ms": 759.5,
+      "tg_tokens_actual": 128,
+      "prompt_tokens_usage": 374,
+      "prompt_n": 362,
+      "cache_n": 12,
+      "predicted_ms": 609.811,
+      "predicted_per_second": 208.2612481572159,
+      "tps": 208.261,
+      "tps_source": "predicted_per_second",
+      "timings": {
+        "cache_n": 12,
+        "prompt_n": 362,
+        "prompt_ms": 51.711,
+        "prompt_per_token_ms": 0.14284806629834254,
+        "prompt_per_second": 7000.444779640695,
+        "predicted_n": 128,
+        "predicted_ms": 609.811,
+        "predicted_per_token_ms": 4.801661417322835,
+        "predicted_per_second": 208.2612481572159
+      },
+      "vram_before": {
+        "ts_jst": "2026-09-07T00:05:44.081782+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 0
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 0
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "vram_during": {
+        "n_samples": 10,
+        "interval_s": 0.05,
+        "gpu0_MiB_min": 2206,
+        "gpu0_MiB_max": 2206,
+        "gpu0_MiB_mean": 2206,
+        "gpu1_MiB_min": 2804,
+        "gpu1_MiB_max": 2804,
+        "gpu1_MiB_mean": 2804,
+        "first": {
+          "ts_jst": "2026-09-07T00:05:44.128923+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "last": {
+          "ts_jst": "2026-09-07T00:05:44.815778+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 26
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 65
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        },
+        "peak_sample": {
+          "ts_jst": "2026-09-07T00:05:44.128923+09:00",
+          "gpus": [
+            {
+              "index": 0,
+              "name": "NVIDIA GeForce RTX 3060",
+              "mem_used_MiB": 2206,
+              "mem_total_MiB": 12288,
+              "util_gpu": 0
+            },
+            {
+              "index": 1,
+              "name": "Tesla P100-PCIE-16GB",
+              "mem_used_MiB": 2804,
+              "mem_total_MiB": 16384,
+              "util_gpu": 0
+            }
+          ],
+          "gpu0_MiB": 2206,
+          "gpu1_MiB": 2804
+        }
+      },
+      "vram_after": {
+        "ts_jst": "2026-09-07T00:05:44.891744+09:00",
+        "gpus": [
+          {
+            "index": 0,
+            "name": "NVIDIA GeForce RTX 3060",
+            "mem_used_MiB": 2206,
+            "mem_total_MiB": 12288,
+            "util_gpu": 27
+          },
+          {
+            "index": 1,
+            "name": "Tesla P100-PCIE-16GB",
+            "mem_used_MiB": 2804,
+            "mem_total_MiB": 16384,
+            "util_gpu": 65
+          }
+        ],
+        "gpu0_MiB": 2206,
+        "gpu1_MiB": 2804
+      },
+      "ts_jst": "2026-09-07T00:05:44.891794+09:00"
+    }
+  ],
+  "flash_attn_note": "server default -fa auto; effective on/off 未解決（ログ/metricsから確定できず）",
+  "method_notes": [
+    "PP/TG via /v1/completions; strong unique prefixes; prefer cache_n==0 (up to 5 attempts/rep)",
+    "VRAM sampled via nvidia-smi every 50ms during each request (before/during/after)",
+    "tps for PP prefers timings.prompt_ms; TG prefers timings.predicted_per_second"
+  ]
+}

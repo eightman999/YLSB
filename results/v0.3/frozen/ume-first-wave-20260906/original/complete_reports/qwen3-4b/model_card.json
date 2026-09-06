@@ -1,0 +1,61 @@
+{
+  "hardware": {
+    "gpu_count": 2,
+    "interconnect": "PCIe between cards（NVLink なし）",
+    "gpus": [
+      {
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 3060",
+        "arch_gen": "Ampere GA106",
+        "vram_gib": 12,
+        "vram_mib": 12288,
+        "mem_type": "GDDR6",
+        "mem_bw_GBs": 360,
+        "mem_bw_note": "公称スペック概算 ~360 GB/s",
+        "pcie_current": "Gen4 x16",
+        "pcie_max": "Gen4 x16"
+      },
+      {
+        "index": 1,
+        "name": "Tesla P100-PCIE-16GB",
+        "arch_gen": "Pascal GP100",
+        "vram_gib": 16,
+        "vram_mib": 16384,
+        "mem_type": "HBM2",
+        "mem_bw_GBs": 732,
+        "mem_bw_note": "公称スペック ~732 GB/s",
+        "pcie_current": "Gen3 x4（リンク幅ダウン）",
+        "pcie_max": "Gen3 x16"
+      }
+    ],
+    "runtime": {
+      "name": "llama.cpp",
+      "fork": "upstream（非fork）",
+      "commit": "5ea1b124e7dfcdb80d7291be188efc7d0b485d66",
+      "commit_short": "5ea1b12",
+      "binary": "/home/eightman/dev/tools/llama.cpp/build/bin/llama-server",
+      "orchestrator": "llama-master（models-max=1, split-mode=layer）"
+    }
+  },
+  "model": {
+    "alias": "qwen3-4b",
+    "name": "Qwen3-4B-Instruct-2507",
+    "architecture": "qwen3",
+    "size_label": "4B",
+    "kind": "Dense",
+    "expert_count": null,
+    "expert_used_count": null,
+    "total_params_nominal": 4000000000,
+    "active_params_nominal": 4000000000,
+    "params_note": null,
+    "quant": "Q4_K_M",
+    "file_type": 15,
+    "file_type_name": "MOSTLY_Q4_K_M",
+    "filesize_bytes": 2497281120,
+    "bpw_estimate": 4.995,
+    "bpw_method": "filesize*8/total_params_nominal（GGUFに parameter_count 無しのため推定）",
+    "path": "/home/eightman/gguf-nvme/qwen3-4b/qwen3-4b-q4_K_M.gguf",
+    "sha256": "bbfa887855d5566c22d55c1814cb6e666fa176e74267e0ced32c35207b5d0242",
+    "ctx_size": 32768
+  }
+}

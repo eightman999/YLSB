@@ -1,0 +1,61 @@
+{
+  "hardware": {
+    "gpu_count": 2,
+    "interconnect": "PCIe between cards（NVLink なし）",
+    "gpus": [
+      {
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 3060",
+        "arch_gen": "Ampere GA106",
+        "vram_gib": 12,
+        "vram_mib": 12288,
+        "mem_type": "GDDR6",
+        "mem_bw_GBs": 360,
+        "mem_bw_note": "公称スペック概算 ~360 GB/s",
+        "pcie_current": "Gen4 x16",
+        "pcie_max": "Gen4 x16"
+      },
+      {
+        "index": 1,
+        "name": "Tesla P100-PCIE-16GB",
+        "arch_gen": "Pascal GP100",
+        "vram_gib": 16,
+        "vram_mib": 16384,
+        "mem_type": "HBM2",
+        "mem_bw_GBs": 732,
+        "mem_bw_note": "公称スペック ~732 GB/s",
+        "pcie_current": "Gen3 x4（リンク幅ダウン）",
+        "pcie_max": "Gen3 x16"
+      }
+    ],
+    "runtime": {
+      "name": "llama.cpp",
+      "fork": "upstream（非fork）",
+      "commit": "5ea1b124e7dfcdb80d7291be188efc7d0b485d66",
+      "commit_short": "5ea1b12",
+      "binary": "/home/eightman/dev/tools/llama.cpp/build/bin/llama-server",
+      "orchestrator": "llama-master（models-max=1, split-mode=layer）"
+    }
+  },
+  "model": {
+    "alias": "nemotron-3.5-lightning-30b-a3b",
+    "name": "NVIDIA-Nemotron-3.5-Lightning-30B-A3B",
+    "architecture": "nemotron_h_moe",
+    "size_label": "128x2.4B",
+    "kind": "MoE",
+    "expert_count": 128,
+    "expert_used_count": 6,
+    "total_params_nominal": 30000000000,
+    "active_params_nominal": 3000000000,
+    "params_note": "expert_count=128 used=6; A3B=active~3B",
+    "quant": "Q4_0",
+    "file_type": 2,
+    "file_type_name": "MOSTLY_Q4_0",
+    "filesize_bytes": 18898091584,
+    "bpw_estimate": 5.039,
+    "bpw_method": "filesize*8/total_params_nominal（GGUFに parameter_count 無しのため推定）",
+    "path": "/home/eightman/gguf-nvme/nemotron-3.5-lightning-30b-a3b/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-Q4_0.gguf",
+    "sha256": "61f87e75974e4b535dcdf9aad056541a9514f1dfa4538b463b081d19b7a00e3c",
+    "ctx_size": 65536
+  }
+}

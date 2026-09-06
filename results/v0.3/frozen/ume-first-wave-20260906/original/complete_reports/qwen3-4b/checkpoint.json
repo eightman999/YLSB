@@ -1,0 +1,22 @@
+{
+  "phase": "done",
+  "total_wall_s": 57.677,
+  "gates": {
+    "smallest_meaningful": {
+      "label": "Smallest Meaningful候補",
+      "pass": false,
+      "detail": "Core>=60%(57.1%) format>=80%(100.0%) non-empty=100%(100.0%) INFRA=0(0)"
+    },
+    "fastest_useful": {
+      "label": "Fastest Useful候補",
+      "pass": false,
+      "detail": "Core>=80%(57.1%) format>=90%(100.0%) non-empty=100%(100.0%) INFRA=0(0)"
+    },
+    "ume_full_clear": {
+      "label": "梅・難問全通過",
+      "pass": false,
+      "detail": "Sentinel 0/4 INVALID=0 INFRA=0 non-empty=4/4"
+    }
+  },
+  "ts": "2026-09-06T23:29:28.041909+09:00"
+}

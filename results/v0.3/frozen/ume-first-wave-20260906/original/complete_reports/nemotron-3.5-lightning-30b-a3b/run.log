@@ -1,0 +1,76 @@
+=== YLSB v0.3 UME start model=nemotron-3.5-lightning-30b-a3b api=http://100.74.160.53:8080 out=/workspace/ylsb_v0.3_run/ume_nemotron-3.5-lightning-30b-a3b ===
+health status=200 body={'status': 'ok'} err=None
+[cold_load] cold_wall_ms=20603.9 answer='PONG' ok=True
+warm_api_requests done
+[core 1/28] CORE-ARITHMETIC-001 PASS wall=1680.8ms ans='57'
+[core 2/28] CORE-ARITHMETIC-002 CAPABILITY wall=1169.2ms ans='79'
+[core 3/28] CORE-ARITHMETIC-003 CAPABILITY wall=1019.9ms ans='103'
+[core 4/28] CORE-ARITHMETIC-004 CAPABILITY wall=1050.6ms ans='142'
+[core 5/28] CORE-MATH_WORD-001 CAPABILITY wall=1289.3ms ans='295'
+[core 6/28] CORE-MATH_WORD-002 CAPABILITY wall=1402.1ms ans='150'
+[core 7/28] CORE-MATH_WORD-003 CAPABILITY wall=1062.8ms ans='55'
+[core 8/28] CORE-MATH_WORD-004 CAPABILITY wall=1064.3ms ans='391'
+[core 9/28] CORE-LOGIC-001 PASS wall=1211.7ms ans='TRUE'
+[core 10/28] CORE-LOGIC-002 PASS wall=1193.3ms ans='25'
+[core 11/28] CORE-LOGIC-003 PASS wall=1417.5ms ans='いいえ'
+[core 12/28] CORE-LOGIC-004 CAPABILITY wall=1102.3ms ans='1'
+[core 13/28] CORE-CONSTRAINT-001 CAPABILITY wall=1429.6ms ans='BACDE'
+[core 14/28] CORE-CONSTRAINT-002 CAPABILITY wall=1463.8ms ans='C-B-D-A-E'
+[core 15/28] CORE-CONSTRAINT-003 CAPABILITY wall=1194.6ms ans='C-B-A-D-E'
+[core 16/28] CORE-CONSTRAINT-004 CAPABILITY wall=1246.3ms ans='C-A-D-E-B'
+[core 17/28] CORE-READING-001 PASS wall=1556.5ms ans='アキ'
+[core 18/28] CORE-READING-002 PASS wall=1515.5ms ans='Python'
+[core 19/28] CORE-READING-003 PASS wall=1413.1ms ans='札幌'
+[core 20/28] CORE-READING-004 PASS wall=1429.1ms ans='59'
+[core 21/28] CORE-COMMON_SENSE-001 CAPABILITY wall=1268.4ms ans='A:溶ける'
+[core 22/28] CORE-COMMON_SENSE-002 PASS wall=1275.1ms ans='A'
+[core 23/28] CORE-COMMON_SENSE-003 PASS wall=1388.7ms ans='A'
+[core 24/28] CORE-COMMON_SENSE-004 CAPABILITY wall=1371.1ms ans='A:あふれる'
+[core 25/28] CORE-INSTRUCTION-001 PASS wall=1546.6ms ans='[10, 16, 19, 23, 29, 39]'
+[core 26/28] CORE-INSTRUCTION-002 PASS wall=1512.7ms ans='{"even":[2,2],"count":2}'
+[core 27/28] CORE-INSTRUCTION-003 CAPABILITY wall=1127.7ms ans='ABCDEf'
+[core 28/28] CORE-INSTRUCTION-004 PASS wall=1252.9ms ans='4,2,6,1,7'
+[sentinel 1/4] H01 CAPABILITY wall=1384.3ms ans='101'
+[sentinel 2/4] H02 CAPABILITY wall=1310.9ms ans='CDEAB'
+[sentinel 3/4] H03 CAPABILITY wall=1339.5ms ans='cost:19,path:A→C→B→D→E'
+[sentinel 4/4] H04 CAPABILITY wall=1502.6ms ans='100'
+[api_smoke 1/10] REL-001 PASS wall=1046.6ms ans='111'
+[api_smoke 2/10] REL-002 PASS wall=913.0ms ans='119'
+[api_smoke 3/10] REL-003 PASS wall=907.1ms ans='127'
+[api_smoke 4/10] REL-004 PASS wall=916.3ms ans='135'
+[api_smoke 5/10] REL-005 PASS wall=909.8ms ans='143'
+[api_smoke 6/10] REL-006 PASS wall=1041.7ms ans='151'
+[api_smoke 7/10] REL-007 PASS wall=941.4ms ans='159'
+[api_smoke 8/10] REL-008 PASS wall=1179.2ms ans='167'
+[api_smoke 9/10] REL-009 PASS wall=776.0ms ans='166'
+[api_smoke 10/10] REL-010 PASS wall=926.3ms ans='174'
+[pp 128 rep1] wall=1388.9ms tps=361.826 pt=236 note=calibrated_cpt=5.236_hit_rep1_from_prompt_ms processed=236 cache_n=0 ok=True
+[pp 128 rep2] wall=1427.2ms tps=361.815 pt=235 note=calibrated_cpt=5.236_hit_rep1_from_prompt_ms processed=236 cache_n=0_from_prompt_ms processed=235 cache_n=0 ok=True
+[pp 128 rep3] wall=1404.4ms tps=365.345 pt=236 note=calibrated_cpt=5.236_hit_rep1_from_prompt_ms processed=236 cache_n=0_from_prompt_ms processed=235 cache_n=0_from_prompt_ms processed=236 cache_n=0 ok=True
+[pp 512 rep1] wall=2121.8ms tps=521.904 pt=621 note=calibrated_cpt=5.236_hit_rep1_from_prompt_ms processed=621 cache_n=0 ok=True
+[pp 512 rep2] wall=2073.7ms tps=522.855 pt=623 note=calibrated_cpt=5.236_hit_rep1_from_prompt_ms processed=621 cache_n=0_from_prompt_ms processed=623 cache_n=0 ok=True
+[pp 512 rep3] wall=2065.6ms tps=521.621 pt=623 note=calibrated_cpt=5.236_hit_rep1_from_prompt_ms processed=621 cache_n=0_from_prompt_ms processed=623 cache_n=0_from_prompt_ms processed=623 cache_n=0 ok=True
+[pp 2048 rep1] wall=3744.6ms tps=837.164 pt=2157 note=calibrated_cpt=5.236_hit_rep1_from_prompt_ms processed=2157 cache_n=0 ok=True
+[pp 2048 rep2] wall=3647.1ms tps=841.88 pt=2156 note=calibrated_cpt=5.236_hit_rep1_from_prompt_ms processed=2157 cache_n=0_from_prompt_ms processed=2156 cache_n=0 ok=True
+[pp 2048 rep3] wall=3792.7ms tps=844.531 pt=2157 note=calibrated_cpt=5.236_hit_rep1_from_prompt_ms processed=2157 cache_n=0_from_prompt_ms processed=2156 cache_n=0_from_prompt_ms processed=2157 cache_n=0 ok=True
+[tg 32 rep1] wall=1632.8ms tps=80.673 ct=32 ok=True
+[tg 32 rep2] wall=1578.4ms tps=80.974 ct=32 ok=True
+[tg 32 rep3] wall=1588.3ms tps=80.85 ct=32 ok=True
+[tg 128 rep1] wall=2766.8ms tps=81.073 ct=128 ok=True
+[tg 128 rep2] wall=2879.3ms tps=80.695 ct=128 ok=True
+[tg 128 rep3] wall=2828.8ms tps=80.445 ct=128 ok=True
+[depth d0] pt=543 ct=128 wall=3434.3ms pp_tps=588.2110800335378 tg_tps=80.44400020776088 ok=True
+[depth d8K] pt=8222 ct=128 wall=10925.0ms pp_tps=1037.0688413410808 tg_tps=80.50258971126193 ok=True
+=== DONE ===
+{
+  "total_wall_s": 174.437,
+  "core": "13/28",
+  "sentinel": "0/4",
+  "api": "10/10",
+  "gates": {
+    "smallest_meaningful": false,
+    "fastest_useful": false,
+    "ume_full_clear": false
+  },
+  "cold_wall_ms": 20603.9
+}

@@ -1,0 +1,149 @@
+{
+  "hardware": {
+    "gpu_count": 2,
+    "gpus": [
+      {
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 3060",
+        "arch_code": "GA106",
+        "generation": "Ampere",
+        "vram_mib": 12288,
+        "vram_type": "GDDR6",
+        "memory_bandwidth_GBps": 360,
+        "memory_bandwidth_source": "NVIDIA published spec (RTX 3060 12GB)",
+        "pcie": {
+          "gen_current": 4,
+          "gen_max": 4,
+          "width_current": 16,
+          "width_max": 16,
+          "bus_id": "0000:01:00.0"
+        }
+      },
+      {
+        "index": 1,
+        "name": "Tesla P100-PCIE-16GB",
+        "arch_code": "GP100",
+        "generation": "Pascal",
+        "vram_mib": 16384,
+        "vram_type": "HBM2",
+        "memory_bandwidth_GBps": 732,
+        "memory_bandwidth_source": "NVIDIA published spec (Tesla P100 PCIe 16GB)",
+        "pcie": {
+          "gen_current": 3,
+          "gen_max": 3,
+          "width_current": 4,
+          "width_max": 16,
+          "bus_id": "0000:05:00.0",
+          "note": "current link width x4 (max x16) — host-side bottleneck candidate"
+        }
+      }
+    ],
+    "interconnect": {
+      "type": "PCIe host only",
+      "nvlink": false,
+      "note": "heterogeneous 3060+P100; no NVLink/NVSwitch; llama-master split-mode=layer over PCIe"
+    },
+    "driver": "580.173.02",
+    "cuda_driver_api": "13.0 (nvidia-smi)",
+    "cuda_toolkit_nvcc": "12.4.131",
+    "runtime_fork": {
+      "runtime": "llama.cpp llama-server",
+      "fork": "upstream (ggml-org/llama.cpp), not a custom fork",
+      "commit": "5ea1b124e7dfcdb80d7291be188efc7d0b485d66",
+      "served_via": "llama-master multi-model router"
+    }
+  },
+  "models": {
+    "qwen3-0.6b": {
+      "arch": "Dense",
+      "total_params": 600000000.0,
+      "active_params": 600000000.0,
+      "total_params_label": "0.6B",
+      "active_params_label": "0.6B",
+      "quant": "Q8_0",
+      "quant_nominal_bpw": 8.0,
+      "source": "Qwen3-0.6B naming + Q8_0 GGUF",
+      "gguf_bytes": 639446688,
+      "gguf_gib": 0.596,
+      "bpw_vs_total_params_estimate": 8.526,
+      "bpw_vs_active_params_estimate": 8.526,
+      "bpw_note": "filesize*8/params; for MoE bpw_vs_total is the storage intensity, bpw_vs_active is not physical weight bpw"
+    },
+    "qwen3-4b": {
+      "arch": "Dense",
+      "total_params": 4000000000.0,
+      "active_params": 4000000000.0,
+      "total_params_label": "4B",
+      "active_params_label": "4B",
+      "quant": "Q4_K_M",
+      "quant_nominal_bpw": 4.83,
+      "source": "Qwen3-4B + Q4_K_M (nominal ~4.83 bpw typical for Q4_K_M)",
+      "gguf_bytes": 2497281120,
+      "gguf_gib": 2.326,
+      "bpw_vs_total_params_estimate": 4.995,
+      "bpw_vs_active_params_estimate": 4.995,
+      "bpw_note": "filesize*8/params; for MoE bpw_vs_total is the storage intensity, bpw_vs_active is not physical weight bpw"
+    },
+    "gemma-4-e4b-it": {
+      "arch": "Dense+PLE (Effective)",
+      "total_params": 8000000000.0,
+      "active_params": 4500000000.0,
+      "total_params_label": "~8B with embeddings / 4.5B effective",
+      "active_params_label": "4.5B effective",
+      "quant": "Q4_K_M",
+      "quant_nominal_bpw": 4.83,
+      "source": "Google Gemma 4 model card: E4B = 4.5B effective (8B with embeddings); Dense+PLE not MoE",
+      "gguf_bytes": 5335291936,
+      "gguf_gib": 4.969,
+      "bpw_vs_total_params_estimate": 5.335,
+      "bpw_vs_active_params_estimate": 9.485,
+      "bpw_note": "filesize*8/params; for MoE bpw_vs_total is the storage intensity, bpw_vs_active is not physical weight bpw"
+    },
+    "glm-4.7-flash": {
+      "arch": "MoE",
+      "total_params": 30000000000.0,
+      "active_params": 3000000000.0,
+      "total_params_label": "30B",
+      "active_params_label": "~3B (A3B)",
+      "quant": "Q4_K_M",
+      "quant_nominal_bpw": 4.83,
+      "source": "Z.AI/Zhipu GLM-4.7-Flash 30B-A3B MoE model card",
+      "gguf_bytes": 18312339808,
+      "gguf_gib": 17.055,
+      "bpw_vs_total_params_estimate": 4.883,
+      "bpw_vs_active_params_estimate": 48.833,
+      "bpw_note": "filesize*8/params; for MoE bpw_vs_total is the storage intensity, bpw_vs_active is not physical weight bpw"
+    },
+    "nemotron-3.5-lightning-30b-a3b": {
+      "arch": "MoE",
+      "total_params": 30000000000.0,
+      "active_params": 3000000000.0,
+      "total_params_label": "30B",
+      "active_params_label": "3B (A3B)",
+      "quant": "Q4_0",
+      "quant_nominal_bpw": 4.5,
+      "source": "NVIDIA Nemotron 3.5 Lightning 30B-A3B naming + Q4_0 GGUF",
+      "gguf_bytes": 18898091584,
+      "gguf_gib": 17.6,
+      "bpw_vs_total_params_estimate": 5.039,
+      "bpw_vs_active_params_estimate": 50.395,
+      "bpw_note": "filesize*8/params; for MoE bpw_vs_total is the storage intensity, bpw_vs_active is not physical weight bpw"
+    },
+    "gpt-oss-20b": {
+      "arch": "MoE",
+      "total_params": 20910000000.0,
+      "active_params": 3610000000.0,
+      "total_params_label": "20.9B",
+      "active_params_label": "3.6B",
+      "quant": "MXFP4",
+      "quant_nominal_bpw": 4.25,
+      "source": "OpenAI gpt-oss model card: 20.9B total / 3.6B active; MoE MXFP4 ~4.25 bpw on MoE weights",
+      "gguf_bytes": 12109566624,
+      "gguf_gib": 11.278,
+      "bpw_vs_total_params_estimate": 4.633,
+      "bpw_vs_active_params_estimate": 26.836,
+      "bpw_note": "filesize*8/params; for MoE bpw_vs_total is the storage intensity, bpw_vs_active is not physical weight bpw"
+    }
+  },
+  "generated_for": "YLSB v0.3 梅 complete reports"
+}
