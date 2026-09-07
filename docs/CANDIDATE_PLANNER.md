@@ -1,10 +1,12 @@
-# Candidate Planner v0.2 (v0.4-rc2)
+# Candidate Planner v0.2 (v0.4-rc3)
 
 Candidate Plannerはベンチマーク前の推薦器です。S/F/L/D/Xを確定せず、各候補の
 `prediction_status: predicted`、runtime互換性、メモリ配置条件、近傍実測を返します。
 最終slotは実測observationとpolicy評価で決まります。
 
 ## observed registry と candidate catalog
+
+2026-09-07版catalogは、従来の比較用anchorを残し、Qwen3.5（0.8B / 4B / 9B）、Qwen3.6（27B / 35B-A3B）、Qwen3.8（27B / Flash-Next / 2.4T-A95B）を含む19候補を収録しています。各候補の公式出典、取得日、parameter scopeはcatalog内に保持します。Flash-Nextのメモリ推定は補助パラメータを含む180Bを使用し、vision encoderなどの未報告分と量子化artifactの実サイズは未確定として扱います。
 
 `registries/models.json` は v0.3 から継承した観測モデルの正本です。実測の artifact、量子化、
 provenance を保持するため、候補を追加する用途には使いません。ベンチマーク前に探索できる

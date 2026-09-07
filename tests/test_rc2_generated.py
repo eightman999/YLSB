@@ -1,4 +1,7 @@
 import json
+import shutil
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -17,7 +20,7 @@ class GeneratedReleaseTests(unittest.TestCase):
             output = Path(tmp) / "rc2"
             self.assertEqual(0, regenerate(output))
             manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
-            self.assertEqual("v0.4-rc2", manifest["engine_release"])
+            self.assertEqual("v0.4-rc3", manifest["engine_release"])
             report = (output / "derived/v0.4-rc1-implementation-report.md").read_text(encoding="utf-8")
             expected_records = sum(value for key, value in manifest["normalized_record_counts"].items() if key.endswith(".jsonl"))
             self.assertIn(f"normalized JSONL records: {expected_records}", report)
@@ -42,6 +45,21 @@ class GeneratedReleaseTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 regenerate(output)
             self.assertTrue(imported.exists())
+
+    def test_generation_check_survives_checkout_relocation(self):
+        """Absolute checkout paths must not enter newly generated provenance."""
+        root = Path(__file__).parents[1]
+        with tempfile.TemporaryDirectory() as tmp:
+            relocated = Path(tmp) / "relocated-checkout"
+            shutil.copytree(root, relocated, ignore=shutil.ignore_patterns(".git", "__pycache__", "*.pyc"))
+            result = subprocess.run(
+                [sys.executable, "tools/regenerate_v04.py", "--check"],
+                cwd=relocated,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(0, result.returncode, result.stdout + result.stderr)
 
 
 if __name__ == "__main__":

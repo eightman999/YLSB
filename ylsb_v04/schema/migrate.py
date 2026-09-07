@@ -121,7 +121,19 @@ def migrate_v03_record(record: dict[str, Any], *, source: str = "v0.3 observatio
     return result
 
 
-def migrate_directory(input_dir: str | Path, output_dir: str | Path) -> list[Path]:
+def migrate_directory(
+    input_dir: str | Path,
+    output_dir: str | Path,
+    *,
+    source_prefix: str | None = None,
+) -> list[Path]:
+    """Migrate JSONL files while keeping newly-added provenance portable.
+
+    ``source_prefix`` is an optional logical path used for provenance fields
+    created by the adapter.  When omitted, the historical absolute source
+    path is retained for compatibility.  Existing provenance/source fields in
+    input records are never rewritten.
+    """
     source = Path(input_dir).resolve()
     destination = Path(output_dir).resolve()
     if source == destination or source in destination.parents:
@@ -131,7 +143,8 @@ def migrate_directory(input_dir: str | Path, output_dir: str | Path) -> list[Pat
     for path in sorted(source.glob("*.jsonl")):
         rows = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
         target = destination / path.name
-        payload = "".join(json.dumps(migrate_v03_record(row, source=path.as_posix()), ensure_ascii=False, sort_keys=True) + "\n" for row in rows)
+        logical_source = f"{source_prefix.rstrip('/')}/{path.name}" if source_prefix else path.as_posix()
+        payload = "".join(json.dumps(migrate_v03_record(row, source=logical_source), ensure_ascii=False, sort_keys=True) + "\n" for row in rows)
         target.write_text(payload, encoding="utf-8")
         written.append(target)
     return written

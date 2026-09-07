@@ -30,6 +30,38 @@ class Rc2PlannerTests(unittest.TestCase):
         self.assertTrue(all(entry["observed"] is False for entry in data["entries"]))
         self.assertTrue(all(entry["quantization_status"] in {"reported", "estimated", "unknown"} for entry in data["entries"]))
 
+    def test_qwen_2026_updates_preserve_official_architecture_facts(self):
+        entries = {entry["canonical_id"]: entry for entry in load_candidate_catalog()}
+        expected = {
+            "candidate.qwen3.5.0.8b.q4": (0.8, 0.8, "dense", 262144),
+            "candidate.qwen3.5.4b.q4": (4.0, 4.0, "dense", 262144),
+            "candidate.qwen3.5.9b.q4": (9.0, 9.0, "dense", 262144),
+            "candidate.qwen3.6.27b.q4": (27.0, 27.0, "dense", 262144),
+            "candidate.qwen3.6.35b-a3b.moe.q4": (35.0, 3.0, "moe", 262144),
+            "candidate.qwen3.8.27b.q4": (27.0, 27.0, "dense", 262144),
+            "candidate.qwen3.8-flash-next.180b-moe.q4": (180.0, 6.0, "moe", 262144),
+            "candidate.qwen3.8.2.4t-a95b.moe.q4": (2400.0, 95.0, "moe", 262144),
+        }
+        for model_id, (total, active, architecture, context) in expected.items():
+            self.assertIn(model_id, entries)
+            item = entries[model_id]
+            self.assertEqual(total, item["architecture"]["total_params_b"])
+            self.assertEqual(active, item["architecture"]["active_params_b"])
+            self.assertEqual(architecture, item["architecture"]["type"])
+            self.assertEqual(context, item["context_length"])
+            self.assertEqual("estimated", item["quantization_status"])
+            self.assertEqual("registry", item["provenance"]["kind"])
+            self.assertEqual("official_model_card", item["provenance"]["source_type"])
+            self.assertEqual("2026-09-07", item["retrieved_at"])
+            self.assertFalse(item["observed"])
+            self.assertIn("vision_encoder_parameter_count_unknown", item["parameter_scope"])
+        self.assertEqual(256, entries["candidate.qwen3.6.35b-a3b.moe.q4"]["architecture"]["expert_count"])
+        self.assertEqual(9, entries["candidate.qwen3.6.35b-a3b.moe.q4"]["architecture"]["active_experts"])
+        self.assertEqual(512, entries["candidate.qwen3.8-flash-next.180b-moe.q4"]["architecture"]["expert_count"])
+        self.assertEqual(125.0, entries["candidate.qwen3.8-flash-next.180b-moe.q4"]["architecture"]["core_params_b"])
+        self.assertEqual(180.0, entries["candidate.qwen3.8-flash-next.180b-moe.q4"]["architecture"]["reported_model_size_b"])
+        self.assertEqual(512, entries["candidate.qwen3.8.2.4t-a95b.moe.q4"]["architecture"]["expert_count"])
+
     def test_default_catalog_has_unobserved_candidates_beyond_observed_ceiling(self):
         observed = json.loads((ROOT / "registries/models.json").read_text(encoding="utf-8"))["entries"]
         catalog = load_candidate_catalog()

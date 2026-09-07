@@ -2,9 +2,9 @@
 
 日常採用するモデル/GPU/runtime構成を決める標準試験。
 
-## v0.4-rc2 の導線
+## v0.4-rc3 の導線
 
-このREADMEと `profile.json`、`tests/` は v0.3 の竹試験仕様を保持する。v0.4-rc2の再評価は梅の明示fixture [`../fixtures/v0.4-rc1/`](../fixtures/v0.4-rc1/)、versioned policy [`../policies/ylsb-v0.4-rc1.json`](../policies/ylsb-v0.4-rc1.json)、grader v2 [`../common/grader_basic.py`](../common/grader_basic.py)、schema v0.2 [`../schema/normalized-corpus-v0.2.schema.json`](../schema/normalized-corpus-v0.2.schema.json)を入口にし、`python3 tools/regenerate_v04.py` で生成物を更新する。竹の既存問題をv0.4 fixtureとして自動流用しない。
+このREADMEと `profile.json`、`tests/` は v0.3 の竹試験仕様を保持する。v0.4-rc3の再評価は梅の明示fixture [`../fixtures/v0.4-rc1/`](../fixtures/v0.4-rc1/)、versioned policy [`../policies/ylsb-v0.4-rc1.json`](../policies/ylsb-v0.4-rc1.json)、grader v2 [`../common/grader_basic.py`](../common/grader_basic.py)、schema v0.2 [`../schema/normalized-corpus-v0.2.schema.json`](../schema/normalized-corpus-v0.2.schema.json)を入口にし、`python3 tools/regenerate_v04.py` で生成物を更新する。竹の既存問題をv0.4 fixtureとして自動流用しない。
 
 ## 実行前の必須事項
 

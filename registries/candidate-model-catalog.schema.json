@@ -39,6 +39,7 @@
         "quantization_status": {"enum": ["reported", "estimated", "unknown"]},
         "format": {"type": ["string", "null"]},
         "context_length": {"type": ["integer", "null"]},
+        "parameter_scope": {"type": "string"},
         "status": {"enum": ["stable", "experimental", "unknown"]},
         "source": {"type": "string", "format": "uri"},
         "retrieved_at": {"type": "string", "format": "date"},

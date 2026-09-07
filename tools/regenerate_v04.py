@@ -180,7 +180,7 @@ def _write_manifest(output: Path, *, normalized_counts: dict[str, int], fixture_
     manifest = {
         "schema_version": "normalized-corpus-v0.2",
         "release": "v0.4-rc1",
-        "engine_release": "v0.4-rc2",
+        "engine_release": "v0.4-rc3",
         "generator": {
             "version": GENERATOR_VERSION,
             "path": "tools/regenerate_v04.py",
@@ -214,9 +214,9 @@ def _write_generated_report(output: Path, counts: dict[str, int]) -> None:
     planner = _json(output / "normalized/planner.json")
     total = sum(value for key, value in counts.items() if key.endswith(".jsonl"))
     lines = [
-        "# YLSB v0.4-rc2 generated implementation report",
+        "# YLSB v0.4-rc3 generated implementation report",
         "",
-        "このレポートは `tools/regenerate_v04.py` が生成した。評価 policy は `YLSB-v0.4-rc1`、engine release は `v0.4-rc2` である。",
+        "このレポートは `tools/regenerate_v04.py` が生成した。評価 policy は `YLSB-v0.4-rc1`、engine release は `v0.4-rc3` である。",
         "",
         "## Generated checks",
         "",
@@ -237,7 +237,7 @@ def _build(output: Path) -> None:
     normalized = output / "normalized"
     derived = output / "derived"
     # migrate_directory is pure with respect to its source tree.
-    migrate_directory(V03_INPUT, normalized)
+    migrate_directory(V03_INPUT, normalized, source_prefix="results/v0.3/normalized")
     regrade(V03_INPUT / "task_results.jsonl", "YLSB-v0.4-rc1", derived)
     (derived / "v0.4-rc1-calibration.md").write_text(calibration(V03_INPUT / "task_results.jsonl"), encoding="utf-8")
     (normalized / "planner.json").write_text(json.dumps(_planner_output(normalized), ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")

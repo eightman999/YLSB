@@ -1,4 +1,10 @@
-# YLSB v0.3 — 闇ネット Local LLM 標準試験「松竹梅」
+# YLSB v0.4-rc3 — 闇ネット Local LLM 標準試験「松竹梅」
+
+**Engine: `v0.4-rc3`（prerelease） · 評価policy: `YLSB-v0.4-rc1` · v0.4 fixture: `fixtures/v0.4-rc1/`**
+
+v0.3の観測データと松竹梅profileは歴史的基準として保持します。engineの更新と評価基準の改訂は別々に管理します。
+
+検証結果は [GitHub Actions](https://github.com/eightman999/YLSB/actions/workflows/verify.yml) とRelease添付のレポートで確認できます。[検証手順と証跡の読み方](docs/VERIFICATION.md)には、対象コミット・検証環境・ログの確認方法を記載しています。
 
 YLSBは、ローカルLLMのモデル単体ではなく、`model / quant / runtime / GPU / split / MTP / KV / context` を含む**実運用構成全体**を比較するためのベンチマークです。
 
@@ -163,13 +169,13 @@ v0.3では、公開済みの固定anchorとして次の2問を収録していま
 
 Legacy Inverse ChallengeとしてLIC-S1（`answers_10001.txt`）とLIC-C1（`message.txt`）を追加しました。マイコンREは含みません。
 
-## v0.4-rc2（再生成版）
+## v0.4-rc3（再生成版）
 
 YLSBを、hardwareに対して意味のあるbenchmark candidateを提案し、その構成を再現可能に比較するframeworkへ拡張します。`ylsb_v04` のversioned policy、v2 grader、異種GPU対応run schema、registry、Candidate Planner、generic importerを利用できます。
 
 v0.3 frozen/raw/normalized/derivedは変更しません。同じ observation を `YLSB-v0.4-rc1` policy で再評価し、現行 planner とともに `results/v0.4-rc1/`へ決定論的に再生成します。thresholdはcalibration用でfinal確定値ではありません。
 
-v0.4-rc2を新規実行する場合のfixture入口は [`fixtures/v0.4-rc1/`](fixtures/v0.4-rc1/) です。既存の`ume/`、`take/`、`matsu/` profileはv0.3のままなので、旧fixtureを暗黙にv0.4へ読み替えません。検証からレポートまでの最小手順は次の通りです。
+v0.4-rc3を新規実行する場合のfixture入口は [`fixtures/v0.4-rc1/`](fixtures/v0.4-rc1/) です。既存の`ume/`、`take/`、`matsu/` profileはv0.3のままなので、旧fixtureを暗黙にv0.4へ読み替えません。検証からレポートまでの最小手順は次の通りです。
 
 ```sh
 python3 -m pip install -r requirements-v04.txt
@@ -181,4 +187,4 @@ python3 tools/regenerate_v04.py --check
 
 v0.3 UMEのrawレポートdirectory／ZIPは `python3 tools/ylsb.py import-raw ./submission.zip --dry-run` で検査できます。取り込みと重複検知の手順は [Raw report import](docs/RAW_REPORT_IMPORT.md) を参照してください。
 
-詳細な要求チェックは [`docs/V0.4_PLAN.md`](docs/V0.4_PLAN.md)、移行手順とbaselineは [`docs/V0.4_MIGRATION.md`](docs/V0.4_MIGRATION.md)、生成結果に基づく証拠は [`docs/V0.4_IMPLEMENTATION_REPORT.md`](docs/V0.4_IMPLEMENTATION_REPORT.md)を参照してください。評価policyはrc1のまま、生成engineの版をrc2として記録します。
+詳細な要求チェックは [`docs/V0.4_PLAN.md`](docs/V0.4_PLAN.md)、移行手順とbaselineは [`docs/V0.4_MIGRATION.md`](docs/V0.4_MIGRATION.md)、生成結果に基づく証拠は [`docs/V0.4_IMPLEMENTATION_REPORT.md`](docs/V0.4_IMPLEMENTATION_REPORT.md)を参照してください。評価policyはrc1のまま、生成engineの版をrc3として記録します。
