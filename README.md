@@ -1,4 +1,4 @@
-# YLSB v0.3 — 闇ネット Local LLM 標準試験「松竹梅」
+# YLSB v0.3 — Your Local LLM 標準試験「松竹梅」
 
 YLSBは、ローカルLLMのモデル単体ではなく、`model / quant / runtime / GPU / split / MTP / KV / context` を含む**実運用構成全体**を比較するためのベンチマークです。
 
