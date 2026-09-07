@@ -1,4 +1,4 @@
-# YLSB v0.4-rc3 — 闇ネット Local LLM 標準試験「松竹梅」
+# YLSB v0.4-rc3 — Your Local LLM 標準試験「松竹梅」
 
 **Engine: `v0.4-rc3`（prerelease） · 評価policy: `YLSB-v0.4-rc1` · v0.4 fixture: `fixtures/v0.4-rc1/`**
 
