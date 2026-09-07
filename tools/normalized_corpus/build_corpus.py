@@ -128,7 +128,10 @@ def fixture_constraint_audit() -> dict[str, dict[str, Any]]:
 
 
 def build_manifest() -> dict[str, Any]:
-    archive = Path("/Users/eightman/Downloads/ylsb_ume_v0.3_complete_reports.zip")
+    # The original ZIP is not distributed with the repository. Its identity
+    # was captured when the source tree was frozen; retain that historical
+    # descriptor without requiring the submitter's Downloads directory.
+    archive_identity = read_json(FROZEN_ROOT / "manifest.json")["source_archive"]
     files = []
     for path in sorted(item for item in RAW_ROOT.rglob("*") if item.is_file()):
         files.append({"path": path.relative_to(RAW_ROOT).as_posix(), "bytes": path.stat().st_size, "sha256": sha256(path)})
@@ -144,12 +147,7 @@ def build_manifest() -> dict[str, Any]:
         "baseline_id": BASELINE_ID,
         "dataset_status": "frozen",
         "policy": "Files under original/ are immutable source observations.",
-        "source_archive": {
-            "reported_path": str(archive),
-            "filename": archive.name,
-            "bytes": archive.stat().st_size,
-            "sha256": sha256(archive),
-        },
+        "source_archive": archive_identity,
         "file_count": len(files),
         "files": files,
         "known_duplicate_files": top_duplicates,

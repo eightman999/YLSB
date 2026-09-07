@@ -1,6 +1,8 @@
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
+import json
 from pathlib import Path
 
 from tools.verify_release import (
@@ -15,6 +17,21 @@ ROOT = Path(__file__).parents[1]
 
 
 class VerifyReleaseTests(unittest.TestCase):
+    def test_historical_builder_does_not_require_external_source_zip(self):
+        from tools.normalized_corpus.build_corpus import build_manifest, FROZEN_ROOT
+        original_stat = Path.stat
+
+        def without_downloads(path, *args, **kwargs):
+            if "Downloads" in path.parts:
+                raise FileNotFoundError("original submission archive is unavailable")
+            return original_stat(path, *args, **kwargs)
+
+        with patch.object(Path, "stat", without_downloads):
+            manifest = build_manifest()
+        frozen = json.loads((FROZEN_ROOT / "manifest.json").read_text())
+        self.assertEqual(frozen["source_archive"], manifest["source_archive"])
+        self.assertEqual(frozen["files"], manifest["files"])
+
     def test_v03_protected_baseline_is_intact(self):
         passed, failures, actual, excluded = _protected_baseline_check(ROOT)
         self.assertTrue(passed, failures)
