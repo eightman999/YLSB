@@ -16,8 +16,6 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    env:
-      VERIFY_OUT: ${{ runner.temp }}/ylsb-release-verification
     steps:
       - name: Check out target
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
@@ -52,7 +50,7 @@ jobs:
           python harness/tools/verify_release.py \
             --repo "$GITHUB_WORKSPACE/target" \
             --harness-repo "$GITHUB_WORKSPACE/harness" \
-            --output-dir "$VERIFY_OUT"
+            --output-dir "$RUNNER_TEMP/ylsb-release-verification"
           status=$?
           echo "verify_status=$status" >> "$GITHUB_OUTPUT"
           exit 0
@@ -62,7 +60,7 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: ylsb-release-verification-${{ github.run_id }}
-          path: ${{ env.VERIFY_OUT }}
+          path: ${{ runner.temp }}/ylsb-release-verification
           if-no-files-found: warn
           retention-days: 14
 
