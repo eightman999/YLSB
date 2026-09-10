@@ -1,0 +1,52 @@
+[
+  {
+    "name": "ja_reasoning",
+    "arm": "ON",
+    "seconds": 5.933145523071289,
+    "text": "*   **文脈や倫理の欠如**: 数値的な正確さとは異なる、状況に応じた柔軟な判断や倫理的配慮をAIは行えない。\n*   **学習データの限界**: 過去のデータに偏りや誤りがある場合、AIはそれを再現・増幅するだけで、真の「正確さ」を保証できない。\n*   **未知の状況への対応力不足**: 学習データにない新しい事象や異常事態に対し、人間のような推論や創造的な解決策を提示できない。",
+    "check": {
+      "nonempty": true,
+      "len": 195,
+      "has_jp": true
+    },
+    "error": null
+  },
+  {
+    "name": "python_coding",
+    "arm": "ON",
+    "seconds": 3.127249002456665,
+    "text": "```python\ndef dedupe_stable(xs: list[int]) -> list[int]:\n    \"\"\"Remove duplicates from a list while preserving the original order.\"\"\"\n    seen = set()\n    result = []\n    for x in xs:\n        if x not in seen:\n            seen.add(x)\n            result.append(x)\n    return result\n```",
+    "check": {
+      "has_def": true,
+      "len": 284
+    },
+    "error": null
+  },
+  {
+    "name": "strict_json",
+    "arm": "ON",
+    "seconds": 1.3693203926086426,
+    "text": "{\"name\":\"smoke\",\"score\":42,\"ok\":true}",
+    "check": {
+      "parse_ok": true,
+      "keys": [
+        "name",
+        "ok",
+        "score"
+      ],
+      "match": true
+    },
+    "error": null
+  },
+  {
+    "name": "arithmetic_if",
+    "arm": "ON",
+    "seconds": 0.9955816268920898,
+    "text": "14",
+    "check": {
+      "value": 14,
+      "correct": true
+    },
+    "error": null
+  }
+]

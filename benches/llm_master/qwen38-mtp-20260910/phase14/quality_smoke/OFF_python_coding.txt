@@ -1,0 +1,11 @@
+```python
+def dedupe_stable(xs: list[int]) -> list[int]:
+    """Remove duplicates from a list while preserving the original order."""
+    seen = set()
+    result = []
+    for x in xs:
+        if x not in seen:
+            seen.add(x)
+            result.append(x)
+    return result
+```

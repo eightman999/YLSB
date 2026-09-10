@@ -1,0 +1,18 @@
+[
+  [
+    "ja_reasoning",
+    "次の主張の弱点を3点、簡潔な日本語箇条書きで述べよ。『AIは常に人間より正確な判断をする。』"
+  ],
+  [
+    "python_coding",
+    "Write a pure-Python function `dedupe_stable(xs: list[int]) -> list[int]` that removes duplicates while preserving order. No imports. Include a one-line docstring."
+  ],
+  [
+    "strict_json",
+    "Reply with ONLY a JSON object (no markdown) with keys name (string), score (integer 0-100), ok (boolean). Use name=\"smoke\", score=42, ok=true."
+  ],
+  [
+    "arithmetic_if",
+    "If x=17 and y=3, compute (x*y + 5) // 4. Reply with ONLY the integer."
+  ]
+]

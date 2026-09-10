@@ -1,0 +1,41 @@
+{
+  "summary_keys": [
+    "tool",
+    "base_url",
+    "endpoint",
+    "model",
+    "concurrency",
+    "num_prompts",
+    "input_tokens_target",
+    "input_tokens_actual",
+    "output_tokens_target",
+    "warmup",
+    "unique_prompts",
+    "prompt_seed",
+    "wall_time_s",
+    "success",
+    "fail",
+    "errors",
+    "request_throughput_rps",
+    "output_tok_s",
+    "total_tok_s",
+    "mean_latency_s",
+    "median_latency_s",
+    "p95_latency_s",
+    "mean_ttft_s",
+    "median_ttft_s",
+    "p95_ttft_s",
+    "mean_tpot_s",
+    "median_tpot_s",
+    "p95_tpot_s",
+    "sum_output_tokens",
+    "sum_total_tokens"
+  ],
+  "r0_keys": [],
+  "pick": {
+    "input_actual": "",
+    "ttft": 143.56886015000055,
+    "e2e": "",
+    "decode": 0.8669190425399486
+  }
+}

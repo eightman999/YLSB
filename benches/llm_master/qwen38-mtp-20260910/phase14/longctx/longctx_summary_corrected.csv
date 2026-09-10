@@ -1,0 +1,4 @@
+tag,ctx,input_target,input_actual,input_server,success,oom,ttft_s,e2e_latency_s,client_output_tok_s_e2e_incl_prefill,decode_tok_s_from_tpot,server_prompt_ms,server_prompt_tok_s,server_decode_ms,server_decode_tok_s,sum_output_tokens,approx_30720_prompt,note
+long_c16384_in15360,16384,15360,15360,15409,yes,no,83.10232910299965,87.0044217070008,1.4711593137330037,32.547,83010.84,185.63,3901.94,32.55,128,n/a,
+long_c32768_in30720,32768,30720,25841,25892,yes,no,143.56886015000055,147.64731867900082,0.8669190425399486,31.139,143424.3,180.53,4078.21,31.14,128,NO,32K_NOT_OPERATIONAL_actual_lt_30720
+long_c8192_in7168,8192,7168,7168,7222,yes,no,38.63971490900076,42.40597742600039,3.0183324726323852,33.72,38577.87,187.21,3766.14,33.72,128,n/a,
