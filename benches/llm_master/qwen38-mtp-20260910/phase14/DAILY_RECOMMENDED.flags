@@ -1,0 +1,10 @@
+# DAILY_RECOMMENDED from Phase14 MTP sweep (stock probe.py overall median)
+# pick=n2 median=30.9
+llama-server \
+  -m /home/eightman/gguf-nvme/qwen3.8-27b-q4_K_M/qwen3.8-27b-q4_K_M.gguf \
+  -c 8192 -ngl 999 -fa on \
+  --cache-type-k q4_0 --cache-type-v q4_0 \
+  --parallel 1 \
+  --split-mode tensor --tensor-split 1,1 \
+  --spec-type draft-mtp --spec-draft-n-max 2 \
+  --host 127.0.0.1 --port 18080 --metrics
