@@ -1,0 +1,4 @@
+best_raw=n2 med=30.900
+DAILY_PICK=n2 med=30.900 nmax=2 pmin=
+OFF=19.3
+speedup_vs_off=1.6010

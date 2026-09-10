@@ -1,0 +1,7 @@
+name,mtp,nmax,pmin,overall_median
+OFF,OFF,0,,19.3
+n2,ON,2,,30.9
+n3,ON,3,,28.5
+n4,ON,4,,27.4
+n2_pmin060,ON,2,0.60,29.4
+n2_pmin075,ON,2,0.75,27.4

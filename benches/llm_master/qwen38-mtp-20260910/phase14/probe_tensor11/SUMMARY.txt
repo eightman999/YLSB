@@ -1,0 +1,8 @@
+OFF_medians=[19.3, 19.3, 19.3]
+ON_medians=[30.4, 31.4, 31.0]
+OFF_median_of_sessions=19.3000
+ON_median_of_sessions=31.0000
+speedup=1.6062
+
+acceptance_last=0.786309 draft=2162 accepted=1700 file=metrics_probe_t11_ON_r6.txt
+acceptance_median_ratio=0.795969
